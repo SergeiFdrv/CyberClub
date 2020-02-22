@@ -18,19 +18,19 @@ namespace CyberClub
             InitializeComponent();
         }
 
-        public static string cs = @"Data Source=DESKTOP-LFCR3E8\SQLEXPRESS;" +
+        public static string CS => @"Data Source=DESKTOP-LFCR3E8\SQLEXPRESS;" +
             "Initial Catalog=CyberClub;Integrated Security=True";
 
-        public static int userid;
+        public static int UserID { get; private set; }
 
         private void LogInButton_Click(object sender, EventArgs e)
         { // Вход в аккаунт
-            if (UserName.Text != "")
+            if (!string.IsNullOrEmpty(UserName.Text))
             {
                 string query = "SELECT userid, authority, authname " +
                     "FROM users INNER JOIN hierarchy ON users.authority = " +
                     "hierarchy.authid WHERE username = @name AND passwd = @pwd";
-                using (SqlConnection conn = new SqlConnection(cs))
+                using (SqlConnection conn = new SqlConnection(CS))
                 {
                     if (!ConnOpen(conn)) return;
                     using (SqlCommand command = new SqlCommand(query, conn))
@@ -41,33 +41,21 @@ namespace CyberClub
                         if (dataReader.Read())
                         {
                             UserName.Text = Password.Text = "";
-                            userid = (int)dataReader["userid"];
-                            switch ((string)dataReader["authname"])
+                            UserID = (int)dataReader["userid"];
+                            string authname = (string)dataReader["authname"];
+                            if (authname == "banned")
                             {
-                                case "admin": // админ
-                                    AdminForm af = new AdminForm();
-                                    af.Owner = this;
-                                    af.Show();
-                                    break;
-                                case "banned":
-                                    Voice.Say("Похоже, Ваш аккаунт " +
-                                        "заблокирован. Администратор знает больше.");
-                                    return;
-                                case "player":
-                                default: 
-                                    UserForm uf = new UserForm();
-                                    uf.Owner = this;
-                                    uf.Show();
-                                    break;
+                                Voice.Say(Properties.Resources.YouAreBanned);
+                                return;
                             }
                             Hide();
+                            if (authname == "admin")
+                                using (AdminForm af = new AdminForm { Owner = this })
+                                    af.ShowDialog();
+                            else using (UserForm uf = new UserForm { Owner = this })
+                                    uf.ShowDialog();
                         }
-                        else
-                        {
-                            Voice.Say("Сочетание \"логин-пароль\" " +
-                                "не найдено. Для регистрации учетной записи " +
-                                "обратитесь к администратору.");
-                        }
+                        else Voice.Say(Properties.Resources.LoginPasswordNotFound);
                     }
                 }
             }
@@ -88,7 +76,10 @@ namespace CyberClub
         public static bool UpdateBox(IList items,
             string select, string from, string order = "")
         {
-            using (SqlConnection conn = new SqlConnection(LoginForm.cs))
+            if (string.IsNullOrEmpty(select) || string.IsNullOrEmpty(from) || items == null)
+                return false;
+            if (string.IsNullOrEmpty(order)) order = select;
+            using (SqlConnection conn = new SqlConnection(CS))
             {
                 if (!ConnOpen(conn)) return false;
                 if (select.Contains(',') || select.Contains(' '))
@@ -100,7 +91,6 @@ namespace CyberClub
                 if (order.Contains(',') || order.Contains(' '))
                     order = order.Substring(0, order.IndexOf(','))
                         .Substring(0, order.IndexOf(' '));
-                if (order == "") order = select;
                 using (SqlCommand command = new
                     SqlCommand($"SELECT {select} FROM {from} ORDER BY {order}", conn))
                 {
@@ -126,7 +116,12 @@ namespace CyberClub
             }
             catch (SqlException)
             {
-                Voice.Say("Ошибка базы данных.");
+                Voice.Say(Properties.Resources.DBError);
+                return false;
+            }
+            catch (ArgumentNullException)
+            {
+                Voice.Say(Properties.Resources.Error);
                 return false;
             }
         }

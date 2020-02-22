@@ -67,7 +67,7 @@ namespace CyberClub
             if (!(File.Exists(path) || 
                 File.Exists(Environment.SystemDirectory + '\\' + path)))
             {
-                Voice.Say("Файл не найден. Админ раздолбай");
+                Voice.Say(Properties.Resources.ExeNotFound);
                 return;
             }
             Process.Start(new ProcessStartInfo
@@ -81,35 +81,31 @@ namespace CyberClub
 
         private void GameSubscribe_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(LoginForm.cs))
+            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
-                command.Parameters.Add(new SqlParameter("@me", LoginForm.userid));
+                command.Parameters.Add(new SqlParameter("@me", LoginForm.UserID));
                 command.Parameters.Add(new SqlParameter("@id", int.Parse(GameID.Text)));
                 if (GameSubscribe.Checked)
                 {
-                    GameSubscribe.Text = "Отписаться";
-                    GameRunSubmit.Visible = GameRate.Visible = true;
-                    GameRateNUD.Visible = true;
-                    command.CommandText = "INSERT INTO subscriptions (who, game) " +
-                        "VALUES (@me, @id)";
+                    GameSubscribe.Text = Properties.Resources.Unsubscribe;
+                    GameRunSubmit.Visible = GameRate.Visible = GameRateNUD.Visible = true;
+                    command.CommandText = "INSERT INTO subscriptions (who, game) VALUES (@me, @id)";
                     command.ExecuteNonQuery();
                     GameRate.Checked = false;
                     GameRateNUD.Value = 5;
                 }
+                else if (Voice.Ask(Properties.Resources.UnsubscribePrompt) == DialogResult.No)
+                {
+                    GameSubscribe.Checked = true;
+                    return;
+                }
                 else
                 {
-                    if (Voice.Ask("Отменить подписку?") == DialogResult.No)
-                    {
-                        GameSubscribe.Checked = true;
-                        return;
-                    }
-                    GameSubscribe.Text = "Подписаться";
-                    GameRunSubmit.Visible = GameRate.Visible = false;
-                    GameRateNUD.Visible = false;
-                    command.CommandText = "DELETE FROM subscriptions " +
-                        "WHERE who = @me AND game = @id";
+                    GameSubscribe.Text = Properties.Resources.Subscribe;
+                    GameRunSubmit.Visible = GameRate.Visible = GameRateNUD.Visible = false;
+                    command.CommandText = "DELETE FROM subscriptions WHERE who = @me AND game = @id";
                     command.ExecuteNonQuery();
                 }
             }
@@ -117,7 +113,7 @@ namespace CyberClub
 
         private void GameRate_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(LoginForm.cs))
+            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -125,7 +121,7 @@ namespace CyberClub
                     "WHERE who = @me AND game = @game";
                 command.Parameters.Add(
                     new SqlParameter("@game", int.Parse(GameID.Text)));
-                command.Parameters.Add(new SqlParameter("@me", LoginForm.userid));
+                command.Parameters.Add(new SqlParameter("@me", LoginForm.UserID));
                 if (GameRate.Checked)
                     command.Parameters.Add(new SqlParameter("@rate", GameRateNUD.Value));
                 else command.Parameters.Add(new SqlParameter("@rate", DBNull.Value));
@@ -142,7 +138,8 @@ namespace CyberClub
         // ----------------------- Поиск по играм -----------------------
         private void GamesSwitch_CheckedChanged(object sender, EventArgs e)
         {
-            GamesSwitch.Text = GamesSwitch.Checked ? "Поиск игр" : "Мои игры";
+            GamesSwitch.Text = GamesSwitch.Checked ?
+                Properties.Resources.SearchGames : Properties.Resources.MyGames;
             LoadGameList(GamesList, GamesSwitch);
         }
 
@@ -169,8 +166,8 @@ namespace CyberClub
         private void LoadGameList(ListView LV, CheckBox Switch)
         { // Если отмечены жанры или разработчик, включить их в критерии поиска
             bool genres = GSrchGenres.CheckedItems.Count > 0;
-            bool dev = GSrchDev.Text != "";
-            using (SqlConnection conn = new SqlConnection(LoginForm.cs))
+            bool dev = GSrchDev.Text.Length > 0;
+            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
             {
                 if (!ConnOpen(conn)) return;
                 string query = "SELECT DISTINCT gameid, gamename, devname, " +
@@ -180,7 +177,7 @@ namespace CyberClub
                     "(gamegenre LEFT JOIN genres ON genre = genreid) ON " +
                     "gameid = game" : "") + (Switch.Checked ? "" :
                     " INNER JOIN subscriptions ON games.gameid = subscriptions.game") +
-                    " WHERE gamelink != ''" + (GameSearch.Text == "" ? 
+                    " WHERE gamelink != ''" + (GameSearch.Text.Length == 0 ? 
                     "" : " AND gamename LIKE @name") + (Switch.Checked ? 
                     "" : " AND who = @id") + (GSrchSingleCB.Checked ? 
                     " AND singleplayer = 1" : "") + (GSrchMultiCB.Checked ? 
@@ -188,24 +185,23 @@ namespace CyberClub
                 if (genres)
                 {
                     query += " AND (";
-                    foreach (string i in GSrchGenres.CheckedItems)
-                        query += " genrename = '" + i + "' OR";
+                    for (int i = 0; i < GSrchGenres.CheckedItems.Count; i++)
+                        query += $" genrename = '{GSrchGenres.CheckedItems[i]}' OR";
                     query = query.Substring(0, query.Length - 3) + ')';
                 }
                 LV.Clear();
                 SqlCommand command = conn.CreateCommand();
                 command.CommandText = query;
                 command.Parameters.Add(
-                    new SqlParameter("@name", "%" + GameSearch.Text + "%"));
-                command.Parameters.Add(new SqlParameter("@id", LoginForm.userid));
+                    new SqlParameter("@name", '%' + GameSearch.Text + '%'));
+                command.Parameters.Add(new SqlParameter("@id", LoginForm.UserID));
                 command.Parameters.Add(
                     new SqlParameter("@dev", '%' + GSrchDev.Text + '%'));
                 SqlDataReader dataReader = command.ExecuteReader();
-                string item = "";
                 while (dataReader.Read())
                 {
-                    item = dataReader["gamename"].ToString() + " (";
-                    if (dataReader["devname"].ToString() != "")
+                    string item = dataReader["gamename"].ToString() + " (";
+                    if (dataReader["devname"].ToString().Length > 0)
                     {
                         item += dataReader["devname"];
                         if ((bool)dataReader["singleplayer"]) item += ", singleplayer";
@@ -228,7 +224,6 @@ namespace CyberClub
                         LV.Items[LV.Items.Count - 1].ImageIndex = 
                             GamePics.Images.Count - 1;
                     }
-                    item = "";
                 }
             }
         }
@@ -236,7 +231,7 @@ namespace CyberClub
         private void GamesList_Click(object sender, EventArgs e)
         {
             GameName.Text = GamesList.SelectedItems[0].Text;
-            using (SqlConnection conn = new SqlConnection(LoginForm.cs))
+            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -262,11 +257,12 @@ namespace CyberClub
                 GameModes.Text = "";
                 if ((bool)dataReader["singleplayer"])
                 {
-                    GameModes.Text = "Одиночный режим";
+                    GameModes.Text = Properties.Resources.SinglePlayer;
                     if ((bool)dataReader["multiplayer"])
                         GameModes.Text += ", мультиплеер";
                 }
-                else if ((bool)dataReader["multiplayer"]) GameModes.Text = "Мультиплеер";
+                else if ((bool)dataReader["multiplayer"])
+                    GameModes.Text = Properties.Resources.Multiplayer;
                 dataReader.Close();
                 command.CommandText = "SELECT genrename FROM gamegenre " +
                     "INNER JOIN genres ON genre = genreid WHERE game = @id";
@@ -275,29 +271,25 @@ namespace CyberClub
                 while (dataReader.Read())
                     GameGenres.Text += dataReader["genrename"].ToString() + ", ";
                 dataReader.Close();
-                if (GameGenres.Text != "") GameGenres.Text = 
+                if (GameGenres.Text.Length > 0) GameGenres.Text = 
                     GameGenres.Text.Substring(0, GameGenres.Text.LastIndexOf(','));
                 command.CommandText = "SELECT * FROM subscriptions WHERE who = @me " +
                     "AND game = @id";
-                command.Parameters.Add(new SqlParameter("@me", LoginForm.userid));
+                command.Parameters.Add(new SqlParameter("@me", LoginForm.UserID));
                 dataReader = command.ExecuteReader();
                 if (GameSubscribe.Checked = dataReader.Read())
                 {
-                    GameSubscribe.Text = "Отписаться";
-                    GameRunSubmit.Visible = true;
-                    GameRate.Visible = GameRateNUD.Visible = true;
+                    GameSubscribe.Text = Properties.Resources.Unsubscribe;
+                    GameRunSubmit.Visible = GameRate.Visible = GameRateNUD.Visible = true;
                     GameID.Text = dataReader["game"].ToString();
-                    if (GameRate.Checked = (dataReader["rate"] != DBNull.Value))
-                    {
-                        GameRateNUD.Value = Convert.ToInt32(dataReader["rate"]);
-                    }
+                    if (GameRate.Checked = dataReader["rate"] != DBNull.Value)
+                        GameRateNUD.Value = (int)dataReader["rate"];
                     else GameRateNUD.Value = 5;
                 }
                 else
                 {
-                    GameSubscribe.Text = "Подписаться";
-                    GameRunSubmit.Visible = false;
-                    GameRate.Visible = GameRateNUD.Visible = false;
+                    GameSubscribe.Text = Properties.Resources.Subscribe;
+                    GameRunSubmit.Visible = GameRate.Visible = GameRateNUD.Visible = false;
                 }
             }
             if (!GamePagePanel.Visible)
@@ -310,14 +302,13 @@ namespace CyberClub
         // ------------------------------ Аккаунт ------------------------------
         private void GetUserData()
         {
-            using (SqlConnection conn = new SqlConnection(LoginForm.cs))
+            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
                 command.CommandText = "SELECT username, email, info, passwd, authname " +
-                    "FROM users INNER JOIN hierarchy ON authority = authid " +
-                    "WHERE userid = @id";
-                command.Parameters.Add(new SqlParameter("@id", LoginForm.userid));
+                    "FROM users INNER JOIN hierarchy ON authority = authid WHERE userid = @id";
+                command.Parameters.Add(new SqlParameter("@id", LoginForm.UserID));
                 SqlDataReader dataReader = command.ExecuteReader();
                 dataReader.Read();
                 UserLabel.Text = UserName.Text = dataReader["username"].ToString();
@@ -330,22 +321,22 @@ namespace CyberClub
         private void AccSubmit_Click(object sender, EventArgs e)
         { // Обновить запись пользователя
             if (Passwd.Text != PasswdRepeat.Text ||
-                Voice.Ask("Обновить аккаунт?") == DialogResult.No) return;
-            using (SqlConnection conn = new SqlConnection(LoginForm.cs))
+                Voice.Ask(Properties.Resources.UpdateAccountPrompt) == DialogResult.No) return;
+            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
                 command.CommandText = "UPDATE users SET " +
-                    (UserName.Text == "" ? "" : "username = @name, ") +
+                    (UserName.Text.Length == 0 ? "" : "username = @name, ") +
                     "email = @email, info = @info, passwd = @pwd WHERE userid = @id";
                 command.Parameters.Add(new SqlParameter("@name", UserName.Text));
                 command.Parameters.Add(new SqlParameter("@email", EMail.Text));
                 command.Parameters.Add(new SqlParameter("@info", UserInfo.Text));
                 command.Parameters.Add(new SqlParameter("@pwd", Passwd.Text));
-                command.Parameters.Add(new SqlParameter("@id", LoginForm.userid));
+                command.Parameters.Add(new SqlParameter("@id", LoginForm.UserID));
                 command.ExecuteNonQuery();
             }
-            Voice.Say("Обновлено.");
+            Voice.Say(Properties.Resources.UpdatedSuccessfully);
         }
 
         private void PasswdShow_CheckedChanged(object sender, EventArgs e) =>
@@ -355,25 +346,25 @@ namespace CyberClub
         // ---------------------------- Обратная связь ----------------------------
         private void MsgSubmit_Click(object sender, EventArgs e)
         {
-            if (MsgBriefly.Text == "")
+            if (MsgBriefly.Text.Length == 0)
             {
-                Voice.Say("Заполните обязательное поле.");
+                Voice.Say(Properties.Resources.FillInNecessaryTextBox);
                 return;
             }
-            using (SqlConnection conn = new SqlConnection(LoginForm.cs))
+            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
                 command.CommandText = "INSERT INTO feedback (who, briefly, indetails, " +
                     "dt, isread) VALUES (@me, @br, @de, @dt, @rd)";
-                command.Parameters.Add(new SqlParameter("@me", LoginForm.userid));
+                command.Parameters.Add(new SqlParameter("@me", LoginForm.UserID));
                 command.Parameters.Add(new SqlParameter("@br", MsgBriefly.Text));
                 command.Parameters.Add(new SqlParameter("@de", MsgDetails.Text));
                 command.Parameters.Add(new SqlParameter("@dt", DateTime.Now));
                 command.Parameters.Add(new SqlParameter("@rd", false));
                 command.ExecuteNonQuery();
             }
-            Voice.Say("Отправлено.");
+            Voice.Say(Properties.Resources.SentSuccessfully);
         }
 
         // ----------------------- Заимствования -----------------------
@@ -389,7 +380,8 @@ namespace CyberClub
             BackColor = Color.White;
             ForeColor = Color.Black;
             Opacity = 100;
-            foreach (Button i in Controls.OfType<Button>())
+            var buttons = Controls.OfType<Button>();
+            foreach (Button i in buttons)
             {
                 i.FlatAppearance.BorderColor = Color.Black;
             }

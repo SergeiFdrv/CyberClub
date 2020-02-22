@@ -27,8 +27,8 @@ namespace CyberClub
             {
                 if (buttons == MessageBoxButtons.YesNo)
                 {
-                    ef.Yes.Text = "Да";
-                    ef.No.Text = "Нет";
+                    ef.Yes.Text = Properties.Resources.Yes;
+                    ef.No.Text = Properties.Resources.No;
                     ef.No.Visible = true;
                 }
                 ef.ErrorText.Text = text;

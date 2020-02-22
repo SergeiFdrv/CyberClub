@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CyberClub.Properties {
+namespace CyberClub.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace CyberClub.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class Lang {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Lang() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace CyberClub.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CyberClub.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CyberClub.Resources.Lang", typeof(Lang).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Неудача. Возможно, заданы не все обязательные параметры или выбранное имя уже занято..
+        ///   Ищет локализованную строку, похожую на Process failed. Possibly, some required parameters are not set or the chosen name is already used..
         /// </summary>
         internal static string AccountFailMissingParamsOrNameAlreadyUsed {
             get {
@@ -70,7 +70,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Добавлено..
+        ///   Ищет локализованную строку, похожую на Added successfully..
         /// </summary>
         internal static string AddedSuccessfully {
             get {
@@ -79,7 +79,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Добавить не удалось..
+        ///   Ищет локализованную строку, похожую на Addition failed..
         /// </summary>
         internal static string AddError {
             get {
@@ -88,7 +88,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Назад.
+        ///   Ищет локализованную строку, похожую на Back.
         /// </summary>
         internal static string Back {
             get {
@@ -97,7 +97,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Ошибка базы данных..
+        ///   Ищет локализованную строку, похожую на Database error..
         /// </summary>
         internal static string DBError {
             get {
@@ -106,7 +106,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Удалить учетную запись?.
+        ///   Ищет локализованную строку, похожую на Delete account?.
         /// </summary>
         internal static string DeleteAccountPrompt {
             get {
@@ -115,7 +115,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Удалить разработчика?.
+        ///   Ищет локализованную строку, похожую на Delete developer?.
         /// </summary>
         internal static string DeleteDeveloperPrompt {
             get {
@@ -124,7 +124,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Удалить игру?.
+        ///   Ищет локализованную строку, похожую на Delete game?.
         /// </summary>
         internal static string DeleteGamePrompt {
             get {
@@ -133,7 +133,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Удалить жанр?.
+        ///   Ищет локализованную строку, похожую на Delete genre?.
         /// </summary>
         internal static string DeleteGenrePrompt {
             get {
@@ -142,7 +142,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Удалить картинку?.
+        ///   Ищет локализованную строку, похожую на Delete image?.
         /// </summary>
         internal static string DeleteImagePrompt {
             get {
@@ -151,7 +151,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Ошибка..
+        ///   Ищет локализованную строку, похожую на An error occured..
         /// </summary>
         internal static string Error {
             get {
@@ -160,7 +160,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Файл не найден. Админ раздолбай.
+        ///   Ищет локализованную строку, похожую на The program&apos;s executable file could not be found. The admin is a lazy ass for not adding the proper file path.
         /// </summary>
         internal static string ExeNotFound {
             get {
@@ -169,7 +169,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Заполните обязательное поле..
+        ///   Ищет локализованную строку, похожую на Fill in all the reqiured textfields..
         /// </summary>
         internal static string FillInNecessaryTextBox {
             get {
@@ -178,7 +178,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Игра добавлена в базу данных..
+        ///   Ищет локализованную строку, похожую на Game added successfully..
         /// </summary>
         internal static string GameAddedToDB {
             get {
@@ -187,17 +187,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icon {
-            get {
-                object obj = ResourceManager.GetObject("icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Сочетание &quot;логин-пароль&quot; не найдено. Для регистрации учетной записи обратитесь к администратору..
+        ///   Ищет локализованную строку, похожую на The login-password combination could not be found. Contact the admin to register an account..
         /// </summary>
         internal static string LoginPasswordNotFound {
             get {
@@ -206,7 +196,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Мультиплеер.
+        ///   Ищет локализованную строку, похожую на Multiplayer.
         /// </summary>
         internal static string Multiplayer {
             get {
@@ -215,7 +205,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Мои игры.
+        ///   Ищет локализованную строку, похожую на My games.
         /// </summary>
         internal static string MyGames {
             get {
@@ -224,7 +214,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Название занято..
+        ///   Ищет локализованную строку, похожую на The name is already used..
         /// </summary>
         internal static string NameAlreadyUsed {
             get {
@@ -233,7 +223,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Требуется название..
+        ///   Ищет локализованную строку, похожую на The name is not entered..
         /// </summary>
         internal static string NameNotEntered {
             get {
@@ -242,7 +232,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Нет.
+        ///   Ищет локализованную строку, похожую на No.
         /// </summary>
         internal static string No {
             get {
@@ -251,7 +241,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Открыть.
+        ///   Ищет локализованную строку, похожую на Open.
         /// </summary>
         internal static string Open {
             get {
@@ -260,7 +250,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Переименовать разработчика?.
+        ///   Ищет локализованную строку, похожую на Rename developer?.
         /// </summary>
         internal static string RenameDeveloperPrompt {
             get {
@@ -269,7 +259,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Переименовать жанр?.
+        ///   Ищет локализованную строку, похожую на Rename genre?.
         /// </summary>
         internal static string RenameGenrePrompt {
             get {
@@ -278,7 +268,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Поиск игр.
+        ///   Ищет локализованную строку, похожую на Search games.
         /// </summary>
         internal static string SearchGames {
             get {
@@ -287,7 +277,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Нужно отметить жанр, который требуется переименовать и ввести имя..
+        ///   Ищет локализованную строку, похожую на Select the genre to rename and input the new name..
         /// </summary>
         internal static string SelectAGenreNTypeTheName {
             get {
@@ -296,7 +286,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Нужно отметить жанр, который требуется удалить..
+        ///   Ищет локализованную строку, похожую на Select the genre to delete..
         /// </summary>
         internal static string SelectAGenreToDelete {
             get {
@@ -305,7 +295,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Отправлено..
+        ///   Ищет локализованную строку, похожую на Sent successfully..
         /// </summary>
         internal static string SentSuccessfully {
             get {
@@ -314,7 +304,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Одиночный режим.
+        ///   Ищет локализованную строку, похожую на Single player.
         /// </summary>
         internal static string SinglePlayer {
             get {
@@ -323,7 +313,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Подписаться.
+        ///   Ищет локализованную строку, похожую на Subscribe.
         /// </summary>
         internal static string Subscribe {
             get {
@@ -332,7 +322,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Отписаться.
+        ///   Ищет локализованную строку, похожую на Unsubscribe.
         /// </summary>
         internal static string Unsubscribe {
             get {
@@ -341,7 +331,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Отменить подписку?.
+        ///   Ищет локализованную строку, похожую на Cancel subscription?.
         /// </summary>
         internal static string UnsubscribePrompt {
             get {
@@ -350,7 +340,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Обновить аккаунт?.
+        ///   Ищет локализованную строку, похожую на Update account?.
         /// </summary>
         internal static string UpdateAccountPrompt {
             get {
@@ -359,7 +349,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Обновлено..
+        ///   Ищет локализованную строку, похожую на Updated successfully..
         /// </summary>
         internal static string UpdatedSuccessfully {
             get {
@@ -368,7 +358,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Обновить информацию об игре?.
+        ///   Ищет локализованную строку, похожую на Update game info?.
         /// </summary>
         internal static string UpdateGamePrompt {
             get {
@@ -377,7 +367,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Да.
+        ///   Ищет локализованную строку, похожую на Yes.
         /// </summary>
         internal static string Yes {
             get {
@@ -386,7 +376,7 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Похоже, Ваш аккаунт заблокирован. Администратор знает больше..
+        ///   Ищет локализованную строку, похожую на Seems like your account is suspended. The admin has more info..
         /// </summary>
         internal static string YouAreBanned {
             get {

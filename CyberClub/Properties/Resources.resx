@@ -117,8 +117,116 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountFailMissingParamsOrNameAlreadyUsed" xml:space="preserve">
+    <value>Неудача. Возможно, заданы не все обязательные параметры или выбранное имя уже занято.</value>
+  </data>
+  <data name="AddedSuccessfully" xml:space="preserve">
+    <value>Добавлено.</value>
+  </data>
+  <data name="AddError" xml:space="preserve">
+    <value>Добавить не удалось.</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="DBError" xml:space="preserve">
+    <value>Ошибка базы данных.</value>
+  </data>
+  <data name="DeleteAccountPrompt" xml:space="preserve">
+    <value>Удалить учетную запись?</value>
+  </data>
+  <data name="DeleteDeveloperPrompt" xml:space="preserve">
+    <value>Удалить разработчика?</value>
+  </data>
+  <data name="DeleteGamePrompt" xml:space="preserve">
+    <value>Удалить игру?</value>
+  </data>
+  <data name="DeleteGenrePrompt" xml:space="preserve">
+    <value>Удалить жанр?</value>
+  </data>
+  <data name="DeleteImagePrompt" xml:space="preserve">
+    <value>Удалить картинку?</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка.</value>
+  </data>
+  <data name="ExeNotFound" xml:space="preserve">
+    <value>Файл не найден. Админ раздолбай</value>
+  </data>
+  <data name="FillInNecessaryTextBox" xml:space="preserve">
+    <value>Заполните обязательное поле.</value>
+  </data>
+  <data name="GameAddedToDB" xml:space="preserve">
+    <value>Игра добавлена в базу данных.</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LoginPasswordNotFound" xml:space="preserve">
+    <value>Сочетание "логин-пароль" не найдено. Для регистрации учетной записи обратитесь к администратору.</value>
+  </data>
+  <data name="Multiplayer" xml:space="preserve">
+    <value>Мультиплеер</value>
+  </data>
+  <data name="MyGames" xml:space="preserve">
+    <value>Мои игры</value>
+  </data>
+  <data name="NameAlreadyUsed" xml:space="preserve">
+    <value>Название занято.</value>
+  </data>
+  <data name="NameNotEntered" xml:space="preserve">
+    <value>Требуется название.</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Открыть</value>
+  </data>
+  <data name="RenameDeveloperPrompt" xml:space="preserve">
+    <value>Переименовать разработчика?</value>
+  </data>
+  <data name="RenameGenrePrompt" xml:space="preserve">
+    <value>Переименовать жанр?</value>
+  </data>
+  <data name="SearchGames" xml:space="preserve">
+    <value>Поиск игр</value>
+  </data>
+  <data name="SelectAGenreNTypeTheName" xml:space="preserve">
+    <value>Нужно отметить жанр, который требуется переименовать и ввести имя.</value>
+  </data>
+  <data name="SelectAGenreToDelete" xml:space="preserve">
+    <value>Нужно отметить жанр, который требуется удалить.</value>
+  </data>
+  <data name="SentSuccessfully" xml:space="preserve">
+    <value>Отправлено.</value>
+  </data>
+  <data name="SinglePlayer" xml:space="preserve">
+    <value>Одиночный режим</value>
+  </data>
+  <data name="Subscribe" xml:space="preserve">
+    <value>Подписаться</value>
+  </data>
+  <data name="Unsubscribe" xml:space="preserve">
+    <value>Отписаться</value>
+  </data>
+  <data name="UnsubscribePrompt" xml:space="preserve">
+    <value>Отменить подписку?</value>
+  </data>
+  <data name="UpdateAccountPrompt" xml:space="preserve">
+    <value>Обновить аккаунт?</value>
+  </data>
+  <data name="UpdatedSuccessfully" xml:space="preserve">
+    <value>Обновлено.</value>
+  </data>
+  <data name="UpdateGamePrompt" xml:space="preserve">
+    <value>Обновить информацию об игре?</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="YouAreBanned" xml:space="preserve">
+    <value>Похоже, Ваш аккаунт заблокирован. Администратор знает больше.</value>
   </data>
 </root>
