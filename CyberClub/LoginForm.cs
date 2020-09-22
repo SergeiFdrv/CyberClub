@@ -45,7 +45,7 @@ namespace CyberClub
                             string authname = (string)dataReader["authname"];
                             if (authname == "banned")
                             {
-                                Voice.Say(Properties.Resources.YouAreBanned);
+                                Voice.Say(Resources.Lang.YouAreBanned);
                                 return;
                             }
                             Hide();
@@ -55,7 +55,7 @@ namespace CyberClub
                             else using (UserForm uf = new UserForm { Owner = this })
                                     uf.ShowDialog();
                         }
-                        else Voice.Say(Properties.Resources.LoginPasswordNotFound);
+                        else Voice.Say(Resources.Lang.LoginPasswordNotFound);
                     }
                 }
             }
@@ -111,17 +111,17 @@ namespace CyberClub
         {
             try
             {
+                if (conn == null)
+                {
+                    Voice.Say(Resources.Lang.Error);
+                    return false;
+                }
                 conn.Open();
                 return true;
             }
             catch (SqlException)
             {
-                Voice.Say(Properties.Resources.DBError);
-                return false;
-            }
-            catch (ArgumentNullException)
-            {
-                Voice.Say(Properties.Resources.Error);
+                Voice.Say(Resources.Lang.DBError);
                 return false;
             }
         }

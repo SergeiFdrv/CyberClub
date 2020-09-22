@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.IO;
 using System.Text;
@@ -100,7 +101,7 @@ namespace CyberClub
         // ----------------------- Внутри вкладки "Добавить игру" -----------------------
         private void GAddNewDevBtn_Click(object sender, EventArgs e)
         {
-            if (AddGetDevID(GAddDev.Text) < 0) Voice.Say(Properties.Resources.AddError);
+            if (AddGetDevID(GAddDev.Text) < 0) Voice.Say(Resources.Lang.AddError);
             GAddDev.Text = "";
             UpdateBox(GAddDev.Items, "devname", "devs", "devid");
         }
@@ -146,7 +147,7 @@ namespace CyberClub
                 command.CommandText = "INSERT INTO genres (genrename) VALUES (@gnr)";
                 command.Parameters.Add(new SqlParameter("@gnr", GAddNewGenre.Text));
                 try { command.ExecuteNonQuery(); }
-                catch (SqlException) { Voice.Say(Properties.Resources.NameAlreadyUsed); }
+                catch (SqlException) { Voice.Say(Resources.Lang.NameAlreadyUsed); }
             }
             UpdateBox(GAddGenresCLB.Items, "genrename", "genres", "genreid");
             GAddNewGenre.Text = "";
@@ -164,7 +165,7 @@ namespace CyberClub
 
         private void GAddPicButton_Click(object sender, EventArgs e) =>
             Voice.Say(AddGetPicID(GAddPicName.Text) < 0 ? 
-                Properties.Resources.NameNotEntered : Properties.Resources.AddedSuccessfully);
+                Resources.Lang.NameNotEntered : Resources.Lang.AddedSuccessfully);
 
         private int AddGetPicID(string name)
         { // Добавить картинку в БД
@@ -228,7 +229,7 @@ namespace CyberClub
                     command.ExecuteNonQuery();
                 }
             }
-            Voice.Say(Properties.Resources.GameAddedToDB);
+            Voice.Say(Resources.Lang.GameAddedToDB);
             UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
         }
 
@@ -328,7 +329,7 @@ namespace CyberClub
 
         private void GEditDevBtn_Click(object sender, EventArgs e)
         { // Переименовать разработчика
-            if (Voice.Ask(Properties.Resources.RenameDeveloperPrompt) == DialogResult.No)
+            if (Voice.Ask(Resources.Lang.RenameDeveloperPrompt) == DialogResult.No)
                 return;
             if (!int.TryParse(GEditDevID.Text, out int id)) return;
             string query = "UPDATE devs SET devname = @name WHERE devid = @id";
@@ -340,7 +341,7 @@ namespace CyberClub
                 command.Parameters.Add(new SqlParameter("@name", GEditDev.Text));
                 command.Parameters.Add(new SqlParameter("@id", id));
                 try { command.ExecuteNonQuery(); }
-                catch (SqlException) { Voice.Say(Properties.Resources.NameAlreadyUsed); }
+                catch (SqlException) { Voice.Say(Resources.Lang.NameAlreadyUsed); }
             }
             UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
             UpdateBox(GEditDev.Items, "devname", "devs", "devid");
@@ -353,10 +354,10 @@ namespace CyberClub
         { // Переименовать жанр
             if (GEditGenre.Text.Length == 0 || GEditGenresCLB.SelectedItem is null)
             {
-                Voice.Say(Properties.Resources.SelectAGenreNTypeTheName);
+                Voice.Say(Resources.Lang.SelectAGenreNTypeTheName);
                 return;
             }
-            if (Voice.Ask(Properties.Resources.RenameGenrePrompt) == DialogResult.No)
+            if (Voice.Ask(Resources.Lang.RenameGenrePrompt) == DialogResult.No)
                 return;
             string query = "UPDATE genres SET genrename = @n0 WHERE genrename = @n1";
             using (SqlConnection conn = new SqlConnection(LoginForm.CS)) 
@@ -368,7 +369,7 @@ namespace CyberClub
                 command.Parameters.Add(new SqlParameter("@n1",
                     GEditGenresCLB.SelectedItem.ToString()));
                 try { command.ExecuteNonQuery(); }
-                catch (SqlException) { Voice.Say(Properties.Resources.NameAlreadyUsed); }
+                catch (SqlException) { Voice.Say(Resources.Lang.NameAlreadyUsed); }
             }
             UpdateBox(GEditGenresCLB.Items, "genrename", "genres", "genreid");
         }
@@ -414,7 +415,7 @@ namespace CyberClub
 
         private void GEditSubmit_Click(object sender, EventArgs e)
         { // Обновить запись об игре
-            if (Voice.Ask(Properties.Resources.UpdateGamePrompt) == DialogResult.No) return;
+            if (Voice.Ask(Resources.Lang.UpdateGamePrompt) == DialogResult.No) return;
             if (!int.TryParse(GEditID.Text, out int id)) return;
             using (SqlConnection conn = new SqlConnection(LoginForm.CS))
             {
@@ -451,7 +452,7 @@ namespace CyberClub
         // ----------------------- Удаление информации об играх -----------------------
         private void GEditDelDevBtn_Click(object sender, EventArgs e)
         {
-            if (Voice.Ask(Properties.Resources.DeleteDeveloperPrompt) == DialogResult.No) return;
+            if (Voice.Ask(Resources.Lang.DeleteDeveloperPrompt) == DialogResult.No) return;
             if (!int.TryParse(GEditDevID.Text, out int id)) return;
             string query = "UPDATE games SET madeby = null WHERE madeby = @id";
             using (SqlConnection conn = new SqlConnection(LoginForm.CS))
@@ -473,10 +474,10 @@ namespace CyberClub
         {
             if (GEditGenresCLB.SelectedItem is null)
             {
-                Voice.Say(Properties.Resources.SelectAGenreToDelete);
+                Voice.Say(Resources.Lang.SelectAGenreToDelete);
                 return;
             }
-            if (Voice.Ask(Properties.Resources.DeleteGenrePrompt) == DialogResult.No) return;
+            if (Voice.Ask(Resources.Lang.DeleteGenrePrompt) == DialogResult.No) return;
             using (SqlConnection conn = new SqlConnection(LoginForm.CS))
             {
                 if (!ConnOpen(conn)) return;
@@ -498,7 +499,7 @@ namespace CyberClub
 
         private void GEditDelPic_Click(object sender, EventArgs e)
         {
-            if (Voice.Ask(Properties.Resources.DeleteImagePrompt) == DialogResult.No) return;
+            if (Voice.Ask(Resources.Lang.DeleteImagePrompt) == DialogResult.No) return;
             if (!int.TryParse(GEditPicID.Text, out int id)) return;
             using (SqlConnection conn = new SqlConnection(LoginForm.CS))
             {
@@ -517,7 +518,7 @@ namespace CyberClub
 
         private void GEditDelSubmit_Click(object sender, EventArgs e)
         {
-            if (Voice.Ask(Properties.Resources.DeleteGamePrompt) == DialogResult.No) return;
+            if (Voice.Ask(Resources.Lang.DeleteGamePrompt) == DialogResult.No) return;
             if (!int.TryParse(GEditID.Text, out int id)) return;
             using (SqlConnection conn = new SqlConnection(LoginForm.CS))
             {
@@ -584,10 +585,11 @@ namespace CyberClub
                 try { command.ExecuteNonQuery(); }
                 catch (SqlException)
                 {
-                    Voice.Say(Properties.Resources.AccountFailMissingParamsOrNameAlreadyUsed);
+                    Voice.Say(Resources.Lang.AccountFailMissingParamsOrNameAlreadyUsed);
                 }
             }
-            UpdateData(AccountsPanel, AccountsDGVQuery, new ComboBox[] { AxEditName }, "username");
+            UpdateData(AccountsPanel, AccountsDGVQuery,
+                new ComboBox[] { AxEditName }, "username");
         }
 
         // ----------------- Внутри вкладки "Редактировать аккаунт" -----------------
@@ -597,7 +599,8 @@ namespace CyberClub
             if (e.RowIndex >= 0)
             {
                 AxEditTab_Click(sender, e);
-                AxEditName.Text = DGVAccounts.Rows[e.RowIndex].Cells["username"].Value.ToString();
+                AxEditName.Text =
+                    DGVAccounts.Rows[e.RowIndex].Cells["username"].Value.ToString();
             }
         }
 
@@ -607,7 +610,8 @@ namespace CyberClub
             {
                 AxEditEMail.Enabled = AxEditInfo.Enabled = false;
                 AxEditAuth.Enabled = AxEditPasswd.Enabled = false;
-                AxEditID.Text = AxEditSubsN.Text = AxEditRatesN.Text = AxEditMsgsN.Text = $"{0}";
+                AxEditID.Text = AxEditSubsN.Text = AxEditRatesN.Text = 
+                    AxEditMsgsN.Text = $"{0}";
                 AxEditEMail.Text = AxEditInfo.Text = AxEditAuth.Text = AxEditPasswd.Text = "";
                 return;
             }
@@ -628,14 +632,16 @@ namespace CyberClub
                     AxEditInfo.Text = dataReader["info"].ToString();
                     AxEditInfo.Enabled = true;
                     AxEditAuth.Text = dataReader["authname"].ToString();
-                    AxEditAuth.Enabled = int.Parse(AxEditID.Text) != LoginForm.UserID;
+                    AxEditAuth.Enabled = int.Parse(AxEditID.Text,
+                        CultureInfo.InvariantCulture) != LoginForm.UserID;
                     AxEditPasswd.Text = dataReader["passwd"].ToString();
                     dataReader.Close();
                     AxEditPasswd.Enabled = true;
                     command.CommandText = "SELECT COUNT(game) AS subs " +
                         "FROM subscriptions WHERE who = @me";
                     command.Parameters.Add(
-                        new SqlParameter("@me", int.Parse(AxEditID.Text)));
+                        new SqlParameter("@me", int.Parse(AxEditID.Text,
+                            CultureInfo.InvariantCulture)));
                     AxEditSubsN.Text = command.ExecuteScalar().ToString();
                     command.CommandText = "SELECT COUNT(rate) AS rates " +
                         "FROM subscriptions WHERE who = @me";
@@ -645,14 +651,15 @@ namespace CyberClub
                     AxEditMsgsN.Text = command.ExecuteScalar().ToString();
                 }
             }
-            AxEditDelSubmit.Enabled = int.Parse(AxEditID.Text) != LoginForm.UserID;
+            AxEditDelSubmit.Enabled = int.Parse(AxEditID.Text,
+                CultureInfo.InvariantCulture) != LoginForm.UserID;
         }
         private void AxEditShowPasswd_CheckedChanged(object sender, EventArgs e) =>
             AxEditPasswd.PasswordChar = AxEditPasswd.PasswordChar == '*' ? '\0' : '*';
 
         private void AxEditSubmit_Click(object sender, EventArgs e)
         { // Обновить запись пользователя
-            if (Voice.Ask(Properties.Resources.UpdateAccountPrompt) == DialogResult.No) return;
+            if (Voice.Ask(Resources.Lang.UpdateAccountPrompt) == DialogResult.No) return;
             if (!int.TryParse(AxEditID.Text, out int id)) return;
             string query = "UPDATE users SET username = @name, email = @email, " +
                 "info = @info, authority = @auth, passwd = @pwd WHERE userid = @id";
@@ -664,21 +671,22 @@ namespace CyberClub
                 command.Parameters.Add(new SqlParameter("@name", AxEditName.Text));
                 command.Parameters.Add(new SqlParameter("@email", AxEditEMail.Text));
                 command.Parameters.Add(new SqlParameter("@info", AxEditInfo.Text));
-                command.Parameters.Add(new SqlParameter("@auth", AxEditAuth.SelectedIndex + 1));
+                command.Parameters.Add(new SqlParameter("@auth", AxEditAuth.SelectedIndex+1));
                 command.Parameters.Add(new SqlParameter("@pwd", AxEditPasswd.Text));
                 command.Parameters.Add(new SqlParameter("@id", id));
                 try { command.ExecuteNonQuery(); }
                 catch (SqlException)
                 {
-                    Voice.Say(Properties.Resources.AccountFailMissingParamsOrNameAlreadyUsed);
+                    Voice.Say(Resources.Lang.AccountFailMissingParamsOrNameAlreadyUsed);
                 }
             }
-            UpdateData(AccountsPanel, AccountsDGVQuery, new ComboBox[] { AxEditName }, "username");
+            UpdateData(AccountsPanel, AccountsDGVQuery,
+                new ComboBox[] { AxEditName }, "username");
         }
 
         private void AxEditDelSubmit_Click(object sender, EventArgs e)
         { // Удалить аккаунт
-            if (Voice.Ask(Properties.Resources.DeleteAccountPrompt) == DialogResult.No) return;
+            if (Voice.Ask(Resources.Lang.DeleteAccountPrompt) == DialogResult.No) return;
             if (!int.TryParse(AxEditID.Text, out int id)) return;
             using (SqlConnection conn = new SqlConnection(LoginForm.CS))
             {
@@ -715,7 +723,7 @@ namespace CyberClub
                     DGVMessages.Rows[e.RowIndex].Cells["senddate"].Value.ToString();
                 MsgsID.Text =
                     DGVMessages.Rows[e.RowIndex].Cells["id"].Value.ToString();
-                MsgsSwitch.Text = Properties.Resources.Back;
+                MsgsSwitch.Text = Resources.Lang.Back;
                 MsgsIsRead.Checked = MsgsIsRead.Visible = true;
                 using (SqlConnection conn = new SqlConnection(LoginForm.CS))
                 {
@@ -733,7 +741,7 @@ namespace CyberClub
                 }
                 return;
             }
-            MsgsSwitch.Text = Properties.Resources.Open;
+            MsgsSwitch.Text = Resources.Lang.Open;
             MsgsIsRead.Visible = MessagesReader.Visible = false;
             DGVMessages.Visible = true;
             UpdateTable(DGVMessages, MessagesDGVQuery);
@@ -756,7 +764,8 @@ namespace CyberClub
                 SqlCommand command = conn.CreateCommand();
                 command.CommandText = query;
                 command.Parameters.Add(new SqlParameter("@isread", MsgsIsRead.Checked));
-                command.Parameters.Add(new SqlParameter("@id", int.Parse(MsgsID.Text)));
+                command.Parameters.Add(new SqlParameter("@id", int.Parse(MsgsID.Text,
+                    CultureInfo.InvariantCulture)));
                 command.ExecuteNonQuery();
             }
         }
@@ -807,7 +816,7 @@ namespace CyberClub
         /// <summary>
         /// Обновляет данные в dataGridView.
         /// </summary>
-        private bool UpdateTable(DataGridView DGV, string query)
+        private static bool UpdateTable(DataGridView DGV, string query)
         {
             using (SqlConnection conn = new SqlConnection(LoginForm.CS))
             {

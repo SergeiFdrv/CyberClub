@@ -27,15 +27,15 @@ namespace CyberClub
             {
                 if (buttons == MessageBoxButtons.YesNo)
                 {
-                    ef.Yes.Text = Properties.Resources.Yes;
-                    ef.No.Text = Properties.Resources.No;
+                    ef.Yes.Text = Resources.Lang.Yes;
+                    ef.No.Text = Resources.Lang.No;
                     ef.No.Visible = true;
                 }
                 ef.ErrorText.Text = text;
                 // Делаем размер окна зависимым от длины текста
                 ef.ErrorText.Height = ef.ErrorText.Font.Height + 
                     ef.ErrorText.Font.Height *
-                    (ef.ErrorText.PreferredSize.Width / ef.ErrorText.Width);
+                    ef.ErrorText.PreferredSize.Width / ef.ErrorText.Width;
                 ef.Height += ef.ErrorText.Height - ef.ErrorText.Font.Height;
                 return ef.ShowDialog(); // Вернуть значение DialogResult
             }

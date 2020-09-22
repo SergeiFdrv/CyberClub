@@ -58,6 +58,8 @@
             this.GameName = new System.Windows.Forms.Label();
             this.GameRunSubmit = new System.Windows.Forms.Button();
             this.GamePanel = new System.Windows.Forms.Panel();
+            this.GGenreOrCB = new System.Windows.Forms.RadioButton();
+            this.GGenreAndCB = new System.Windows.Forms.RadioButton();
             this.GSrchGenres = new System.Windows.Forms.CheckedListBox();
             this.GamesSwitch = new System.Windows.Forms.CheckBox();
             this.GamesList = new System.Windows.Forms.ListView();
@@ -322,6 +324,8 @@
             // 
             resources.ApplyResources(this.GamePanel, "GamePanel");
             this.GamePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.GamePanel.Controls.Add(this.GGenreOrCB);
+            this.GamePanel.Controls.Add(this.GGenreAndCB);
             this.GamePanel.Controls.Add(this.GSrchGenres);
             this.GamePanel.Controls.Add(this.GamesSwitch);
             this.GamePanel.Controls.Add(this.GamesList);
@@ -332,6 +336,26 @@
             this.GamePanel.Controls.Add(this.GSrchDevLabel);
             this.GamePanel.Controls.Add(this.GSrchDev);
             this.GamePanel.Name = "GamePanel";
+            // 
+            // GGenreOrCB
+            // 
+            resources.ApplyResources(this.GGenreOrCB, "GGenreOrCB");
+            this.GGenreOrCB.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(96)))), ((int)(((byte)(0)))));
+            this.GGenreOrCB.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(96)))), ((int)(((byte)(0)))));
+            this.GGenreOrCB.Name = "GGenreOrCB";
+            this.GGenreOrCB.UseVisualStyleBackColor = true;
+            this.GGenreOrCB.CheckedChanged += new System.EventHandler(this.RefreshGamesEventHandler);
+            // 
+            // GGenreAndCB
+            // 
+            resources.ApplyResources(this.GGenreAndCB, "GGenreAndCB");
+            this.GGenreAndCB.Checked = true;
+            this.GGenreAndCB.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(96)))), ((int)(((byte)(0)))));
+            this.GGenreAndCB.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(96)))), ((int)(((byte)(0)))));
+            this.GGenreAndCB.Name = "GGenreAndCB";
+            this.GGenreAndCB.TabStop = true;
+            this.GGenreAndCB.UseVisualStyleBackColor = true;
+            this.GGenreAndCB.CheckedChanged += new System.EventHandler(this.RefreshGamesEventHandler);
             // 
             // GSrchGenres
             // 
@@ -386,7 +410,7 @@
             this.GSrchMultiCB.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(96)))), ((int)(((byte)(0)))));
             this.GSrchMultiCB.Name = "GSrchMultiCB";
             this.GSrchMultiCB.UseVisualStyleBackColor = false;
-            this.GSrchMultiCB.CheckedChanged += new System.EventHandler(this.GSrchMultiCB_CheckedChanged);
+            this.GSrchMultiCB.CheckedChanged += new System.EventHandler(this.RefreshGamesEventHandler);
             // 
             // GamesLabel
             // 
@@ -401,7 +425,7 @@
             this.GSrchSingleCB.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(96)))), ((int)(((byte)(0)))));
             this.GSrchSingleCB.Name = "GSrchSingleCB";
             this.GSrchSingleCB.UseVisualStyleBackColor = false;
-            this.GSrchSingleCB.CheckedChanged += new System.EventHandler(this.GSrchSingleCB_CheckedChanged);
+            this.GSrchSingleCB.CheckedChanged += new System.EventHandler(this.RefreshGamesEventHandler);
             // 
             // GameSearch
             // 
@@ -410,7 +434,7 @@
             this.GameSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GameSearch.ForeColor = System.Drawing.Color.White;
             this.GameSearch.Name = "GameSearch";
-            this.GameSearch.TextChanged += new System.EventHandler(this.GameSearch_TextChanged);
+            this.GameSearch.TextChanged += new System.EventHandler(this.RefreshGamesEventHandler);
             // 
             // GSrchDevLabel
             // 
@@ -425,7 +449,7 @@
             this.GSrchDev.ForeColor = System.Drawing.Color.White;
             this.GSrchDev.FormattingEnabled = true;
             this.GSrchDev.Name = "GSrchDev";
-            this.GSrchDev.TextChanged += new System.EventHandler(this.GSrchDev_TextChanged);
+            this.GSrchDev.TextChanged += new System.EventHandler(this.RefreshGamesEventHandler);
             // 
             // AccountPanel
             // 
@@ -641,5 +665,7 @@
         private System.Windows.Forms.CheckBox PrintColors;
         private System.Windows.Forms.Label PasswdRepeatLabel;
         private System.Windows.Forms.TextBox PasswdRepeat;
+        private System.Windows.Forms.RadioButton GGenreAndCB;
+        private System.Windows.Forms.RadioButton GGenreOrCB;
     }
 }
