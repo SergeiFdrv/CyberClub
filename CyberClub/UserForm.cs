@@ -35,18 +35,15 @@ namespace CyberClub
         }
 
         // ------------------------------ Кнопки слева ------------------------------
-        private void LeftGames_Click(object sender, EventArgs e)
+        private void LeftGames_CheckedChanged(object sender, EventArgs e)
         {
-            LeftGames.BackColor = Color.FromArgb(64, 128, 0);
             LeftSettings.BackColor = BackColor;
             AccountPanel.Visible = MsgPanel.Visible = false;
             GamePanel.Visible = true;
         }
 
-        private void LeftSettings_Click(object sender, EventArgs e)
+        private void LeftSettings_CheckedChanged(object sender, EventArgs e)
         {
-            LeftGames.BackColor = BackColor;
-            LeftSettings.BackColor = Color.FromArgb(64, 128, 0);
             GamePanel.Visible = false;
             if (GamePagePanel.Visible)
             {
@@ -61,7 +58,7 @@ namespace CyberClub
         private void GameRunSubmit_Click(object sender, EventArgs e) =>
             RunApp(GameFilePath.Text);
 
-        private void RunApp(string path)
+        private static void RunApp(string path)
         { // Как из нашего приложения запустить стороннюю программу:
             // Шаг 1: подключить System.Diagnostics (см. выше)
             // Шаг 2:
@@ -216,11 +213,11 @@ namespace CyberClub
                     {
                         LV.Items[LV.Items.Count - 1].ImageIndex = 0;
                     }
-                    else
+                    else using (MemoryStream memoryStream =
+                            new MemoryStream((byte[])dataReader["bin"]))
                     {
                         GamePics.Images.Add(dataReader["picname"].ToString(), 
-                            Image.FromStream(
-                                new MemoryStream((byte[])dataReader["bin"])));
+                            Image.FromStream(memoryStream));
                         LV.Items[LV.Items.Count - 1].ImageIndex = 
                             GamePics.Images.Count - 1;
                     }
@@ -371,7 +368,7 @@ namespace CyberClub
         }
 
         // ----------------------- Заимствования -----------------------
-        private bool UpdateBox
+        private static bool UpdateBox
             (IList items, string select, string from, string order = "") =>
             LoginForm.UpdateBox(items, select, from, order);
 

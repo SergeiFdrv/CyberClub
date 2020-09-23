@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
             this.LogOutButton = new System.Windows.Forms.Button();
-            this.LeftSettings = new System.Windows.Forms.Button();
-            this.LeftGames = new System.Windows.Forms.Button();
             this.AdminLabel = new System.Windows.Forms.Label();
             this.MsgPanel = new System.Windows.Forms.Panel();
             this.FeedbackLabel = new System.Windows.Forms.Label();
@@ -85,6 +83,8 @@
             this.UserInfoLabel = new System.Windows.Forms.Label();
             this.UserNameLabel = new System.Windows.Forms.Label();
             this.PrintColors = new System.Windows.Forms.CheckBox();
+            this.LeftGames = new System.Windows.Forms.RadioButton();
+            this.LeftSettings = new System.Windows.Forms.RadioButton();
             this.MsgPanel.SuspendLayout();
             this.FlowLayout.SuspendLayout();
             this.GamePagePanel.SuspendLayout();
@@ -102,24 +102,6 @@
             this.LogOutButton.Name = "LogOutButton";
             this.LogOutButton.UseVisualStyleBackColor = true;
             this.LogOutButton.Click += new System.EventHandler(this.LogOutButton_Click);
-            // 
-            // LeftSettings
-            // 
-            this.LeftSettings.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.LeftSettings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.LeftSettings, "LeftSettings");
-            this.LeftSettings.Name = "LeftSettings";
-            this.LeftSettings.UseVisualStyleBackColor = true;
-            this.LeftSettings.Click += new System.EventHandler(this.LeftSettings_Click);
-            // 
-            // LeftGames
-            // 
-            this.LeftGames.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.LeftGames.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.LeftGames, "LeftGames");
-            this.LeftGames.Name = "LeftGames";
-            this.LeftGames.UseVisualStyleBackColor = true;
-            this.LeftGames.Click += new System.EventHandler(this.LeftGames_Click);
             // 
             // AdminLabel
             // 
@@ -574,16 +556,42 @@
             this.PrintColors.UseVisualStyleBackColor = false;
             this.PrintColors.CheckedChanged += new System.EventHandler(this.PrintColors_CheckedChanged);
             // 
+            // LeftGames
+            // 
+            resources.ApplyResources(this.LeftGames, "LeftGames");
+            this.LeftGames.BackColor = System.Drawing.Color.Transparent;
+            this.LeftGames.Checked = true;
+            this.LeftGames.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.LeftGames.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.LeftGames.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.LeftGames.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.LeftGames.Name = "LeftGames";
+            this.LeftGames.TabStop = true;
+            this.LeftGames.UseVisualStyleBackColor = false;
+            this.LeftGames.CheckedChanged += new System.EventHandler(this.LeftGames_CheckedChanged);
+            // 
+            // LeftSettings
+            // 
+            resources.ApplyResources(this.LeftSettings, "LeftSettings");
+            this.LeftSettings.BackColor = System.Drawing.Color.Transparent;
+            this.LeftSettings.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.LeftSettings.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.LeftSettings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.LeftSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.LeftSettings.Name = "LeftSettings";
+            this.LeftSettings.UseVisualStyleBackColor = false;
+            this.LeftSettings.CheckedChanged += new System.EventHandler(this.LeftSettings_CheckedChanged);
+            // 
             // UserForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(24)))), ((int)(((byte)(32)))));
+            this.Controls.Add(this.LeftSettings);
+            this.Controls.Add(this.LeftGames);
             this.Controls.Add(this.PrintColors);
             this.Controls.Add(this.FlowLayout);
             this.Controls.Add(this.UserLabel);
-            this.Controls.Add(this.LeftSettings);
-            this.Controls.Add(this.LeftGames);
             this.Controls.Add(this.AdminLabel);
             this.Controls.Add(this.LogOutButton);
             this.ForeColor = System.Drawing.Color.White;
@@ -613,8 +621,6 @@
         #endregion
 
         private System.Windows.Forms.Button LogOutButton;
-        private System.Windows.Forms.Button LeftSettings;
-        private System.Windows.Forms.Button LeftGames;
         private System.Windows.Forms.Label AdminLabel;
         private System.Windows.Forms.Panel MsgPanel;
         private System.Windows.Forms.Label UserLabel;
@@ -667,5 +673,7 @@
         private System.Windows.Forms.TextBox PasswdRepeat;
         private System.Windows.Forms.RadioButton GGenreAndCB;
         private System.Windows.Forms.RadioButton GGenreOrCB;
+        private System.Windows.Forms.RadioButton LeftGames;
+        private System.Windows.Forms.RadioButton LeftSettings;
     }
 }

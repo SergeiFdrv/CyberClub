@@ -160,7 +160,7 @@ namespace CyberClub.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на The program&apos;s executable file could not be found. The admin is a lazy ass for not adding the proper file path.
+        ///   Ищет локализованную строку, похожую на The program&apos;s executable file could not be found. The lazy ass admin should have set the proper file path..
         /// </summary>
         internal static string ExeNotFound {
             get {
@@ -376,7 +376,7 @@ namespace CyberClub.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Seems like your account is suspended. The admin has more info..
+        ///   Ищет локализованную строку, похожую на Seems like your account has been suspended. The admin has more info..
         /// </summary>
         internal static string YouAreBanned {
             get {

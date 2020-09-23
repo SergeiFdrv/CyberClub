@@ -31,46 +31,46 @@ namespace CyberClub
                 command.Parameters.Add(new SqlParameter("@id", LoginForm.UserID));
                 UserLabel.Text = command.ExecuteScalar().ToString();
             }
-            UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
-            LeftGames.BackColor = Color.FromArgb(64, 128, 0);
+            LeftGames.Checked = true;
         }
 
         private void AdminForm_FormClosed(object sender, FormClosedEventArgs e) =>
             Owner.Show();
 
         // -------------------- Кнопки левого бокового меню --------------------
-        private void LeftGames_Click(object sender, EventArgs e)
+        private void LeftGames_CheckedChanged(object sender, EventArgs e)
         {
-            LeftAccounts.BackColor = LeftMessages.BackColor = BackColor;
-            LeftGames.BackColor = Color.FromArgb(64, 128, 0);
-            UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
-            AccountsPanel.Visible = MessagesPanel.Visible = false;
-            GamesPanel.Visible = true;
+            if (GamesPanel.Visible = LeftGames.Checked)
+            {
+                UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
+            }
         }
 
-        private void LeftAccounts_Click(object sender, EventArgs e)
+        private void LeftAccounts_CheckedChanged(object sender, EventArgs e)
         {
-            LeftGames.BackColor = LeftMessages.BackColor = BackColor;
-            LeftAccounts.BackColor = Color.FromArgb(64, 128, 0);
-            UpdateData(AccountsPanel, AccountsDGVQuery,
+            if (AccountsPanel.Visible = LeftAccounts.Checked)
+            {
+                UpdateData(AccountsPanel, AccountsDGVQuery,
                 new ComboBox[] { AxEditName }, "username");
-            GamesPanel.Visible = MessagesPanel.Visible = false;
-            AccountsPanel.Visible = true;
+            }
         }
 
-        private void LeftMessages_Click(object sender, EventArgs e)
+        private void LeftMessages_CheckedChanged(object sender, EventArgs e)
         {
-            LeftGames.BackColor = LeftAccounts.BackColor = BackColor;
-            LeftMessages.BackColor = Color.FromArgb(64, 128, 0);
-            UpdateTable(DGVMessages, MessagesDGVQuery);
-            GamesPanel.Visible = AccountsPanel.Visible = false;
-            MessagesPanel.Visible = true;
-            foreach (DataGridViewRow i in DGVMessages.Rows)
-                if (!(i.Cells["isread"].Value is null || (bool)i.Cells["isread"].Value))
-                    i.DefaultCellStyle.Font = new Font(DGVMessages.Font, FontStyle.Bold);
+            if (MessagesPanel.Visible = LeftMessages.Checked)
+            {
+                UpdateTable(DGVMessages, MessagesDGVQuery);
+                foreach (DataGridViewRow i in DGVMessages.Rows)
+                { // Выделить непрочитанные сообщения жирным шрифтом
+                    if (!(i.Cells["isread"].Value is null || (bool)i.Cells["isread"].Value))
+                    {
+                        i.DefaultCellStyle.Font = new Font(DGVMessages.Font, FontStyle.Bold);
+                    }
+                }
+            }
         }
 
-        private void LogOutButton_Click(object sender, EventArgs e) => Close();
+        private void LogOutButton_CheckedChanged(object sender, EventArgs e) => Close();
 
         // ------------------------- ИГРЫ -------------------------
         // -------------------- Верхние кнопки --------------------
@@ -110,7 +110,7 @@ namespace CyberClub
         /// Если возможно, по имени находит в базе данных индекс разработчика.
         /// Иначе добавляет нового разработчика с именем name и возвращает индекс.
         /// </summary>
-        private int AddGetDevID(string name)
+        private static int AddGetDevID(string name)
         {
             if (name.Length == 0) return -1;
             using (SqlConnection conn = new SqlConnection(LoginForm.CS))
@@ -233,7 +233,7 @@ namespace CyberClub
             UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
         }
 
-        private string GenreValues(CheckedListBox CLB, SqlCommand command)
+        private static string GenreValues(CheckedListBox CLB, SqlCommand command)
         {
             string query = "";
             for (int i = 0; i < CLB.CheckedItems.Count; i++)
@@ -392,8 +392,11 @@ namespace CyberClub
                 if (dataReader.Read())
                 {
                     GEditPicName.Text = dataReader["picname"].ToString();
-                    GEditPicBox.Image =
-                        Image.FromStream(new MemoryStream((byte[])dataReader["bin"]));
+                    using (MemoryStream memoryStream =
+                        new MemoryStream((byte[])dataReader["bin"]))
+                    {
+                        GEditPicBox.Image = Image.FromStream(memoryStream);
+                    }
                 }
             }
         }
@@ -790,7 +793,7 @@ namespace CyberClub
         /// Очищает текстбоксы и чекбоксы, обновляет dataGridView и данные 
         /// в элементах "поле со списком" внутри элемента panel.
         /// </summary>
-        private void UpdateData
+        private static void UpdateData
             (Panel panel, string DGVQuery, ComboBox[] CB, params string[] fields)
         {
             foreach (Control el in panel.Controls.OfType<Panel>())
@@ -838,7 +841,7 @@ namespace CyberClub
         }
 
         // ----------------------- Заимствования -----------------------
-        private bool UpdateBox(IList items,
+        private static bool UpdateBox(IList items,
             string select, string from, string order = "") =>
             LoginForm.UpdateBox(items, select, from, order);
 

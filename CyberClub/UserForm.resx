@@ -153,60 +153,6 @@
   <data name="&gt;&gt;LogOutButton.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="LeftSettings.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="LeftSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 90</value>
-  </data>
-  <data name="LeftSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 40</value>
-  </data>
-  <data name="LeftSettings.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="LeftSettings.Text" xml:space="preserve">
-    <value>Настройки</value>
-  </data>
-  <data name="&gt;&gt;LeftSettings.Name" xml:space="preserve">
-    <value>LeftSettings</value>
-  </data>
-  <data name="&gt;&gt;LeftSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LeftSettings.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;LeftSettings.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="LeftGames.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="LeftGames.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 44</value>
-  </data>
-  <data name="LeftGames.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 40</value>
-  </data>
-  <data name="LeftGames.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="LeftGames.Text" xml:space="preserve">
-    <value>Игры</value>
-  </data>
-  <data name="&gt;&gt;LeftGames.Name" xml:space="preserve">
-    <value>LeftGames</value>
-  </data>
-  <data name="&gt;&gt;LeftGames.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LeftGames.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;LeftGames.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="AdminLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -541,13 +487,73 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;UserLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="FlowLayout.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="FlowLayout.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="&gt;&gt;GamePagePanel.Name" xml:space="preserve">
+    <value>GamePagePanel</value>
+  </data>
+  <data name="&gt;&gt;GamePagePanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GamePagePanel.Parent" xml:space="preserve">
+    <value>FlowLayout</value>
+  </data>
+  <data name="&gt;&gt;GamePagePanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;GamePanel.Name" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GamePanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GamePanel.Parent" xml:space="preserve">
+    <value>FlowLayout</value>
+  </data>
+  <data name="&gt;&gt;GamePanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;AccountPanel.Name" xml:space="preserve">
+    <value>AccountPanel</value>
+  </data>
+  <data name="&gt;&gt;AccountPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AccountPanel.Parent" xml:space="preserve">
+    <value>FlowLayout</value>
+  </data>
+  <data name="&gt;&gt;AccountPanel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="FlowLayout.Location" type="System.Drawing.Point, System.Drawing">
+    <value>238, 41</value>
+  </data>
+  <data name="FlowLayout.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="FlowLayout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1114, 638</value>
+  </data>
+  <data name="FlowLayout.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;FlowLayout.Name" xml:space="preserve">
+    <value>FlowLayout</value>
+  </data>
+  <data name="&gt;&gt;FlowLayout.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FlowLayout.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;FlowLayout.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="GamePagePanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -734,779 +740,6 @@
   </data>
   <data name="&gt;&gt;GamePagePanel.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="GamePanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="GGenreOrCB.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="GGenreOrCB.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
-    <value>Button</value>
-  </data>
-  <data name="GGenreOrCB.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="GGenreOrCB.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="GGenreOrCB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>862, 556</value>
-  </data>
-  <data name="GGenreOrCB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 39</value>
-  </data>
-  <data name="GGenreOrCB.TabIndex" type="System.Int32, mscorlib">
-    <value>166</value>
-  </data>
-  <data name="GGenreOrCB.Text" xml:space="preserve">
-    <value>Or</value>
-  </data>
-  <data name="GGenreOrCB.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;GGenreOrCB.Name" xml:space="preserve">
-    <value>GGenreOrCB</value>
-  </data>
-  <data name="&gt;&gt;GGenreOrCB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GGenreOrCB.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GGenreOrCB.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="GGenreAndCB.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="GGenreAndCB.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
-    <value>Button</value>
-  </data>
-  <data name="GGenreAndCB.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="GGenreAndCB.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="GGenreAndCB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>862, 517</value>
-  </data>
-  <data name="GGenreAndCB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 39</value>
-  </data>
-  <data name="GGenreAndCB.TabIndex" type="System.Int32, mscorlib">
-    <value>165</value>
-  </data>
-  <data name="GGenreAndCB.Text" xml:space="preserve">
-    <value>And</value>
-  </data>
-  <data name="GGenreAndCB.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;GGenreAndCB.Name" xml:space="preserve">
-    <value>GGenreAndCB</value>
-  </data>
-  <data name="&gt;&gt;GGenreAndCB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GGenreAndCB.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GGenreAndCB.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="GSrchGenres.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
-  </data>
-  <data name="GSrchGenres.ColumnWidth" type="System.Int32, mscorlib">
-    <value>200</value>
-  </data>
-  <data name="GSrchGenres.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 517</value>
-  </data>
-  <data name="GSrchGenres.Size" type="System.Drawing.Size, System.Drawing">
-    <value>899, 78</value>
-  </data>
-  <data name="GSrchGenres.TabIndex" type="System.Int32, mscorlib">
-    <value>115</value>
-  </data>
-  <data name="&gt;&gt;GSrchGenres.Name" xml:space="preserve">
-    <value>GSrchGenres</value>
-  </data>
-  <data name="&gt;&gt;GSrchGenres.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckedListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GSrchGenres.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GSrchGenres.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="GamesSwitch.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="GamesSwitch.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
-    <value>Button</value>
-  </data>
-  <data name="GamesSwitch.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="GamesSwitch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 435</value>
-  </data>
-  <data name="GamesSwitch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 39</value>
-  </data>
-  <data name="GamesSwitch.TabIndex" type="System.Int32, mscorlib">
-    <value>163</value>
-  </data>
-  <data name="GamesSwitch.Text" xml:space="preserve">
-    <value>Мои игры</value>
-  </data>
-  <data name="GamesSwitch.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;GamesSwitch.Name" xml:space="preserve">
-    <value>GamesSwitch</value>
-  </data>
-  <data name="&gt;&gt;GamesSwitch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GamesSwitch.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GamesSwitch.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="GamesList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="GamesList.Items" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkMAwAAAFFTeXN0
-        ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2Vu
-        PWIwM2Y1ZjdmMTFkNTBhM2EFAQAAACFTeXN0ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0l0ZW0HAAAA
-        BFRleHQKSW1hZ2VJbmRleAlCYWNrQ29sb3IHQ2hlY2tlZARGb250CUZvcmVDb2xvchdVc2VJdGVtU3R5
-        bGVGb3JTdWJJdGVtcwEABAAEBAAIFFN5c3RlbS5EcmF3aW5nLkNvbG9yAwAAAAETU3lzdGVtLkRyYXdp
-        bmcuRm9udAMAAAAUU3lzdGVtLkRyYXdpbmcuQ29sb3IDAAAAAQIAAAAGBAAAAAZTYW1wbGUAAAAABfv/
-        //8UU3lzdGVtLkRyYXdpbmcuQ29sb3IEAAAABG5hbWUFdmFsdWUKa25vd25Db2xvcgVzdGF0ZQEAAAAJ
-        BwcDAAAACgBgIP8AAAAAAAACAAAJBgAAAAH5////+////woAAAAAAAAAAKQAAQABBQYAAAATU3lzdGVt
-        LkRyYXdpbmcuRm9udAQAAAAETmFtZQRTaXplBVN0eWxlBFVuaXQBAAQECxhTeXN0ZW0uRHJhd2luZy5G
-        b250U3R5bGUDAAAAG1N5c3RlbS5EcmF3aW5nLkdyYXBoaWNzVW5pdAMAAAADAAAABggAAAAOQ2VudHVy
-        eSBHb3RoaWMAAGRBBff///8YU3lzdGVtLkRyYXdpbmcuRm9udFN0eWxlAQAAAAd2YWx1ZV9fAAgDAAAA
-        AAAAAAX2////G1N5c3RlbS5EcmF3aW5nLkdyYXBoaWNzVW5pdAEAAAAHdmFsdWVfXwAIAwAAAAMAAAAL
-</value>
-  </data>
-  <metadata name="GamePics.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="GamePics.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADE
-        IgAAAk1TRnQBSQFMAwEBAAGwAQABsAEAAYABAAGAAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAQA
-        AQICAAGAAwABAQEAAQgHAAEBFwABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEA
-        AfABygGmAQABMwUAATMBAAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEA
-        AYABfAH/AQACUAH/AQABkwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFm
-        AwABmQMAAcwCAAEzAwACMwIAATMBZgIAATMBmQIAATMBzAIAATMB/wIAAWYDAAFmATMCAAJmAgABZgGZ
-        AgABZgHMAgABZgH/AgABmQMAAZkBMwIAAZkBZgIAApkCAAGZAcwCAAGZAf8CAAHMAwABzAEzAgABzAFm
-        AgABzAGZAgACzAIAAcwB/wIAAf8BZgIAAf8BmQIAAf8BzAEAATMB/wIAAf8BAAEzAQABMwEAAWYBAAEz
-        AQABmQEAATMBAAHMAQABMwEAAf8BAAH/ATMCAAMzAQACMwFmAQACMwGZAQACMwHMAQACMwH/AQABMwFm
-        AgABMwFmATMBAAEzAmYBAAEzAWYBmQEAATMBZgHMAQABMwFmAf8BAAEzAZkCAAEzAZkBMwEAATMBmQFm
-        AQABMwKZAQABMwGZAcwBAAEzAZkB/wEAATMBzAIAATMBzAEzAQABMwHMAWYBAAEzAcwBmQEAATMCzAEA
-        ATMBzAH/AQABMwH/ATMBAAEzAf8BZgEAATMB/wGZAQABMwH/AcwBAAEzAv8BAAFmAwABZgEAATMBAAFm
-        AQABZgEAAWYBAAGZAQABZgEAAcwBAAFmAQAB/wEAAWYBMwIAAWYCMwEAAWYBMwFmAQABZgEzAZkBAAFm
-        ATMBzAEAAWYBMwH/AQACZgIAAmYBMwEAA2YBAAJmAZkBAAJmAcwBAAFmAZkCAAFmAZkBMwEAAWYBmQFm
-        AQABZgKZAQABZgGZAcwBAAFmAZkB/wEAAWYBzAIAAWYBzAEzAQABZgHMAZkBAAFmAswBAAFmAcwB/wEA
-        AWYB/wIAAWYB/wEzAQABZgH/AZkBAAFmAf8BzAEAAcwBAAH/AQAB/wEAAcwBAAKZAgABmQEzAZkBAAGZ
-        AQABmQEAAZkBAAHMAQABmQMAAZkCMwEAAZkBAAFmAQABmQEzAcwBAAGZAQAB/wEAAZkBZgIAAZkBZgEz
-        AQABmQEzAWYBAAGZAWYBmQEAAZkBZgHMAQABmQEzAf8BAAKZATMBAAKZAWYBAAOZAQACmQHMAQACmQH/
-        AQABmQHMAgABmQHMATMBAAFmAcwBZgEAAZkBzAGZAQABmQLMAQABmQHMAf8BAAGZAf8CAAGZAf8BMwEA
-        AZkBzAFmAQABmQH/AZkBAAGZAf8BzAEAAZkC/wEAAcwDAAGZAQABMwEAAcwBAAFmAQABzAEAAZkBAAHM
-        AQABzAEAAZkBMwIAAcwCMwEAAcwBMwFmAQABzAEzAZkBAAHMATMBzAEAAcwBMwH/AQABzAFmAgABzAFm
-        ATMBAAGZAmYBAAHMAWYBmQEAAcwBZgHMAQABmQFmAf8BAAHMAZkCAAHMAZkBMwEAAcwBmQFmAQABzAKZ
-        AQABzAGZAcwBAAHMAZkB/wEAAswCAALMATMBAALMAWYBAALMAZkBAAPMAQACzAH/AQABzAH/AgABzAH/
-        ATMBAAGZAf8BZgEAAcwB/wGZAQABzAH/AcwBAAHMAv8BAAHMAQABMwEAAf8BAAFmAQAB/wEAAZkBAAHM
-        ATMCAAH/AjMBAAH/ATMBZgEAAf8BMwGZAQAB/wEzAcwBAAH/ATMB/wEAAf8BZgIAAf8BZgEzAQABzAJm
-        AQAB/wFmAZkBAAH/AWYBzAEAAcwBZgH/AQAB/wGZAgAB/wGZATMBAAH/AZkBZgEAAf8CmQEAAf8BmQHM
-        AQAB/wGZAf8BAAH/AcwCAAH/AcwBMwEAAf8BzAFmAQAB/wHMAZkBAAH/AswBAAH/AcwB/wEAAv8BMwEA
-        AcwB/wFmAQAC/wGZAQAC/wHMAQACZgH/AQABZgH/AWYBAAFmAv8BAAH/AmYBAAH/AWYB/wEAAv8BZgEA
-        ASEBAAGlAQADXwEAA3cBAAOGAQADlgEAA8sBAAOyAQAD1wEAA90BAAPjAQAD6gEAA/EBAAP4AQAB8AH7
-        Af8BAAGkAqABAAOAAwAB/wIAAf8DAAL/AQAB/wMAAf8BAAH/AQAC/wIAA///AP8A/wD/AP8A/wD/AP8A
-        /wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
-        /wD/AP8A/wD/AP8A/wD/AP8A/wA/AAG8AQcB8l4AAf8CBwG8Af//AJkAAfcBQwERAQ4CEQG8WgAB/wFt
-        ARECDwERAWYB8v8AlwABtQFsAWYBEQIPAhEB6lgAAfEDEQEQAhEBZgGtAfP/AJUAAbwBrQGLAYYBEQMP
-        AhEBEgH/VQAB8gIRARABDwIRAqcCrQH0/wCTAAH0A60CpwQPARABEQETAf9TAAHyAhEDDwEQAUMBrQKn
-        Aa0Bz/8AkwABtQWtAREEDwEQAREB6gH/UQAB9AIRBA8BEQStAacBrQHx/wCRAAH0B60FDwEQAREB7AH/
-        TwAB/wIRBQ8BEQatAc//AJEAAQkHrQERBQ8CEQHsTgAB/wETAREFDwERCK0B9P8AjwAB/wmtAREBEAQP
-        AREBFQEHTQABbQERARADDwMRCK0Btf8AjwAB8wmtAhECEAIPAhEBEgH0SwAB9wIRAg8BEAMRCq3/AI8A
-        AQkJrQGGBBEBDwEQAhEBbQH/SQAB8gFDAhEBDgEQAxEBEAHOCa0B9P8AjgABtAqtARAIEQH3SAAB/wEV
-        AhEBEAURAYYKrQHx/wCNAAH/C60BZggRARQB80cAARMJEQutAQn/AI0AAf8MrQkRAW0B/0UAAQcJEQFm
-        C60BtP8AjQAB/wytChEB70QAAf8BFQkRDK0BtP8AjQAB9AytAYYJEQFDAfRDAAHqChEMrQHP/wCNAAHy
-        Da0BEAkRAepCAAHwChEBhgqtAawCrQH//wCMAAHdDa0BQwoRAQdAAAH/CxEOrQH//wCMAAEJDq0KEQEV
-        Af8/AAHsChEBQwStAs4IrQH//wCMAAEJDa0BzgEQChEB7D4AAfMLEQGnAq0EzgetAc4B//8AjAABCQ6t
-        AWYLEQHzPQABFAsRAc4BrQTOCa0B//8AjAABCQ+tCxEBFDwAAbwLEQFDA84B1APOCK0B//8AjAABCQ6t
-        Ac4MEQHvOgAB/wwRAYsDzgLUA84HrQH//wCMAAEJDK0CzgGtDREB/zkAAewMEQHUAc4E1APOB60B//8A
-        jAABCQqtAs4B1ALOAWYMEQHsOAAB9A0RAdoBzgHUAtoC1ALOBq0BzgH//wCMAAEJCa0DzgLUAdoBiwwR
-        AUMB8wUAAf8BvAHsAW0B7AJtAe0BvAH/GQAB8wEHAesB7AFtAewBbQH3AfEB/wUAARMMEQFDBNoB1ATO
-        Bq0BzgH//wCMAAEJCK0BzgGtAtQD2gGzDREBEwMAAfMCbQHrAm0BEwESAm0B6wFtAewB9BQAAf8BBwFt
-        AusBbQHqARMBEgFtAusBbQHtAf8CAAEHDREBFQXaAdQB2gLOB60B//8AjAABGQitA84B1ATaDhEBFAHy
-        AeoB6wFtAUMHEQFDARMCbQHvEgAB8gFtAesB6gFDBxEBQwESAW0BEQH3AeoOEQGLBtoC1ALOBa0BzwH/
-        /wCMAAEZCK0CzgbaEBECQwwRARQCbQH/DwAB7wFtAeoeEQGQB9oDzgWtAeYB//8AjAAB8gitAtQG2g8R
-        ARAPEQFDAW0B6w/sAesBFBARARAOEQGQCNoCzgWtAeYB//8AjAAB8witAc4B1AbaDhEBEAkRA0MGEQEV
-        AxMBEgETAW0BEwISBOoBEgETAUMGEQJDARMBEgEVAUMGEQEQDREBBgjaAs4FrQHVAf//AIwAARkBzgat
-        Ac4B1AbaAbkNEQEQBhEBQwQUARMCbQHqARIBQwIRAUMB8wsSAW0B9wFtBREBFAJtARMCFAHqAm0BEhIR
-        AYsB3wfaAdQBzgWtAdUB//8AjAABGQetAs4E2gLfAbkSEQFDARMBDwEOBA8BDgEQA20BFAIRAUMBEgoR
-        AUMGEQFtARMBDwEOAw8CDgEVAesBbQFDAxEBEAoRAUMBEQFmBN8E2gHUAc4DrQLOAdUB//8AjAAB8wet
-        Ac4F2gLfAZAB6gJtAesBbQEUAUMFEQEQBBECQwEPARAFEQEQAg8B6gFtAesBFAIRARAQEQFtARACDwUR
-        ARACDwHsAW0BQwkRAUMBFAJtAusBEgXfA9oB1ALOBK0B1f8AjQAB8wGzBq0BzgPaBN8BbAFtAesEbQHr
-        AeoBQwcRAkMBDwkRAQ8BDgHsAW0B6wIRARAPEQFtARABDwURAUMBFAIRAQ8BDgHsAeoIEQETBW0B7AFt
-        Af4F3wPaAs4DrQHOAdX/AI0AAfQBzwatBNoE3wHqA/IB8QHtBG0B6gFDBREBEwEPAxEBFQJDBRECDwHs
-        AW0BFQIRARAJEQEQBBEBFQEPAxEBQwHqAm0BEgFtARMBEQEPARAB6wFDBREBEwNtAewB7QHxAvIB8QH+
-        Bd8D2gLOAa0BzgKtAQn/AI0AAfQHrQHUAtoE3wH+AQcG8gHvAewDbQQRAUMBDwMRARIBEQFDBBEBFQIR
-        AQ8B6gFtARMCEQEPDREBEwEOAxECbQIUAhEBEwHqARIBEQEOAeoBQwMRARMB6wJtAewBvAXyAfMBswbf
-        AtoB1AHOA60BzgEJ/wCNAAH/AeYFrQHOAtoF3wGzA/MB9AH/AfQB8gHzAfIBvAGSAW0EEQEVAQ8CEQJt
-        A+sBbQHqAREBQwFtAUMBEAEPAewBEwIRARAJEQEPAxEBFQEPAhEEbQLrARMBQwEUAW0BEQIQARQEEQHt
-        Ae8B8QjyAZIG3wPaAc4DrQHOAQn/AI0AAf8BtAStAc4B1ALaBd8BkQTyAvQD/wL0AQcHEQHqCG0BEQHq
-        ARQBEQEOAewBQwsRARABDwMRAhABEQEUCG0BEQFtAUMBEQEPAW0DEQEVAfME8gHzBfIB8QH+Bt8C2gHO
-        A60BzgEZ/wCNAAH/AdsFrQLaBd8B/gG8BvID8wL0AfAEEQEQAhEB6whtARQBEwFDAREBDgHtAUMLEQEQ
-        AQ8DEQEPAhEKbQESAUMBEQEOARIDEQESDPIBuQbfAtoB1AKtAs4BGf8AjQAB/wHbBK0B1AHaBt8BkAry
-        AfMB8gHwBBEBEAIRAesJbQISAREBDgFtDBEBEAEPAxEBDwIRC20BEwERAQ8BFAMRAeoM8gEHAf4G3wLa
-        Ac4BrQLOAfP/AI4AAdsErQHUAdoF3wH+AbwM8gHxARADEQEQAhELbQFDAREBDgETAxEBEAgRARABDwMR
-        AQ8BEAERC20BQwERAQ8BQwMRAewN8gG5Bt8C2gHOAa0CzgH0/wCOAAHbBK0B1AbfAZAM8gHzAfIBEAYR
-        C20BFQERAQ8BQwMRARAJEQEPAxECEAERAeoJbQHrAUMBEQFDBBEBBw3yAQcB/gbfAdoBzgGtAs4B9P8A
-        jgABCQStAdoF3wH+AfAO8gETARADEQEPAREBQwHrCG0BEwERARABFAQRARAIEQFDAQ8EEQEPAREBQwHr
-        CG0B6gERARABFAMRAQ8B8QTyAfEB8wjyAbkG3wHaAc4BrQHOAdQB//8AjgABGQHOAq0BzgHaBN8B/gGS
-        D/IB7wEOBhEBFAHrBm0B6gIRAQ8BQwQRAUMJEQEQBBEBEAIRARQB6wdtAhEBQwQRARQC8gG8AUMCDgEP
-        AW0H8gHwBt8B2gHOAa0BzgHVAf//AI4AAfMDrQHOAdoE3wG5EfIBEAEPAxEBEAIRARQBbQHrAW0B6wFt
-        ARMCEQEPARUEEQEQChEBFQURAQ8CEQEUBG0B6wHqAxEBQwMRAQ8BBwHyAQcBDgEVAesB9wHsAREBQwfy
-        AQkB/gTfAdoBzgGtAc4B1f8AjwAB9AHOAq0BzgTfAf4BvBHyAQcBDgQRAUMDEQNDAxEBEAEVBREBFRER
-        ARADEQFDARMBFAFDAxEBQwQRARQC8gEPARMBvAHyAvQB8QFDAewG8gHzAbkF3wHUAs4B3P8AjwAB/wHV
-        Aq0BzgTfAboJ8gHtARICbQHqAewE8gHqDRECQwURARULEQIVARAMEQFDARQGEQLyAQcBDgHvAXQBFgH/
-        AXoB8wHrARAH8gG8Af4E3wHUAs4BGf8AkAAB2wKtAdQD3wH+AfAI8gHqAe0BEwFDAREBQwEUARIB8QPy
-        AUMGEQFDARUCFAEVAUMGEQEVAUMBbQIRAUMGEQFDAREBFAESBxEBQwMUAUMHEQEHAvIB7AERAesBvAH5
-        AkcB9AHrAQ8B8wfyAbkE3wHUAs4B9P8AkAABGQHOAa0BzgPfAbkJ8gJDBOwBEAFDAfcE8gETEBEBFAFD
-        AW0BFQJDBREBQwEUAREBFAITARIREQEHA/IB7wEQAusBRwJvAesB6gERCPIBBwH+A98B1AHOAeYB//8A
-        kAAB9AHUAa0BzgLfAf4BvAnyAhEDbQESAkMBkgXyAesOEQETARQCbQHqARMFEQFDARMBFQETAeoDbQES
-        AUMNEQETAfEF8gEPAm0BbgH5AW0B6wFDAe0J8gG5A98B1AHOAdv/AJEAAf8B1AGtAc4C3wG5CvIBQwER
-        AesCbQHrAkMBkgbyAfABEgoRARMB6wETA20B6gETAUMEEQFDARUHbQHrAeoBQwkRAUMB7wfyAfcBEAET
-        AW0BEgFtARUBQwHzCfIB9wPfAs4BGf8AkgAB3AGtAc4C3wG7CfIB8wEQAUMB6wNtARMBQwHtCfIB7wHq
-        ARQCEAJDAeoHbQHrAW0BEwEVAkMBFQESAesJbQHrAW0BEwFDARACEQHqAfcB8QTyAfMF8gEHAxEBEAFt
-        AfMF8gHxAfMD8gHxAf4C3wLOAfT/AJIAARkCzgHfAf4B8AXyAe0C6gESAeoBQwERAesDbQETARQBbQTs
-        AfAG8gHwARMB6wxtAesBbQETAhEBQwHqDG0D6wHsBPIBBwFDAg4BDwHtBPIB8wLxAvMD8gG8AUMCDgEP
-        AesD8gG5At8BzgHUAf//AJIAAfQBzgGtAd8BuQXyARMB7QLqARQB6gEVAREB6wNtARIBFQESAuoCEwHt
-        AfEF8gHxARMNbQHrARABDwEQAxEBEg1tAesB7APyAfcBDgEVAZIB9wGSARAB6gryAe8BDgEVAewB9wHs
-        ARABFQLyAfcB3wHaAc4B3P8AkwAB/wHVAa0B2gG0BPIB8wERAUME6gHsAQcB7ANtAfMBbQHqARMCQwER
-        ARUB7AXyAfEBEw1tAUMFDwIRDW0B6wHsA/IBDgHrARsB8wH/AfQB8wEQAe8J8gEPAW0C8gHzAf8B8QEQ
-        Ae0B8gG8Af4B1AHOAfP/AJQAAdwBrQHTAW0E8gHxAREBFAHyAfAF8gHxAe8B8gHwAe8B6wNtAewBEQHq
-        BfIB8QETDW0BDgERARQBbQEVARQB7AEPARQMbQHrAewC8gGSARAB8QGgAV4BoAFeAf8B6wEUCPIB7wEP
-        AfEBCAE8AVwBOQH0AZIBQwHyAfABuQHUAc4B//8AlAAB8wKtARQB7wPyAfEBQwESDPIB7ANtAe0BEQET
-        BfIB8QETDW0BDgKSAewB9wHrARACEQxtAesB7ALyAewBEQHtAfIBXgH7ARsB8wHrAUMI8gHsAREBBwGY
-        AVoB8wEdAfEB6wEQAfMB7AGLAc4B1f8AlQAB/wHOAa0BEQHrA/IB8wEQARME8gHzAfQB8wXyAfADbQHt
-        AREBEgXyAfMBEwxtAesBDgEPAQ4BDwEOAw8BFAxtAesB7ALyAewBEQFtAewBXgH7AQcB7AHqARMI8gGS
-        AREBbQHrAVoB7QH6AesBbQFDAfIBbQEVAc4B3f8AlgAB1QGGAREBEwG8A/IBEQEVAfIB9ALzAfQE/wH0
-        AfMB8gHxAewB6wFtAewBQwHsBfIB8wETDG0B6wEQBg8BDg1tAesB7ALyAfEBDwFtAVABWAHrATsBbQFD
-        Ae8J8gEOAm0B+gJaAesBQwHvAfACQwHOAf//AJYAAfIBZgERAUMBBwPyAesBFAEVAUMDFQETBP8B7wFD
-        AhUCQwEVARQB8AXyAfMBEw5tBQ8BDgEVDW0B6wHsA/IB9wERAW0D6wEUAeoK8gH3AREEbQEUAW0B8gHs
-        AhEB5v8AlwAB/wGRAhEB7APyAfMB7AQSARABQwT/Ae0BQwEUAxIB6gEHBvIB8wETDm0B6wFDAg8BEAHq
-        Dm0B6wHsBPIB7wIRAUMBEAHsBfIC8QXyAe8BEQEQAUMBEAHsAfMB8gFtAREBEgEJ/wCYAAHxAUMBEQET
-        CfIBFQFDBP8B7QFDAewL8gHzARMQbQPrD20B6wHsBfIB8wHyAfEB8wTyAe8BEAIOAQ8B7ATyAvMB8QH0
-        AvIB8AFDAREB7wH//wCYAAH/AewBEQFDAe8I8gEVAUMD/wH0Ae0BQwHsC/IB8wETIm0B6wHsDPIB7AEO
-        AewC8gEHAREB6gnyAewBEQFDAfP/AJoAAfECEQHrCPIBFQFDAfMC9AHyAewBQwHsC/IB8wETIm0B6wHs
-        C/IB8QEOAQcE/wH0ARAB7wjyARMBEQHrAfT/AJoAAfQBEgERAUMB8AfyAhUB9ALyAfMB7AFDAewL8gHz
-        ARMibQHrAewL8gHsAREB9AH/AeIC/wH0Ae0BEgfyAewBQwERAfH/AJsAAf8B7wIRAW0H8gH3AREBFQES
-        AeoBFAJDAQcL8gHzARMibQHrAewL8gITAewBvAHoAd8B8AEHAW0BQwbyAQcBEwERARIB9P8AnAAB9AEU
-        AREBFAHxBfIB8wHyAZIBFAIVAUMBEgEHDPIB8wETIm0B6wHsC/IB7AFDAusB/gK5AW0BEgFtBvIB7QFD
-        AREB7wH//wCcAAH/AfcCEQHsGvIB8wETIm0B6wHsC/IB8QEPAW0BswGRAW0B2gFtAREB8AbyARMBEQET
-        AfT/AJ4AAfQBFQERARQB8BnyAfMBEyJtAesB7AzyAfcBEAFtAesCbQEUAewG8gHtAhEB7wH//wCeAAH0
-        Ae0CEQHrGfIB8wETIm0B6wHsDfIBBwERAhABQwHvBvIB8QEUAREBEwHz/wCgAAHzARUBEQFDAfAY8gHz
-        ARMibQHrAewO8gLzAfQB8wfyAewCEQHvAf//AKAAAfQB7QIRAesZ8gETIm0B6wHsGPIB8QEUAREBEwHz
-        /wCiAAHzARUBEQFDAQcY8gETIm0B6wHsGPIB7AIRAe8B9P8AogAB9AHtAhEBbQHxCvIB8ALyAvED8gEH
-        AfIB8QLyARMibQHrAewX8gEHARUBEQETAfP/AKQAAfMBFQERAUMBbQL3Ae8BBwLsAesB7AHrAewBbQHs
-        AW0B7AHrAuwB6wFtBOwBEyJtAesBbQHsAe8B7QHsAe8CkgEHAewB7wGSAe8B9wHsAZIBvAHxAfABvAEH
-        AfAB8QHtAW0CEQHvAf//AKUAAZICEQETFm0B7AETIm0B6wETFm0B6wFDAREBEgH0/wCmAAFtARMCERZt
-        AesBEx5tBesBExdtAhEB7wG8/wCmAAFDAewBbQERAUMBbQHrEG0B6wFtAeoB9x/yBbwB7wHsARIRbQHr
-        AW0B6gFDARMBkgHrAQf/AKYAAZICbQHrAuwB6gEVARIB6gNtCesC6gHzKAAB/wHvARIBbQnrAm0B6gET
-        ARUB6gHsAe0B7AFtAuwB//8ApwAB9wZtAusDbQMTARIEbQHtAfMsAAH/AQcEbQESAxMCbQHtAW0B7AHr
-        BG0C7AH//wCpAAHxAZIB7AxtAfI3AAEUBW0B6wLsA20B6wHsAQcB//8ArQAC/wHxAQcC7ANtAesBkgES
-        AfQ3AAFtAZIB7QHrAm0B6wHsAe8BvAH0Af//ALcAA/8B9AHyAfQ5AAHyAfMD//8A/wD/AP8A/wD/AP8A
-        /wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
-        /wD/AP8A/wDHAAFCAU0BPgcAAT4DAAEoBAABAgIAAYADAAEBAQABAQYAASAWAAP/AQAQ/zAAEP8wABD/
-        MAAQ/zAAEP8wABD/MAAQ/zAAEP8wABD/MAAQ/zAAEP8wABD/MAAQ/zAAEP8wABD/MAAQ/zAAEP8wABD/
-        MAAQ/zAAEP8wABD/MAAQ/zAAEP8wABD/MAAB/wH8AX8K/wH+AQ8B/zAAAf8B8AEfCv8B+AEHAf8wAAH/
-        AeABDwr/AfABAwH/MAAB/wHAAQMK/wHgAQEB/zAAAf8BgAEBCv8BwAEBAf8wAAH/AYABAAr/AYABAAH/
-        MAAB/wIAAX8J/wIAAf8wAAH/AgABfwj/Af4CAAF/MAAB/gIAAT8I/wH+AgABfzAAAf4CAAEfCP8B/AIA
-        AX8wAAH+AgABDwj/AfgCAAE/MAAB/gIAAQ8I/wHwAgABPzAAAfwCAAEHCP8B8AIAAT8wAAH8AgABAwj/
-        AeACAAE/MAAB/AIAAQMI/wHAAgABPzAAAfwCAAEBCP8BwAIAAT8wAAH8AgABAQj/AYACAAEfMAAB/AMA
-        CP8DAAEfMAAB/AMAAX8H/wMAAR8wAAH8AwABfwb/Af4DAAEfMAAB/AMAAT8G/wH+AwABHzAAAfwDAAE/
-        Bv8B/AMAAR8wAAH8AwABHwb/AfgDAAEfMAAB/AMAAQ8G/wH4AwABHzAAAfwDAAEPBv8B8AMAAR8wAAH8
-        AwABBwHAAQ8C/wH4AQEB8AMAAR8wAAH8AwABBwEAAQMC/wHAAQABYAMAAR8wAAH8BQABAQL/AYAFAAEf
-        MAAB/AYAAX8B/wYAAR8wAAH8DgABHzAAAfwOAAEfMAAB/A4AAR8wAAH8DgABHzAAAfwOAAE/MAAB/A4A
-        AT8wAAH8DgABPzAAAfwOAAE/MAAB/A4AAT8wAAH8DgABPzAAAfwOAAE/MAAB/A4AAT8wAAH+DgABPzAA
-        Af4OAAE/MAAB/g4AAT8wAAH+DgABPzAAAf4OAAF/MAAB/g4AAX8wAAH+DgABfzAAAf8OAAF/MAAB/w4A
-        AX8wAAH/DgAB/zAAAf8OAAH/MAAB/wGADQAB/zAAAf8BgA0AAf8wAAH/AYAMAAEBAf8wAAH/AYAMAAEB
-        Af8wAAH/AcAMAAEBAf8wAAH/AcAMAAEDAf8wAAH/AcAMAAEDAf8wAAH/AeAMAAEDAf8wAAH/AeAMAAEH
-        Af8wAAH/AeAMAAEHAf8wAAH/AfAMAAEHAf8wAAH/AfAMAAEPAf8wAAH/AfgMAAEPAf8wAAH/AfgMAAEf
-        Af8wAAH/AfgMAAEfAf8wAAH/AfwMAAEfAf8wAAH/AfwMAAE/Af8wAAH/Af4MAAE/Af8wAAH/Af4MAAF/
-        Af8wAAL/DAABfwH/MAAC/wwAAv8wAAL/AYALAAL/MAAC/wGACgABAQL/MAAC/wHACgABAQL/MAAC/wHg
-        CgABAwL/MAAC/wHgCgABAwL/MAAC/wHgCgABAwL/MAAC/wHgAgABDwT/AfACAAEDAv8wAAL/AfACAAE/
-        BP8B/AIAAQcC/zAAAv8B+AEAAQcG/wHwAQABDwL/MAAD/wEAAQcG/wHwAQAD/zAAA/8B/AEPBv8B+AE/
-        A/8wABD/MAAQ/zAAEP8wABD/MAAQ/zAAEP8wABD/MAAQ/zAAEP8wABD/MAAQ/zAAEP8wABD/MAAQ/zAA
-        EP8wABD/MAAQ/zAAEP8wABD/MAAQ/zAACw==
-</value>
-  </data>
-  <data name="GamesList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 42</value>
-  </data>
-  <data name="GamesList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>899, 387</value>
-  </data>
-  <data name="GamesList.TabIndex" type="System.Int32, mscorlib">
-    <value>162</value>
-  </data>
-  <data name="&gt;&gt;GamesList.Name" xml:space="preserve">
-    <value>GamesList</value>
-  </data>
-  <data name="&gt;&gt;GamesList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GamesList.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GamesList.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="GSrchMultiCB.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="GSrchMultiCB.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
-    <value>Button</value>
-  </data>
-  <data name="GSrchMultiCB.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="GSrchMultiCB.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="GSrchMultiCB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>810, 480</value>
-  </data>
-  <data name="GSrchMultiCB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 32</value>
-  </data>
-  <data name="GSrchMultiCB.TabIndex" type="System.Int32, mscorlib">
-    <value>113</value>
-  </data>
-  <data name="GSrchMultiCB.Text" xml:space="preserve">
-    <value>Мультиплеер</value>
-  </data>
-  <data name="&gt;&gt;GSrchMultiCB.Name" xml:space="preserve">
-    <value>GSrchMultiCB</value>
-  </data>
-  <data name="&gt;&gt;GSrchMultiCB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GSrchMultiCB.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GSrchMultiCB.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="GamesLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="GamesLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 10</value>
-  </data>
-  <data name="GamesLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 22</value>
-  </data>
-  <data name="GamesLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>161</value>
-  </data>
-  <data name="GamesLabel.Text" xml:space="preserve">
-    <value>Игры</value>
-  </data>
-  <data name="&gt;&gt;GamesLabel.Name" xml:space="preserve">
-    <value>GamesLabel</value>
-  </data>
-  <data name="&gt;&gt;GamesLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GamesLabel.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GamesLabel.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="GSrchSingleCB.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="GSrchSingleCB.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
-    <value>Button</value>
-  </data>
-  <data name="GSrchSingleCB.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="GSrchSingleCB.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="GSrchSingleCB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>678, 480</value>
-  </data>
-  <data name="GSrchSingleCB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 32</value>
-  </data>
-  <data name="GSrchSingleCB.TabIndex" type="System.Int32, mscorlib">
-    <value>112</value>
-  </data>
-  <data name="GSrchSingleCB.Text" xml:space="preserve">
-    <value>Одиночный</value>
-  </data>
-  <data name="&gt;&gt;GSrchSingleCB.Name" xml:space="preserve">
-    <value>GSrchSingleCB</value>
-  </data>
-  <data name="&gt;&gt;GSrchSingleCB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GSrchSingleCB.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GSrchSingleCB.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="GameSearch.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
-  </data>
-  <data name="GameSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>275, 435</value>
-  </data>
-  <data name="GameSearch.MaxLength" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <data name="GameSearch.Multiline" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="GameSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>679, 39</value>
-  </data>
-  <data name="GameSearch.TabIndex" type="System.Int32, mscorlib">
-    <value>160</value>
-  </data>
-  <data name="GameSearch.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="GameSearch.ZoomFactor" type="System.Single, mscorlib">
-    <value>1.3</value>
-  </data>
-  <data name="&gt;&gt;GameSearch.Name" xml:space="preserve">
-    <value>GameSearch</value>
-  </data>
-  <data name="&gt;&gt;GameSearch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GameSearch.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GameSearch.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="GSrchDevLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="GSrchDevLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="GSrchDevLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 484</value>
-  </data>
-  <data name="GSrchDevLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 22</value>
-  </data>
-  <data name="GSrchDevLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>107</value>
-  </data>
-  <data name="GSrchDevLabel.Text" xml:space="preserve">
-    <value>Разработчик</value>
-  </data>
-  <data name="&gt;&gt;GSrchDevLabel.Name" xml:space="preserve">
-    <value>GSrchDevLabel</value>
-  </data>
-  <data name="&gt;&gt;GSrchDevLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GSrchDevLabel.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GSrchDevLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="GSrchDev.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
-  </data>
-  <data name="GSrchDev.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="GSrchDev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>188, 481</value>
-  </data>
-  <data name="GSrchDev.MaxLength" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <data name="GSrchDev.Size" type="System.Drawing.Size, System.Drawing">
-    <value>484, 30</value>
-  </data>
-  <data name="GSrchDev.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;GSrchDev.Name" xml:space="preserve">
-    <value>GSrchDev</value>
-  </data>
-  <data name="&gt;&gt;GSrchDev.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GSrchDev.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GSrchDev.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="GamePanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 165</value>
-  </data>
-  <data name="GamePanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 10, 10, 10</value>
-  </data>
-  <data name="GamePanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1018, 613</value>
-  </data>
-  <data name="GamePanel.TabIndex" type="System.Int32, mscorlib">
-    <value>162</value>
-  </data>
-  <data name="&gt;&gt;GamePanel.Name" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GamePanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GamePanel.Parent" xml:space="preserve">
-    <value>FlowLayout</value>
-  </data>
-  <data name="&gt;&gt;GamePanel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="AccountPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;PasswdRepeatLabel.Name" xml:space="preserve">
-    <value>PasswdRepeatLabel</value>
-  </data>
-  <data name="&gt;&gt;PasswdRepeatLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PasswdRepeatLabel.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;PasswdRepeatLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PasswdRepeat.Name" xml:space="preserve">
-    <value>PasswdRepeat</value>
-  </data>
-  <data name="&gt;&gt;PasswdRepeat.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PasswdRepeat.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;PasswdRepeat.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Passwd.Name" xml:space="preserve">
-    <value>Passwd</value>
-  </data>
-  <data name="&gt;&gt;Passwd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Passwd.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;Passwd.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;AccSetingsLabel.Name" xml:space="preserve">
-    <value>AccSetingsLabel</value>
-  </data>
-  <data name="&gt;&gt;AccSetingsLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AccSetingsLabel.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;AccSetingsLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;PasswdShow.Name" xml:space="preserve">
-    <value>PasswdShow</value>
-  </data>
-  <data name="&gt;&gt;PasswdShow.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PasswdShow.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;PasswdShow.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;PasswdLabel.Name" xml:space="preserve">
-    <value>PasswdLabel</value>
-  </data>
-  <data name="&gt;&gt;PasswdLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PasswdLabel.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;PasswdLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;EMail.Name" xml:space="preserve">
-    <value>EMail</value>
-  </data>
-  <data name="&gt;&gt;EMail.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;EMail.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;EMail.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;EMailLabel.Name" xml:space="preserve">
-    <value>EMailLabel</value>
-  </data>
-  <data name="&gt;&gt;EMailLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;EMailLabel.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;EMailLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;AccSubmit.Name" xml:space="preserve">
-    <value>AccSubmit</value>
-  </data>
-  <data name="&gt;&gt;AccSubmit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AccSubmit.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;AccSubmit.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;UserInfo.Name" xml:space="preserve">
-    <value>UserInfo</value>
-  </data>
-  <data name="&gt;&gt;UserInfo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;UserInfo.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;UserInfo.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;UserName.Name" xml:space="preserve">
-    <value>UserName</value>
-  </data>
-  <data name="&gt;&gt;UserName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;UserName.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;UserName.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;UserInfoLabel.Name" xml:space="preserve">
-    <value>UserInfoLabel</value>
-  </data>
-  <data name="&gt;&gt;UserInfoLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;UserInfoLabel.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;UserInfoLabel.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;UserNameLabel.Name" xml:space="preserve">
-    <value>UserNameLabel</value>
-  </data>
-  <data name="&gt;&gt;UserNameLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;UserNameLabel.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;UserNameLabel.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="AccountPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 784</value>
-  </data>
-  <data name="AccountPanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 10, 10, 10</value>
-  </data>
-  <data name="AccountPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1018, 297</value>
-  </data>
-  <data name="AccountPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="AccountPanel.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;AccountPanel.Name" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;AccountPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AccountPanel.Parent" xml:space="preserve">
-    <value>FlowLayout</value>
-  </data>
-  <data name="&gt;&gt;AccountPanel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="FlowLayout.Location" type="System.Drawing.Point, System.Drawing">
-    <value>238, 41</value>
-  </data>
-  <data name="FlowLayout.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="FlowLayout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1114, 638</value>
-  </data>
-  <data name="FlowLayout.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="&gt;&gt;FlowLayout.Name" xml:space="preserve">
-    <value>FlowLayout</value>
-  </data>
-  <data name="&gt;&gt;FlowLayout.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FlowLayout.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;FlowLayout.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="GameRating.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1885,6 +1118,887 @@
   </data>
   <data name="&gt;&gt;GameRunSubmit.ZOrder" xml:space="preserve">
     <value>12</value>
+  </data>
+  <data name="GamePanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;GGenreOrCB.Name" xml:space="preserve">
+    <value>GGenreOrCB</value>
+  </data>
+  <data name="&gt;&gt;GGenreOrCB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GGenreOrCB.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GGenreOrCB.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;GGenreAndCB.Name" xml:space="preserve">
+    <value>GGenreAndCB</value>
+  </data>
+  <data name="&gt;&gt;GGenreAndCB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GGenreAndCB.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GGenreAndCB.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;GSrchGenres.Name" xml:space="preserve">
+    <value>GSrchGenres</value>
+  </data>
+  <data name="&gt;&gt;GSrchGenres.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckedListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GSrchGenres.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GSrchGenres.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;GamesSwitch.Name" xml:space="preserve">
+    <value>GamesSwitch</value>
+  </data>
+  <data name="&gt;&gt;GamesSwitch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GamesSwitch.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GamesSwitch.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;GamesList.Name" xml:space="preserve">
+    <value>GamesList</value>
+  </data>
+  <data name="&gt;&gt;GamesList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GamesList.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GamesList.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;GSrchMultiCB.Name" xml:space="preserve">
+    <value>GSrchMultiCB</value>
+  </data>
+  <data name="&gt;&gt;GSrchMultiCB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GSrchMultiCB.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GSrchMultiCB.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;GamesLabel.Name" xml:space="preserve">
+    <value>GamesLabel</value>
+  </data>
+  <data name="&gt;&gt;GamesLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GamesLabel.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GamesLabel.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;GSrchSingleCB.Name" xml:space="preserve">
+    <value>GSrchSingleCB</value>
+  </data>
+  <data name="&gt;&gt;GSrchSingleCB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GSrchSingleCB.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GSrchSingleCB.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;GameSearch.Name" xml:space="preserve">
+    <value>GameSearch</value>
+  </data>
+  <data name="&gt;&gt;GameSearch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GameSearch.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GameSearch.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;GSrchDevLabel.Name" xml:space="preserve">
+    <value>GSrchDevLabel</value>
+  </data>
+  <data name="&gt;&gt;GSrchDevLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GSrchDevLabel.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GSrchDevLabel.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;GSrchDev.Name" xml:space="preserve">
+    <value>GSrchDev</value>
+  </data>
+  <data name="&gt;&gt;GSrchDev.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GSrchDev.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GSrchDev.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="GamePanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 165</value>
+  </data>
+  <data name="GamePanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 10, 10, 10</value>
+  </data>
+  <data name="GamePanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1018, 613</value>
+  </data>
+  <data name="GamePanel.TabIndex" type="System.Int32, mscorlib">
+    <value>162</value>
+  </data>
+  <data name="&gt;&gt;GamePanel.Name" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GamePanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GamePanel.Parent" xml:space="preserve">
+    <value>FlowLayout</value>
+  </data>
+  <data name="&gt;&gt;GamePanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="GGenreOrCB.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="GGenreOrCB.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="GGenreOrCB.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="GGenreOrCB.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="GGenreOrCB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>862, 556</value>
+  </data>
+  <data name="GGenreOrCB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 39</value>
+  </data>
+  <data name="GGenreOrCB.TabIndex" type="System.Int32, mscorlib">
+    <value>166</value>
+  </data>
+  <data name="GGenreOrCB.Text" xml:space="preserve">
+    <value>Or</value>
+  </data>
+  <data name="GGenreOrCB.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;GGenreOrCB.Name" xml:space="preserve">
+    <value>GGenreOrCB</value>
+  </data>
+  <data name="&gt;&gt;GGenreOrCB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GGenreOrCB.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GGenreOrCB.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="GGenreAndCB.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="GGenreAndCB.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="GGenreAndCB.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="GGenreAndCB.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="GGenreAndCB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>862, 517</value>
+  </data>
+  <data name="GGenreAndCB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 39</value>
+  </data>
+  <data name="GGenreAndCB.TabIndex" type="System.Int32, mscorlib">
+    <value>165</value>
+  </data>
+  <data name="GGenreAndCB.Text" xml:space="preserve">
+    <value>And</value>
+  </data>
+  <data name="GGenreAndCB.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;GGenreAndCB.Name" xml:space="preserve">
+    <value>GGenreAndCB</value>
+  </data>
+  <data name="&gt;&gt;GGenreAndCB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GGenreAndCB.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GGenreAndCB.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="GSrchGenres.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="GSrchGenres.ColumnWidth" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <data name="GSrchGenres.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 517</value>
+  </data>
+  <data name="GSrchGenres.Size" type="System.Drawing.Size, System.Drawing">
+    <value>899, 78</value>
+  </data>
+  <data name="GSrchGenres.TabIndex" type="System.Int32, mscorlib">
+    <value>115</value>
+  </data>
+  <data name="&gt;&gt;GSrchGenres.Name" xml:space="preserve">
+    <value>GSrchGenres</value>
+  </data>
+  <data name="&gt;&gt;GSrchGenres.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckedListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GSrchGenres.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GSrchGenres.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="GamesSwitch.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="GamesSwitch.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="GamesSwitch.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="GamesSwitch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 435</value>
+  </data>
+  <data name="GamesSwitch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 39</value>
+  </data>
+  <data name="GamesSwitch.TabIndex" type="System.Int32, mscorlib">
+    <value>163</value>
+  </data>
+  <data name="GamesSwitch.Text" xml:space="preserve">
+    <value>Мои игры</value>
+  </data>
+  <data name="GamesSwitch.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;GamesSwitch.Name" xml:space="preserve">
+    <value>GamesSwitch</value>
+  </data>
+  <data name="&gt;&gt;GamesSwitch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GamesSwitch.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GamesSwitch.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="GamesList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="GamesList.Items" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkMAwAAAFFTeXN0
+        ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2Vu
+        PWIwM2Y1ZjdmMTFkNTBhM2EFAQAAACFTeXN0ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0l0ZW0HAAAA
+        BFRleHQKSW1hZ2VJbmRleAlCYWNrQ29sb3IHQ2hlY2tlZARGb250CUZvcmVDb2xvchdVc2VJdGVtU3R5
+        bGVGb3JTdWJJdGVtcwEABAAEBAAIFFN5c3RlbS5EcmF3aW5nLkNvbG9yAwAAAAETU3lzdGVtLkRyYXdp
+        bmcuRm9udAMAAAAUU3lzdGVtLkRyYXdpbmcuQ29sb3IDAAAAAQIAAAAGBAAAAAZTYW1wbGUAAAAABfv/
+        //8UU3lzdGVtLkRyYXdpbmcuQ29sb3IEAAAABG5hbWUFdmFsdWUKa25vd25Db2xvcgVzdGF0ZQEAAAAJ
+        BwcDAAAACgBgIP8AAAAAAAACAAAJBgAAAAH5////+////woAAAAAAAAAAKQAAQABBQYAAAATU3lzdGVt
+        LkRyYXdpbmcuRm9udAQAAAAETmFtZQRTaXplBVN0eWxlBFVuaXQBAAQECxhTeXN0ZW0uRHJhd2luZy5G
+        b250U3R5bGUDAAAAG1N5c3RlbS5EcmF3aW5nLkdyYXBoaWNzVW5pdAMAAAADAAAABggAAAAOQ2VudHVy
+        eSBHb3RoaWMAAGRBBff///8YU3lzdGVtLkRyYXdpbmcuRm9udFN0eWxlAQAAAAd2YWx1ZV9fAAgDAAAA
+        AAAAAAX2////G1N5c3RlbS5EcmF3aW5nLkdyYXBoaWNzVW5pdAEAAAAHdmFsdWVfXwAIAwAAAAMAAAAL
+</value>
+  </data>
+  <metadata name="GamePics.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="GamePics.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADE
+        IgAAAk1TRnQBSQFMAwEBAAHAAQABwAEAAYABAAGAAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAQA
+        AQICAAGAAwABAQEAAQgHAAEBFwABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEA
+        AfABygGmAQABMwUAATMBAAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEA
+        AYABfAH/AQACUAH/AQABkwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFm
+        AwABmQMAAcwCAAEzAwACMwIAATMBZgIAATMBmQIAATMBzAIAATMB/wIAAWYDAAFmATMCAAJmAgABZgGZ
+        AgABZgHMAgABZgH/AgABmQMAAZkBMwIAAZkBZgIAApkCAAGZAcwCAAGZAf8CAAHMAwABzAEzAgABzAFm
+        AgABzAGZAgACzAIAAcwB/wIAAf8BZgIAAf8BmQIAAf8BzAEAATMB/wIAAf8BAAEzAQABMwEAAWYBAAEz
+        AQABmQEAATMBAAHMAQABMwEAAf8BAAH/ATMCAAMzAQACMwFmAQACMwGZAQACMwHMAQACMwH/AQABMwFm
+        AgABMwFmATMBAAEzAmYBAAEzAWYBmQEAATMBZgHMAQABMwFmAf8BAAEzAZkCAAEzAZkBMwEAATMBmQFm
+        AQABMwKZAQABMwGZAcwBAAEzAZkB/wEAATMBzAIAATMBzAEzAQABMwHMAWYBAAEzAcwBmQEAATMCzAEA
+        ATMBzAH/AQABMwH/ATMBAAEzAf8BZgEAATMB/wGZAQABMwH/AcwBAAEzAv8BAAFmAwABZgEAATMBAAFm
+        AQABZgEAAWYBAAGZAQABZgEAAcwBAAFmAQAB/wEAAWYBMwIAAWYCMwEAAWYBMwFmAQABZgEzAZkBAAFm
+        ATMBzAEAAWYBMwH/AQACZgIAAmYBMwEAA2YBAAJmAZkBAAJmAcwBAAFmAZkCAAFmAZkBMwEAAWYBmQFm
+        AQABZgKZAQABZgGZAcwBAAFmAZkB/wEAAWYBzAIAAWYBzAEzAQABZgHMAZkBAAFmAswBAAFmAcwB/wEA
+        AWYB/wIAAWYB/wEzAQABZgH/AZkBAAFmAf8BzAEAAcwBAAH/AQAB/wEAAcwBAAKZAgABmQEzAZkBAAGZ
+        AQABmQEAAZkBAAHMAQABmQMAAZkCMwEAAZkBAAFmAQABmQEzAcwBAAGZAQAB/wEAAZkBZgIAAZkBZgEz
+        AQABmQEzAWYBAAGZAWYBmQEAAZkBZgHMAQABmQEzAf8BAAKZATMBAAKZAWYBAAOZAQACmQHMAQACmQH/
+        AQABmQHMAgABmQHMATMBAAFmAcwBZgEAAZkBzAGZAQABmQLMAQABmQHMAf8BAAGZAf8CAAGZAf8BMwEA
+        AZkBzAFmAQABmQH/AZkBAAGZAf8BzAEAAZkC/wEAAcwDAAGZAQABMwEAAcwBAAFmAQABzAEAAZkBAAHM
+        AQABzAEAAZkBMwIAAcwCMwEAAcwBMwFmAQABzAEzAZkBAAHMATMBzAEAAcwBMwH/AQABzAFmAgABzAFm
+        ATMBAAGZAmYBAAHMAWYBmQEAAcwBZgHMAQABmQFmAf8BAAHMAZkCAAHMAZkBMwEAAcwBmQFmAQABzAKZ
+        AQABzAGZAcwBAAHMAZkB/wEAAswCAALMATMBAALMAWYBAALMAZkBAAPMAQACzAH/AQABzAH/AgABzAH/
+        ATMBAAGZAf8BZgEAAcwB/wGZAQABzAH/AcwBAAHMAv8BAAHMAQABMwEAAf8BAAFmAQAB/wEAAZkBAAHM
+        ATMCAAH/AjMBAAH/ATMBZgEAAf8BMwGZAQAB/wEzAcwBAAH/ATMB/wEAAf8BZgIAAf8BZgEzAQABzAJm
+        AQAB/wFmAZkBAAH/AWYBzAEAAcwBZgH/AQAB/wGZAgAB/wGZATMBAAH/AZkBZgEAAf8CmQEAAf8BmQHM
+        AQAB/wGZAf8BAAH/AcwCAAH/AcwBMwEAAf8BzAFmAQAB/wHMAZkBAAH/AswBAAH/AcwB/wEAAv8BMwEA
+        AcwB/wFmAQAC/wGZAQAC/wHMAQACZgH/AQABZgH/AWYBAAFmAv8BAAH/AmYBAAH/AWYB/wEAAv8BZgEA
+        ASEBAAGlAQADXwEAA3cBAAOGAQADlgEAA8sBAAOyAQAD1wEAA90BAAPjAQAD6gEAA/EBAAP4AQAB8AH7
+        Af8BAAGkAqABAAOAAwAB/wIAAf8DAAL/AQAB/wMAAf8BAAH/AQAC/wIAA///AP8A/wD/AP8A/wD/AP8A
+        /wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
+        /wD/AP8A/wD/AP8A/wD/AP8A/wA/AAG8AQcB8l4AAf8CBwG8Af//AJkAAfcBQwERAQ4CEQG8WgAB/wFt
+        ARECDwERAWYB8v8AlwABtQFsAWYBEQIPAhEB6lgAAfEDEQEQAhEBZgGtAfP/AJUAAbwBrQGLAYYBEQMP
+        AhEBEgH/VQAB8gIRARABDwIRAqcCrQH0/wCTAAH0A60CpwQPARABEQETAf9TAAHyAhEDDwEQAUMBrQKn
+        Aa0Bz/8AkwABtQWtAREEDwEQAREB6gH/UQAB9AIRBA8BEQStAacBrQHx/wCRAAH0B60FDwEQAREB7AH/
+        TwAB/wIRBQ8BEQatAc//AJEAAQkHrQERBQ8CEQHsTgAB/wETAREFDwERCK0B9P8AjwAB/wmtAREBEAQP
+        AREBFQEHTQABbQERARADDwMRCK0Btf8AjwAB8wmtAhECEAIPAhEBEgH0SwAB9wIRAg8BEAMRCq3/AI8A
+        AQkJrQGGBBEBDwEQAhEBbQH/SQAB8gFDAhEBDgEQAxEBEAHOCa0B9P8AjgABtAqtARAIEQH3SAAB/wEV
+        AhEBEAURAYYKrQHx/wCNAAH/C60BZggRARQB80cAARMJEQutAQn/AI0AAf8MrQkRAW0B/0UAAQcJEQFm
+        C60BtP8AjQAB/wytChEB70QAAf8BFQkRDK0BtP8AjQAB9AytAYYJEQFDAfRDAAHqChEMrQHP/wCNAAHy
+        Da0BEAkRAepCAAHwChEBhgqtAawCrQH//wCMAAHdDa0BQwoRAQdAAAH/CxEOrQH//wCMAAEJDq0KEQEV
+        Af8/AAHsChEBQwStAs4IrQH//wCMAAEJDa0BzgEQChEB7D4AAfMLEQGnAq0EzgetAc4B//8AjAABCQ6t
+        AWYLEQHzPQABFAsRAc4BrQTOCa0B//8AjAABCQ+tCxEBFDwAAbwLEQFDA84B1APOCK0B//8AjAABCQ6t
+        Ac4MEQHvOgAB/wwRAYsDzgLUA84HrQH//wCMAAEJDK0CzgGtDREB/zkAAewMEQHUAc4E1APOB60B//8A
+        jAABCQqtAs4B1ALOAWYMEQHsOAAB9A0RAdoBzgHUAtoC1ALOBq0BzgH//wCMAAEJCa0DzgLUAdoBiwwR
+        AUMB8wUAAf8BvAHsAW0B7AJtAe0BvAH/GQAB8wEHAesB7AFtAewBbQH3AfEB/wUAARMMEQFDBNoB1ATO
+        Bq0BzgH//wCMAAEJCK0BzgGtAtQD2gGzDREBEwMAAfMCbQHrAm0BEwESAm0B6wFtAewB9BQAAf8BBwFt
+        AusBbQHqARMBEgFtAusBbQHtAf8CAAEHDREBFQXaAdQB2gLOB60B//8AjAABGQitA84B1ATaDhEBFAHy
+        AeoB6wFtAUMHEQFDARMCbQHvEgAB8gFtAesB6gFDBxEBQwESAW0BEQH3AeoOEQGLBtoC1ALOBa0BzwH/
+        /wCMAAEZCK0CzgbaEBECQwwRARQCbQH/DwAB7wFtAeoeEQGQB9oDzgWtAeYB//8AjAAB8gitAtQG2g8R
+        ARAPEQFDAW0B6w/sAesBFBARARAOEQGQCNoCzgWtAeYB//8AjAAB8witAc4B1AbaDhEBEAkRA0MGEQEV
+        AxMBEgETAW0BEwISBOoBEgETAUMGEQJDARMBEgEVAUMGEQEQDREBBgjaAs4FrQHVAf//AIwAARkBzgat
+        Ac4B1AbaAbkNEQEQBhEBQwQUARMCbQHqARIBQwIRAUMB8wsSAW0B9wFtBREBFAJtARMCFAHqAm0BEhIR
+        AYsB3wfaAdQBzgWtAdUB//8AjAABGQetAs4E2gLfAbkSEQFDARMBDwEOBA8BDgEQA20BFAIRAUMBEgoR
+        AUMGEQFtARMBDwEOAw8CDgEVAesBbQFDAxEBEAoRAUMBEQFmBN8E2gHUAc4DrQLOAdUB//8AjAAB8wet
+        Ac4F2gLfAZAB6gJtAesBbQEUAUMFEQEQBBECQwEPARAFEQEQAg8B6gFtAesBFAIRARAQEQFtARACDwUR
+        ARACDwHsAW0BQwkRAUMBFAJtAusBEgXfA9oB1ALOBK0B1f8AjQAB8wGzBq0BzgPaBN8BbAFtAesEbQHr
+        AeoBQwcRAkMBDwkRAQ8BDgHsAW0B6wIRARAPEQFtARABDwURAUMBFAIRAQ8BDgHsAeoIEQETBW0B7AFt
+        Af4F3wPaAs4DrQHOAdX/AI0AAfQBzwatBNoE3wHqA/IB8QHtBG0B6gFDBREBEwEPAxEBFQJDBRECDwHs
+        AW0BFQIRARAJEQEQBBEBFQEPAxEBQwHqAm0BEgFtARMBEQEPARAB6wFDBREBEwNtAewB7QHxAvIB8QH+
+        Bd8D2gLOAa0BzgKtAQn/AI0AAfQHrQHUAtoE3wH+AQcG8gHvAewDbQQRAUMBDwMRARIBEQFDBBEBFQIR
+        AQ8B6gFtARMCEQEPDREBEwEOAxECbQIUAhEBEwHqARIBEQEOAeoBQwMRARMB6wJtAewBvAXyAfMBswbf
+        AtoB1AHOA60BzgEJ/wCNAAH/AeYFrQHOAtoF3wGzA/MB9AH/AfQB8gHzAfIBvAGSAW0EEQEVAQ8CEQJt
+        A+sBbQHqAREBQwFtAUMBEAEPAewBEwIRARAJEQEPAxEBFQEPAhEEbQLrARMBQwEUAW0BEQIQARQEEQHt
+        Ae8B8QjyAZIG3wPaAc4DrQHOAQn/AI0AAf8BtAStAc4B1ALaBd8BkQTyAvQD/wL0AQcHEQHqCG0BEQHq
+        ARQBEQEOAewBQwsRARABDwMRAhABEQEUCG0BEQFtAUMBEQEPAW0DEQEVAfME8gHzBfIB8QH+Bt8C2gHO
+        A60BzgEZ/wCNAAH/AdsFrQLaBd8B/gG8BvID8wL0AfAEEQEQAhEB6whtARQBEwFDAREBDgHtAUMLEQEQ
+        AQ8DEQEPAhEKbQESAUMBEQEOARIDEQESDPIBuQbfAtoB1AKtAs4BGf8AjQAB/wHbBK0B1AHaBt8BkAry
+        AfMB8gHwBBEBEAIRAesJbQISAREBDgFtDBEBEAEPAxEBDwIRC20BEwERAQ8BFAMRAeoM8gEHAf4G3wLa
+        Ac4BrQLOAfP/AI4AAdsErQHUAdoF3wH+AbwM8gHxARADEQEQAhELbQFDAREBDgETAxEBEAgRARABDwMR
+        AQ8BEAERC20BQwERAQ8BQwMRAewN8gG5Bt8C2gHOAa0CzgH0/wCOAAHbBK0B1AbfAZAM8gHzAfIBEAYR
+        C20BFQERAQ8BQwMRARAJEQEPAxECEAERAeoJbQHrAUMBEQFDBBEBBw3yAQcB/gbfAdoBzgGtAs4B9P8A
+        jgABCQStAdoF3wH+AfAO8gETARADEQEPAREBQwHrCG0BEwERARABFAQRARAIEQFDAQ8EEQEPAREBQwHr
+        CG0B6gERARABFAMRAQ8B8QTyAfEB8wjyAbkG3wHaAc4BrQHOAdQB//8AjgABGQHOAq0BzgHaBN8B/gGS
+        D/IB7wEOBhEBFAHrBm0B6gIRAQ8BQwQRAUMJEQEQBBEBEAIRARQB6wdtAhEBQwQRARQC8gG8AUMCDgEP
+        AW0H8gHwBt8B2gHOAa0BzgHVAf//AI4AAfMDrQHOAdoE3wG5EfIBEAEPAxEBEAIRARQBbQHrAW0B6wFt
+        ARMCEQEPARUEEQEQChEBFQURAQ8CEQEUBG0B6wHqAxEBQwMRAQ8BBwHyAQcBDgEVAesB9wHsAREBQwfy
+        AQkB/gTfAdoBzgGtAc4B1f8AjwAB9AHOAq0BzgTfAf4BvBHyAQcBDgQRAUMDEQNDAxEBEAEVBREBFRER
+        ARADEQFDARMBFAFDAxEBQwQRARQC8gEPARMBvAHyAvQB8QFDAewG8gHzAbkF3wHUAs4B3P8AjwAB/wHV
+        Aq0BzgTfAboJ8gHtARICbQHqAewE8gHqDRECQwURARULEQIVARAMEQFDARQGEQLyAQcBDgHvAXQBFgH/
+        AXoB8wHrARAH8gG8Af4E3wHUAs4BGf8AkAAB2wKtAdQD3wH+AfAI8gHqAe0BEwFDAREBQwEUARIB8QPy
+        AUMGEQFDARUCFAEVAUMGEQEVAUMBbQIRAUMGEQFDAREBFAESBxEBQwMUAUMHEQEHAvIB7AERAesBvAH5
+        AkcB9AHrAQ8B8wfyAbkE3wHUAs4B9P8AkAABGQHOAa0BzgPfAbkJ8gJDBOwBEAFDAfcE8gETEBEBFAFD
+        AW0BFQJDBREBQwEUAREBFAITARIREQEHA/IB7wEQAusBRwJvAesB6gERCPIBBwH+A98B1AHOAeYB//8A
+        kAAB9AHUAa0BzgLfAf4BvAnyAhEDbQESAkMBkgXyAesOEQETARQCbQHqARMFEQFDARMBFQETAeoDbQES
+        AUMNEQETAfEF8gEPAm0BbgH5AW0B6wFDAe0J8gG5A98B1AHOAdv/AJEAAf8B1AGtAc4C3wG5CvIBQwER
+        AesCbQHrAkMBkgbyAfABEgoRARMB6wETA20B6gETAUMEEQFDARUHbQHrAeoBQwkRAUMB7wfyAfcBEAET
+        AW0BEgFtARUBQwHzCfIB9wPfAs4BGf8AkgAB3AGtAc4C3wG7CfIB8wEQAUMB6wNtARMBQwHtCfIB7wHq
+        ARQCEAJDAeoHbQHrAW0BEwEVAkMBFQESAesJbQHrAW0BEwFDARACEQHqAfcB8QTyAfMF8gEHAxEBEAFt
+        AfMF8gHxAfMD8gHxAf4C3wLOAfT/AJIAARkCzgHfAf4B8AXyAe0C6gESAeoBQwERAesDbQETARQBbQTs
+        AfAG8gHwARMB6wxtAesBbQETAhEBQwHqDG0D6wHsBPIBBwFDAg4BDwHtBPIB8wLxAvMD8gG8AUMCDgEP
+        AesD8gG5At8BzgHUAf//AJIAAfQBzgGtAd8BuQXyARMB7QLqARQB6gEVAREB6wNtARIBFQESAuoCEwHt
+        AfEF8gHxARMNbQHrARABDwEQAxEBEg1tAesB7APyAfcBDgEVAZIB9wGSARAB6gryAe8BDgEVAewB9wHs
+        ARABFQLyAfcB3wHaAc4B3P8AkwAB/wHVAa0B2gG0BPIB8wERAUME6gHsAQcB7ANtAfMBbQHqARMCQwER
+        ARUB7AXyAfEBEw1tAUMFDwIRDW0B6wHsA/IBDgHrARsB8wH/AfQB8wEQAe8J8gEPAW0C8gHzAf8B8QEQ
+        Ae0B8gG8Af4B1AHOAfP/AJQAAdwBrQHTAW0E8gHxAREBFAHyAfAF8gHxAe8B8gHwAe8B6wNtAewBEQHq
+        BfIB8QETDW0BDgERARQBbQEVARQB7AEPARQMbQHrAewC8gGSARAB8QGgAV4BoAFeAf8B6wEUCPIB7wEP
+        AfEBCAE8AVwBOQH0AZIBQwHyAfABuQHUAc4B//8AlAAB8wKtARQB7wPyAfEBQwESDPIB7ANtAe0BEQET
+        BfIB8QETDW0BDgKSAewB9wHrARACEQxtAesB7ALyAewBEQHtAfIBXgH7ARsB8wHrAUMI8gHsAREBBwGY
+        AVoB8wEdAfEB6wEQAfMB7AGLAc4B1f8AlQAB/wHOAa0BEQHrA/IB8wEQARME8gHzAfQB8wXyAfADbQHt
+        AREBEgXyAfMBEwxtAesBDgEPAQ4BDwEOAw8BFAxtAesB7ALyAewBEQFtAewBXgH7AQcB7AHqARMI8gGS
+        AREBbQHrAVoB7QH6AesBbQFDAfIBbQEVAc4B3f8AlgAB1QGGAREBEwG8A/IBEQEVAfIB9ALzAfQE/wH0
+        AfMB8gHxAewB6wFtAewBQwHsBfIB8wETDG0B6wEQBg8BDg1tAesB7ALyAfEBDwFtAVABWAHrATsBbQFD
+        Ae8J8gEOAm0B+gJaAesBQwHvAfACQwHOAf//AJYAAfIBZgERAUMBBwPyAesBFAEVAUMDFQETBP8B7wFD
+        AhUCQwEVARQB8AXyAfMBEw5tBQ8BDgEVDW0B6wHsA/IB9wERAW0D6wEUAeoK8gH3AREEbQEUAW0B8gHs
+        AhEB5v8AlwAB/wGRAhEB7APyAfMB7AQSARABQwT/Ae0BQwEUAxIB6gEHBvIB8wETDm0B6wFDAg8BEAHq
+        Dm0B6wHsBPIB7wIRAUMBEAHsBfIC8QXyAe8BEQEQAUMBEAHsAfMB8gFtAREBEgEJ/wCYAAHxAUMBEQET
+        CfIBFQFDBP8B7QFDAewL8gHzARMQbQPrD20B6wHsBfIB8wHyAfEB8wTyAe8BEAIOAQ8B7ATyAvMB8QH0
+        AvIB8AFDAREB7wH//wCYAAH/AewBEQFDAe8I8gEVAUMD/wH0Ae0BQwHsC/IB8wETIm0B6wHsDPIB7AEO
+        AewC8gEHAREB6gnyAewBEQFDAfP/AJoAAfECEQHrCPIBFQFDAfMC9AHyAewBQwHsC/IB8wETIm0B6wHs
+        C/IB8QEOAQcE/wH0ARAB7wjyARMBEQHrAfT/AJoAAfQBEgERAUMB8AfyAhUB9ALyAfMB7AFDAewL8gHz
+        ARMibQHrAewL8gHsAREB9AH/AeIC/wH0Ae0BEgfyAewBQwERAfH/AJsAAf8B7wIRAW0H8gH3AREBFQES
+        AeoBFAJDAQcL8gHzARMibQHrAewL8gITAewBvAHoAd8B8AEHAW0BQwbyAQcBEwERARIB9P8AnAAB9AEU
+        AREBFAHxBfIB8wHyAZIBFAIVAUMBEgEHDPIB8wETIm0B6wHsC/IB7AFDAusB/gK5AW0BEgFtBvIB7QFD
+        AREB7wH//wCcAAH/AfcCEQHsGvIB8wETIm0B6wHsC/IB8QEPAW0BswGRAW0B2gFtAREB8AbyARMBEQET
+        AfT/AJ4AAfQBFQERARQB8BnyAfMBEyJtAesB7AzyAfcBEAFtAesCbQEUAewG8gHtAhEB7wH//wCeAAH0
+        Ae0CEQHrGfIB8wETIm0B6wHsDfIBBwERAhABQwHvBvIB8QEUAREBEwHz/wCgAAHzARUBEQFDAfAY8gHz
+        ARMibQHrAewO8gLzAfQB8wfyAewCEQHvAf//AKAAAfQB7QIRAesZ8gETIm0B6wHsGPIB8QEUAREBEwHz
+        /wCiAAHzARUBEQFDAQcY8gETIm0B6wHsGPIB7AIRAe8B9P8AogAB9AHtAhEBbQHxCvIB8ALyAvED8gEH
+        AfIB8QLyARMibQHrAewX8gEHARUBEQETAfP/AKQAAfMBFQERAUMBbQL3Ae8BBwLsAesB7AHrAewBbQHs
+        AW0B7AHrAuwB6wFtBOwBEyJtAesBbQHsAe8B7QHsAe8CkgEHAewB7wGSAe8B9wHsAZIBvAHxAfABvAEH
+        AfAB8QHtAW0CEQHvAf//AKUAAZICEQETFm0B7AETIm0B6wETFm0B6wFDAREBEgH0/wCmAAFtARMCERZt
+        AesBEx5tBesBExdtAhEB7wG8/wCmAAFDAewBbQERAUMBbQHrEG0B6wFtAeoB9x/yBbwB7wHsARIRbQHr
+        AW0B6gFDARMBkgHrAQf/AKYAAZICbQHrAuwB6gEVARIB6gNtCesC6gHzKAAB/wHvARIBbQnrAm0B6gET
+        ARUB6gHsAe0B7AFtAuwB//8ApwAB9wZtAusDbQMTARIEbQHtAfMsAAH/AQcEbQESAxMCbQHtAW0B7AHr
+        BG0C7AH//wCpAAHxAZIB7AxtAfI3AAEUBW0B6wLsA20B6wHsAQcB//8ArQAC/wHxAQcC7ANtAesBkgES
+        AfQ3AAFtAZIB7QHrAm0B6wHsAe8BvAH0Af//ALcAA/8B9AHyAfQ5AAHyAfMD//8A/wD/AP8A/wD/AP8A
+        /wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
+        /wD/AP8A/wDHAAFCAU0BPgcAAT4DAAEoBAABAgIAAYADAAEBAQABAQYAASAWAAP/AQAQ/zAAEP8wABD/
+        MAAQ/zAAEP8wABD/MAAQ/zAAEP8wABD/MAAQ/zAAEP8wABD/MAAQ/zAAEP8wABD/MAAQ/zAAEP8wABD/
+        MAAQ/zAAEP8wABD/MAAQ/zAAEP8wABD/MAAB/wH8AX8K/wH+AQ8B/zAAAf8B8AEfCv8B+AEHAf8wAAH/
+        AeABDwr/AfABAwH/MAAB/wHAAQMK/wHgAQEB/zAAAf8BgAEBCv8BwAEBAf8wAAH/AYABAAr/AYABAAH/
+        MAAB/wIAAX8J/wIAAf8wAAH/AgABfwj/Af4CAAF/MAAB/gIAAT8I/wH+AgABfzAAAf4CAAEfCP8B/AIA
+        AX8wAAH+AgABDwj/AfgCAAE/MAAB/gIAAQ8I/wHwAgABPzAAAfwCAAEHCP8B8AIAAT8wAAH8AgABAwj/
+        AeACAAE/MAAB/AIAAQMI/wHAAgABPzAAAfwCAAEBCP8BwAIAAT8wAAH8AgABAQj/AYACAAEfMAAB/AMA
+        CP8DAAEfMAAB/AMAAX8H/wMAAR8wAAH8AwABfwb/Af4DAAEfMAAB/AMAAT8G/wH+AwABHzAAAfwDAAE/
+        Bv8B/AMAAR8wAAH8AwABHwb/AfgDAAEfMAAB/AMAAQ8G/wH4AwABHzAAAfwDAAEPBv8B8AMAAR8wAAH8
+        AwABBwHAAQ8C/wH4AQEB8AMAAR8wAAH8AwABBwEAAQMC/wHAAQABYAMAAR8wAAH8BQABAQL/AYAFAAEf
+        MAAB/AYAAX8B/wYAAR8wAAH8DgABHzAAAfwOAAEfMAAB/A4AAR8wAAH8DgABHzAAAfwOAAE/MAAB/A4A
+        AT8wAAH8DgABPzAAAfwOAAE/MAAB/A4AAT8wAAH8DgABPzAAAfwOAAE/MAAB/A4AAT8wAAH+DgABPzAA
+        Af4OAAE/MAAB/g4AAT8wAAH+DgABPzAAAf4OAAF/MAAB/g4AAX8wAAH+DgABfzAAAf8OAAF/MAAB/w4A
+        AX8wAAH/DgAB/zAAAf8OAAH/MAAB/wGADQAB/zAAAf8BgA0AAf8wAAH/AYAMAAEBAf8wAAH/AYAMAAEB
+        Af8wAAH/AcAMAAEBAf8wAAH/AcAMAAEDAf8wAAH/AcAMAAEDAf8wAAH/AeAMAAEDAf8wAAH/AeAMAAEH
+        Af8wAAH/AeAMAAEHAf8wAAH/AfAMAAEHAf8wAAH/AfAMAAEPAf8wAAH/AfgMAAEPAf8wAAH/AfgMAAEf
+        Af8wAAH/AfgMAAEfAf8wAAH/AfwMAAEfAf8wAAH/AfwMAAE/Af8wAAH/Af4MAAE/Af8wAAH/Af4MAAF/
+        Af8wAAL/DAABfwH/MAAC/wwAAv8wAAL/AYALAAL/MAAC/wGACgABAQL/MAAC/wHACgABAQL/MAAC/wHg
+        CgABAwL/MAAC/wHgCgABAwL/MAAC/wHgCgABAwL/MAAC/wHgAgABDwT/AfACAAEDAv8wAAL/AfACAAE/
+        BP8B/AIAAQcC/zAAAv8B+AEAAQcG/wHwAQABDwL/MAAD/wEAAQcG/wHwAQAD/zAAA/8B/AEPBv8B+AE/
+        A/8wABD/MAAQ/zAAEP8wABD/MAAQ/zAAEP8wABD/MAAQ/zAAEP8wABD/MAAQ/zAAEP8wABD/MAAQ/zAA
+        EP8wABD/MAAQ/zAAEP8wABD/MAAQ/zAACw==
+</value>
+  </data>
+  <data name="GamesList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 42</value>
+  </data>
+  <data name="GamesList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>899, 387</value>
+  </data>
+  <data name="GamesList.TabIndex" type="System.Int32, mscorlib">
+    <value>162</value>
+  </data>
+  <data name="&gt;&gt;GamesList.Name" xml:space="preserve">
+    <value>GamesList</value>
+  </data>
+  <data name="&gt;&gt;GamesList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GamesList.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GamesList.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="GSrchMultiCB.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="GSrchMultiCB.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="GSrchMultiCB.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GSrchMultiCB.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="GSrchMultiCB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>810, 480</value>
+  </data>
+  <data name="GSrchMultiCB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 32</value>
+  </data>
+  <data name="GSrchMultiCB.TabIndex" type="System.Int32, mscorlib">
+    <value>113</value>
+  </data>
+  <data name="GSrchMultiCB.Text" xml:space="preserve">
+    <value>Мультиплеер</value>
+  </data>
+  <data name="&gt;&gt;GSrchMultiCB.Name" xml:space="preserve">
+    <value>GSrchMultiCB</value>
+  </data>
+  <data name="&gt;&gt;GSrchMultiCB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GSrchMultiCB.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GSrchMultiCB.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="GamesLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GamesLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>51, 10</value>
+  </data>
+  <data name="GamesLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 22</value>
+  </data>
+  <data name="GamesLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>161</value>
+  </data>
+  <data name="GamesLabel.Text" xml:space="preserve">
+    <value>Игры</value>
+  </data>
+  <data name="&gt;&gt;GamesLabel.Name" xml:space="preserve">
+    <value>GamesLabel</value>
+  </data>
+  <data name="&gt;&gt;GamesLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GamesLabel.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GamesLabel.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="GSrchSingleCB.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="GSrchSingleCB.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="GSrchSingleCB.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GSrchSingleCB.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="GSrchSingleCB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>678, 480</value>
+  </data>
+  <data name="GSrchSingleCB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 32</value>
+  </data>
+  <data name="GSrchSingleCB.TabIndex" type="System.Int32, mscorlib">
+    <value>112</value>
+  </data>
+  <data name="GSrchSingleCB.Text" xml:space="preserve">
+    <value>Одиночный</value>
+  </data>
+  <data name="&gt;&gt;GSrchSingleCB.Name" xml:space="preserve">
+    <value>GSrchSingleCB</value>
+  </data>
+  <data name="&gt;&gt;GSrchSingleCB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GSrchSingleCB.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GSrchSingleCB.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="GameSearch.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="GameSearch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>275, 435</value>
+  </data>
+  <data name="GameSearch.MaxLength" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="GameSearch.Multiline" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="GameSearch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>679, 39</value>
+  </data>
+  <data name="GameSearch.TabIndex" type="System.Int32, mscorlib">
+    <value>160</value>
+  </data>
+  <data name="GameSearch.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GameSearch.ZoomFactor" type="System.Single, mscorlib">
+    <value>1.3</value>
+  </data>
+  <data name="&gt;&gt;GameSearch.Name" xml:space="preserve">
+    <value>GameSearch</value>
+  </data>
+  <data name="&gt;&gt;GameSearch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GameSearch.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GameSearch.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="GSrchDevLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="GSrchDevLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GSrchDevLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>51, 484</value>
+  </data>
+  <data name="GSrchDevLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 22</value>
+  </data>
+  <data name="GSrchDevLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>107</value>
+  </data>
+  <data name="GSrchDevLabel.Text" xml:space="preserve">
+    <value>Разработчик</value>
+  </data>
+  <data name="&gt;&gt;GSrchDevLabel.Name" xml:space="preserve">
+    <value>GSrchDevLabel</value>
+  </data>
+  <data name="&gt;&gt;GSrchDevLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GSrchDevLabel.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GSrchDevLabel.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="GSrchDev.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="GSrchDev.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="GSrchDev.Location" type="System.Drawing.Point, System.Drawing">
+    <value>188, 481</value>
+  </data>
+  <data name="GSrchDev.MaxLength" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="GSrchDev.Size" type="System.Drawing.Size, System.Drawing">
+    <value>484, 30</value>
+  </data>
+  <data name="GSrchDev.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;GSrchDev.Name" xml:space="preserve">
+    <value>GSrchDev</value>
+  </data>
+  <data name="&gt;&gt;GSrchDev.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GSrchDev.Parent" xml:space="preserve">
+    <value>GamePanel</value>
+  </data>
+  <data name="&gt;&gt;GSrchDev.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="AccountPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;PasswdRepeatLabel.Name" xml:space="preserve">
+    <value>PasswdRepeatLabel</value>
+  </data>
+  <data name="&gt;&gt;PasswdRepeatLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PasswdRepeatLabel.Parent" xml:space="preserve">
+    <value>AccountPanel</value>
+  </data>
+  <data name="&gt;&gt;PasswdRepeatLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;PasswdRepeat.Name" xml:space="preserve">
+    <value>PasswdRepeat</value>
+  </data>
+  <data name="&gt;&gt;PasswdRepeat.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PasswdRepeat.Parent" xml:space="preserve">
+    <value>AccountPanel</value>
+  </data>
+  <data name="&gt;&gt;PasswdRepeat.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;Passwd.Name" xml:space="preserve">
+    <value>Passwd</value>
+  </data>
+  <data name="&gt;&gt;Passwd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Passwd.Parent" xml:space="preserve">
+    <value>AccountPanel</value>
+  </data>
+  <data name="&gt;&gt;Passwd.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;AccSetingsLabel.Name" xml:space="preserve">
+    <value>AccSetingsLabel</value>
+  </data>
+  <data name="&gt;&gt;AccSetingsLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AccSetingsLabel.Parent" xml:space="preserve">
+    <value>AccountPanel</value>
+  </data>
+  <data name="&gt;&gt;AccSetingsLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;PasswdShow.Name" xml:space="preserve">
+    <value>PasswdShow</value>
+  </data>
+  <data name="&gt;&gt;PasswdShow.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PasswdShow.Parent" xml:space="preserve">
+    <value>AccountPanel</value>
+  </data>
+  <data name="&gt;&gt;PasswdShow.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;PasswdLabel.Name" xml:space="preserve">
+    <value>PasswdLabel</value>
+  </data>
+  <data name="&gt;&gt;PasswdLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PasswdLabel.Parent" xml:space="preserve">
+    <value>AccountPanel</value>
+  </data>
+  <data name="&gt;&gt;PasswdLabel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;EMail.Name" xml:space="preserve">
+    <value>EMail</value>
+  </data>
+  <data name="&gt;&gt;EMail.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EMail.Parent" xml:space="preserve">
+    <value>AccountPanel</value>
+  </data>
+  <data name="&gt;&gt;EMail.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;EMailLabel.Name" xml:space="preserve">
+    <value>EMailLabel</value>
+  </data>
+  <data name="&gt;&gt;EMailLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EMailLabel.Parent" xml:space="preserve">
+    <value>AccountPanel</value>
+  </data>
+  <data name="&gt;&gt;EMailLabel.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;AccSubmit.Name" xml:space="preserve">
+    <value>AccSubmit</value>
+  </data>
+  <data name="&gt;&gt;AccSubmit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AccSubmit.Parent" xml:space="preserve">
+    <value>AccountPanel</value>
+  </data>
+  <data name="&gt;&gt;AccSubmit.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;UserInfo.Name" xml:space="preserve">
+    <value>UserInfo</value>
+  </data>
+  <data name="&gt;&gt;UserInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;UserInfo.Parent" xml:space="preserve">
+    <value>AccountPanel</value>
+  </data>
+  <data name="&gt;&gt;UserInfo.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;UserName.Name" xml:space="preserve">
+    <value>UserName</value>
+  </data>
+  <data name="&gt;&gt;UserName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;UserName.Parent" xml:space="preserve">
+    <value>AccountPanel</value>
+  </data>
+  <data name="&gt;&gt;UserName.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;UserInfoLabel.Name" xml:space="preserve">
+    <value>UserInfoLabel</value>
+  </data>
+  <data name="&gt;&gt;UserInfoLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;UserInfoLabel.Parent" xml:space="preserve">
+    <value>AccountPanel</value>
+  </data>
+  <data name="&gt;&gt;UserInfoLabel.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;UserNameLabel.Name" xml:space="preserve">
+    <value>UserNameLabel</value>
+  </data>
+  <data name="&gt;&gt;UserNameLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;UserNameLabel.Parent" xml:space="preserve">
+    <value>AccountPanel</value>
+  </data>
+  <data name="&gt;&gt;UserNameLabel.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="AccountPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 784</value>
+  </data>
+  <data name="AccountPanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 10, 10, 10</value>
+  </data>
+  <data name="AccountPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1018, 297</value>
+  </data>
+  <data name="AccountPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="AccountPanel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;AccountPanel.Name" xml:space="preserve">
+    <value>AccountPanel</value>
+  </data>
+  <data name="&gt;&gt;AccountPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AccountPanel.Parent" xml:space="preserve">
+    <value>FlowLayout</value>
+  </data>
+  <data name="&gt;&gt;AccountPanel.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="PasswdRepeatLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2298,6 +2412,78 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;PrintColors.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="LeftGames.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="LeftGames.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="LeftGames.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LeftGames.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 41</value>
+  </data>
+  <data name="LeftGames.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 40</value>
+  </data>
+  <data name="LeftGames.TabIndex" type="System.Int32, mscorlib">
+    <value>167</value>
+  </data>
+  <data name="LeftGames.Text" xml:space="preserve">
+    <value>Игры</value>
+  </data>
+  <data name="LeftGames.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;LeftGames.Name" xml:space="preserve">
+    <value>LeftGames</value>
+  </data>
+  <data name="&gt;&gt;LeftGames.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LeftGames.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LeftGames.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="LeftSettings.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="LeftSettings.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="LeftSettings.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LeftSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 87</value>
+  </data>
+  <data name="LeftSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 40</value>
+  </data>
+  <data name="LeftSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>168</value>
+  </data>
+  <data name="LeftSettings.Text" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="LeftSettings.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;LeftSettings.Name" xml:space="preserve">
+    <value>LeftSettings</value>
+  </data>
+  <data name="&gt;&gt;LeftSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LeftSettings.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LeftSettings.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

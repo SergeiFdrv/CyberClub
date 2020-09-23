@@ -151,7 +151,7 @@
     <value>An error occured.</value>
   </data>
   <data name="ExeNotFound" xml:space="preserve">
-    <value>The program's executable file could not be found. The admin is a lazy ass for not adding the proper file path</value>
+    <value>The program's executable file could not be found. The lazy ass admin should have set the proper file path.</value>
   </data>
   <data name="FillInNecessaryTextBox" xml:space="preserve">
     <value>Fill in all the reqiured textfields.</value>
@@ -223,6 +223,6 @@
     <value>Yes</value>
   </data>
   <data name="YouAreBanned" xml:space="preserve">
-    <value>Seems like your account is suspended. The admin has more info.</value>
+    <value>Seems like your account has been suspended. The admin has more info.</value>
   </data>
 </root>

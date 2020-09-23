@@ -30,10 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
             this.AdminLabel = new System.Windows.Forms.Label();
-            this.LeftGames = new System.Windows.Forms.Button();
-            this.LeftAccounts = new System.Windows.Forms.Button();
-            this.LeftMessages = new System.Windows.Forms.Button();
-            this.LeftLogOut = new System.Windows.Forms.Button();
             this.GamesPanel = new System.Windows.Forms.Panel();
             this.GameEditPanel = new System.Windows.Forms.Panel();
             this.GEditPicName = new System.Windows.Forms.TextBox();
@@ -145,6 +141,10 @@
             this.MsgsIsRead = new System.Windows.Forms.CheckBox();
             this.GamePicOFD = new System.Windows.Forms.OpenFileDialog();
             this.PrintColors = new System.Windows.Forms.CheckBox();
+            this.LeftGames = new System.Windows.Forms.RadioButton();
+            this.LeftAccounts = new System.Windows.Forms.RadioButton();
+            this.LeftMessages = new System.Windows.Forms.RadioButton();
+            this.LeftLogOut = new System.Windows.Forms.RadioButton();
             this.GamesPanel.SuspendLayout();
             this.GameEditPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GEditPicBox)).BeginInit();
@@ -165,56 +165,19 @@
             resources.ApplyResources(this.AdminLabel, "AdminLabel");
             this.AdminLabel.Name = "AdminLabel";
             // 
-            // LeftGames
-            // 
-            resources.ApplyResources(this.LeftGames, "LeftGames");
-            this.LeftGames.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.LeftGames.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.LeftGames.Name = "LeftGames";
-            this.LeftGames.UseVisualStyleBackColor = true;
-            this.LeftGames.Click += new System.EventHandler(this.LeftGames_Click);
-            // 
-            // LeftAccounts
-            // 
-            resources.ApplyResources(this.LeftAccounts, "LeftAccounts");
-            this.LeftAccounts.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.LeftAccounts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.LeftAccounts.Name = "LeftAccounts";
-            this.LeftAccounts.UseVisualStyleBackColor = true;
-            this.LeftAccounts.Click += new System.EventHandler(this.LeftAccounts_Click);
-            // 
-            // LeftMessages
-            // 
-            resources.ApplyResources(this.LeftMessages, "LeftMessages");
-            this.LeftMessages.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.LeftMessages.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.LeftMessages.Name = "LeftMessages";
-            this.LeftMessages.UseVisualStyleBackColor = true;
-            this.LeftMessages.Click += new System.EventHandler(this.LeftMessages_Click);
-            // 
-            // LeftLogOut
-            // 
-            resources.ApplyResources(this.LeftLogOut, "LeftLogOut");
-            this.LeftLogOut.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.LeftLogOut.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.LeftLogOut.Name = "LeftLogOut";
-            this.LeftLogOut.UseVisualStyleBackColor = true;
-            this.LeftLogOut.Click += new System.EventHandler(this.LogOutButton_Click);
-            // 
             // GamesPanel
             // 
-            resources.ApplyResources(this.GamesPanel, "GamesPanel");
             this.GamesPanel.Controls.Add(this.GameEditPanel);
             this.GamesPanel.Controls.Add(this.GameAddPanel);
             this.GamesPanel.Controls.Add(this.GamesAllTab);
             this.GamesPanel.Controls.Add(this.GamesEditTab);
             this.GamesPanel.Controls.Add(this.GamesAddTab);
             this.GamesPanel.Controls.Add(this.DGVGames);
+            resources.ApplyResources(this.GamesPanel, "GamesPanel");
             this.GamesPanel.Name = "GamesPanel";
             // 
             // GameEditPanel
             // 
-            resources.ApplyResources(this.GameEditPanel, "GameEditPanel");
             this.GameEditPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(0)))));
             this.GameEditPanel.Controls.Add(this.GEditPicName);
             this.GameEditPanel.Controls.Add(this.GEditName);
@@ -246,22 +209,23 @@
             this.GameEditPanel.Controls.Add(this.GEditDevLabel);
             this.GameEditPanel.Controls.Add(this.GEditIDLabel);
             this.GameEditPanel.Controls.Add(this.GEditID);
+            resources.ApplyResources(this.GameEditPanel, "GameEditPanel");
             this.GameEditPanel.Name = "GameEditPanel";
             // 
             // GEditPicName
             // 
-            resources.ApplyResources(this.GEditPicName, "GEditPicName");
             this.GEditPicName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(0)))));
             this.GEditPicName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.GEditPicName.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GEditPicName, "GEditPicName");
             this.GEditPicName.Name = "GEditPicName";
             // 
             // GEditName
             // 
-            resources.ApplyResources(this.GEditName, "GEditName");
             this.GEditName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(0)))));
             this.GEditName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.GEditName.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GEditName, "GEditName");
             this.GEditName.Name = "GEditName";
             // 
             // GEditDevID
@@ -272,8 +236,8 @@
             // 
             // GEditPicID
             // 
-            resources.ApplyResources(this.GEditPicID, "GEditPicID");
             this.GEditPicID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(0)))));
+            resources.ApplyResources(this.GEditPicID, "GEditPicID");
             this.GEditPicID.ForeColor = System.Drawing.Color.Lime;
             this.GEditPicID.FormattingEnabled = true;
             this.GEditPicID.Name = "GEditPicID";
@@ -281,18 +245,18 @@
             // 
             // GEditPicBtn
             // 
-            resources.ApplyResources(this.GEditPicBtn, "GEditPicBtn");
             this.GEditPicBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.GEditPicBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GEditPicBtn, "GEditPicBtn");
             this.GEditPicBtn.Name = "GEditPicBtn";
             this.GEditPicBtn.UseVisualStyleBackColor = true;
             this.GEditPicBtn.Click += new System.EventHandler(this.GEditPicBtn_Click);
             // 
             // GEditDelPic
             // 
-            resources.ApplyResources(this.GEditDelPic, "GEditDelPic");
             this.GEditDelPic.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.GEditDelPic.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GEditDelPic, "GEditDelPic");
             this.GEditDelPic.Name = "GEditDelPic";
             this.GEditDelPic.UseVisualStyleBackColor = true;
             this.GEditDelPic.Click += new System.EventHandler(this.GEditDelPic_Click);
@@ -305,27 +269,27 @@
             // 
             // GEditDelDevBtn
             // 
-            resources.ApplyResources(this.GEditDelDevBtn, "GEditDelDevBtn");
             this.GEditDelDevBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.GEditDelDevBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GEditDelDevBtn, "GEditDelDevBtn");
             this.GEditDelDevBtn.Name = "GEditDelDevBtn";
             this.GEditDelDevBtn.UseVisualStyleBackColor = true;
             this.GEditDelDevBtn.Click += new System.EventHandler(this.GEditDelDevBtn_Click);
             // 
             // GEditDelGenreBtn
             // 
-            resources.ApplyResources(this.GEditDelGenreBtn, "GEditDelGenreBtn");
             this.GEditDelGenreBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.GEditDelGenreBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GEditDelGenreBtn, "GEditDelGenreBtn");
             this.GEditDelGenreBtn.Name = "GEditDelGenreBtn";
             this.GEditDelGenreBtn.UseVisualStyleBackColor = true;
             this.GEditDelGenreBtn.Click += new System.EventHandler(this.GEditDelGenreBtn_Click);
             // 
             // GEditDelSubmit
             // 
-            resources.ApplyResources(this.GEditDelSubmit, "GEditDelSubmit");
             this.GEditDelSubmit.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.GEditDelSubmit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GEditDelSubmit, "GEditDelSubmit");
             this.GEditDelSubmit.Name = "GEditDelSubmit";
             this.GEditDelSubmit.UseVisualStyleBackColor = true;
             this.GEditDelSubmit.Click += new System.EventHandler(this.GEditDelSubmit_Click);
@@ -368,17 +332,17 @@
             // 
             // GEditDevBtn
             // 
-            resources.ApplyResources(this.GEditDevBtn, "GEditDevBtn");
             this.GEditDevBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.GEditDevBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GEditDevBtn, "GEditDevBtn");
             this.GEditDevBtn.Name = "GEditDevBtn";
             this.GEditDevBtn.UseVisualStyleBackColor = true;
             this.GEditDevBtn.Click += new System.EventHandler(this.GEditDevBtn_Click);
             // 
             // GEditDev
             // 
-            resources.ApplyResources(this.GEditDev, "GEditDev");
             this.GEditDev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(0)))));
+            resources.ApplyResources(this.GEditDev, "GEditDev");
             this.GEditDev.ForeColor = System.Drawing.Color.Lime;
             this.GEditDev.FormattingEnabled = true;
             this.GEditDev.Name = "GEditDev";
@@ -392,34 +356,34 @@
             // 
             // GEditLink
             // 
-            resources.ApplyResources(this.GEditLink, "GEditLink");
             this.GEditLink.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(0)))));
             this.GEditLink.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.GEditLink.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GEditLink, "GEditLink");
             this.GEditLink.Name = "GEditLink";
             // 
             // GEditGenreBtn
             // 
-            resources.ApplyResources(this.GEditGenreBtn, "GEditGenreBtn");
             this.GEditGenreBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.GEditGenreBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GEditGenreBtn, "GEditGenreBtn");
             this.GEditGenreBtn.Name = "GEditGenreBtn";
             this.GEditGenreBtn.UseVisualStyleBackColor = true;
             this.GEditGenreBtn.Click += new System.EventHandler(this.GEditGenreBtn_Click);
             // 
             // GEditGenre
             // 
-            resources.ApplyResources(this.GEditGenre, "GEditGenre");
             this.GEditGenre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(0)))));
             this.GEditGenre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.GEditGenre.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GEditGenre, "GEditGenre");
             this.GEditGenre.Name = "GEditGenre";
             // 
             // GEditGenresCLB
             // 
-            resources.ApplyResources(this.GEditGenresCLB, "GEditGenresCLB");
             this.GEditGenresCLB.BackColor = System.Drawing.Color.Black;
             this.GEditGenresCLB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.GEditGenresCLB, "GEditGenresCLB");
             this.GEditGenresCLB.ForeColor = System.Drawing.Color.White;
             this.GEditGenresCLB.FormattingEnabled = true;
             this.GEditGenresCLB.MultiColumn = true;
@@ -428,9 +392,9 @@
             // 
             // GEditSubmit
             // 
-            resources.ApplyResources(this.GEditSubmit, "GEditSubmit");
             this.GEditSubmit.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.GEditSubmit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GEditSubmit, "GEditSubmit");
             this.GEditSubmit.Name = "GEditSubmit";
             this.GEditSubmit.UseVisualStyleBackColor = true;
             this.GEditSubmit.Click += new System.EventHandler(this.GEditSubmit_Click);
@@ -475,8 +439,8 @@
             // 
             // GEditID
             // 
-            resources.ApplyResources(this.GEditID, "GEditID");
             this.GEditID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(0)))));
+            resources.ApplyResources(this.GEditID, "GEditID");
             this.GEditID.ForeColor = System.Drawing.Color.Lime;
             this.GEditID.FormattingEnabled = true;
             this.GEditID.Name = "GEditID";
@@ -484,7 +448,6 @@
             // 
             // GameAddPanel
             // 
-            resources.ApplyResources(this.GameAddPanel, "GameAddPanel");
             this.GameAddPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(32)))));
             this.GameAddPanel.Controls.Add(this.GAddPicBrowse);
             this.GameAddPanel.Controls.Add(this.GAddPicButton);
@@ -504,22 +467,23 @@
             this.GameAddPanel.Controls.Add(this.GAddNameLabel);
             this.GameAddPanel.Controls.Add(this.GAddDev);
             this.GameAddPanel.Controls.Add(this.GAddName);
+            resources.ApplyResources(this.GameAddPanel, "GameAddPanel");
             this.GameAddPanel.Name = "GameAddPanel";
             // 
             // GAddPicBrowse
             // 
-            resources.ApplyResources(this.GAddPicBrowse, "GAddPicBrowse");
             this.GAddPicBrowse.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.GAddPicBrowse.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GAddPicBrowse, "GAddPicBrowse");
             this.GAddPicBrowse.Name = "GAddPicBrowse";
             this.GAddPicBrowse.UseVisualStyleBackColor = true;
             this.GAddPicBrowse.Click += new System.EventHandler(this.GAddPicBrowse_Click);
             // 
             // GAddPicButton
             // 
-            resources.ApplyResources(this.GAddPicButton, "GAddPicButton");
             this.GAddPicButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.GAddPicButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GAddPicButton, "GAddPicButton");
             this.GAddPicButton.Name = "GAddPicButton";
             this.GAddPicButton.UseVisualStyleBackColor = true;
             this.GAddPicButton.Click += new System.EventHandler(this.GAddPicButton_Click);
@@ -532,17 +496,17 @@
             // 
             // GAddPicName
             // 
-            resources.ApplyResources(this.GAddPicName, "GAddPicName");
             this.GAddPicName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(32)))));
             this.GAddPicName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.GAddPicName.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GAddPicName, "GAddPicName");
             this.GAddPicName.Name = "GAddPicName";
             // 
             // GAddNewDevBtn
             // 
-            resources.ApplyResources(this.GAddNewDevBtn, "GAddNewDevBtn");
             this.GAddNewDevBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.GAddNewDevBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GAddNewDevBtn, "GAddNewDevBtn");
             this.GAddNewDevBtn.Name = "GAddNewDevBtn";
             this.GAddNewDevBtn.UseVisualStyleBackColor = true;
             this.GAddNewDevBtn.Click += new System.EventHandler(this.GAddNewDevBtn_Click);
@@ -555,34 +519,34 @@
             // 
             // GAddLink
             // 
-            resources.ApplyResources(this.GAddLink, "GAddLink");
             this.GAddLink.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(32)))));
             this.GAddLink.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.GAddLink.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GAddLink, "GAddLink");
             this.GAddLink.Name = "GAddLink";
             // 
             // GAddNewGenreBtn
             // 
-            resources.ApplyResources(this.GAddNewGenreBtn, "GAddNewGenreBtn");
             this.GAddNewGenreBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.GAddNewGenreBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GAddNewGenreBtn, "GAddNewGenreBtn");
             this.GAddNewGenreBtn.Name = "GAddNewGenreBtn";
             this.GAddNewGenreBtn.UseVisualStyleBackColor = true;
             this.GAddNewGenreBtn.Click += new System.EventHandler(this.GAddNewGenreBtn_Click);
             // 
             // GAddNewGenre
             // 
-            resources.ApplyResources(this.GAddNewGenre, "GAddNewGenre");
             this.GAddNewGenre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(32)))));
             this.GAddNewGenre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.GAddNewGenre.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GAddNewGenre, "GAddNewGenre");
             this.GAddNewGenre.Name = "GAddNewGenre";
             // 
             // GAddGenresCLB
             // 
-            resources.ApplyResources(this.GAddGenresCLB, "GAddGenresCLB");
             this.GAddGenresCLB.BackColor = System.Drawing.Color.Black;
             this.GAddGenresCLB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.GAddGenresCLB, "GAddGenresCLB");
             this.GAddGenresCLB.ForeColor = System.Drawing.Color.White;
             this.GAddGenresCLB.FormattingEnabled = true;
             this.GAddGenresCLB.MultiColumn = true;
@@ -590,9 +554,9 @@
             // 
             // GAddSubmit
             // 
-            resources.ApplyResources(this.GAddSubmit, "GAddSubmit");
             this.GAddSubmit.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.GAddSubmit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GAddSubmit, "GAddSubmit");
             this.GAddSubmit.Name = "GAddSubmit";
             this.GAddSubmit.UseVisualStyleBackColor = true;
             this.GAddSubmit.Click += new System.EventHandler(this.GAddSubmit_Click);
@@ -637,55 +601,55 @@
             // 
             // GAddDev
             // 
-            resources.ApplyResources(this.GAddDev, "GAddDev");
             this.GAddDev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(32)))));
+            resources.ApplyResources(this.GAddDev, "GAddDev");
             this.GAddDev.ForeColor = System.Drawing.Color.Lime;
             this.GAddDev.FormattingEnabled = true;
             this.GAddDev.Name = "GAddDev";
             // 
             // GAddName
             // 
-            resources.ApplyResources(this.GAddName, "GAddName");
             this.GAddName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(32)))));
             this.GAddName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.GAddName.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GAddName, "GAddName");
             this.GAddName.Name = "GAddName";
             // 
             // GamesAllTab
             // 
-            resources.ApplyResources(this.GamesAllTab, "GamesAllTab");
             this.GamesAllTab.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.GamesAllTab.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GamesAllTab, "GamesAllTab");
             this.GamesAllTab.Name = "GamesAllTab";
             this.GamesAllTab.UseVisualStyleBackColor = true;
             this.GamesAllTab.Click += new System.EventHandler(this.GamesAllTab_Click);
             // 
             // GamesEditTab
             // 
-            resources.ApplyResources(this.GamesEditTab, "GamesEditTab");
             this.GamesEditTab.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.GamesEditTab.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GamesEditTab, "GamesEditTab");
             this.GamesEditTab.Name = "GamesEditTab";
             this.GamesEditTab.UseVisualStyleBackColor = true;
             this.GamesEditTab.Click += new System.EventHandler(this.GamesEditTab_Click);
             // 
             // GamesAddTab
             // 
-            resources.ApplyResources(this.GamesAddTab, "GamesAddTab");
             this.GamesAddTab.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.GamesAddTab.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GamesAddTab, "GamesAddTab");
             this.GamesAddTab.Name = "GamesAddTab";
             this.GamesAddTab.UseVisualStyleBackColor = true;
             this.GamesAddTab.Click += new System.EventHandler(this.GamesAddTab_Click);
             // 
             // DGVGames
             // 
-            resources.ApplyResources(this.DGVGames, "DGVGames");
             this.DGVGames.AllowUserToAddRows = false;
             this.DGVGames.AllowUserToDeleteRows = false;
             this.DGVGames.BackgroundColor = System.Drawing.Color.DimGray;
             this.DGVGames.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVGames.GridColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.DGVGames, "DGVGames");
             this.DGVGames.Name = "DGVGames";
             this.DGVGames.ReadOnly = true;
             this.DGVGames.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -701,18 +665,17 @@
             // 
             // AccountsPanel
             // 
-            resources.ApplyResources(this.AccountsPanel, "AccountsPanel");
             this.AccountsPanel.Controls.Add(this.AxEditPanel);
             this.AccountsPanel.Controls.Add(this.AxAddPanel);
             this.AccountsPanel.Controls.Add(this.AxAllTab);
             this.AccountsPanel.Controls.Add(this.AxEditTab);
             this.AccountsPanel.Controls.Add(this.AxAddTab);
             this.AccountsPanel.Controls.Add(this.DGVAccounts);
+            resources.ApplyResources(this.AccountsPanel, "AccountsPanel");
             this.AccountsPanel.Name = "AccountsPanel";
             // 
             // AxEditPanel
             // 
-            resources.ApplyResources(this.AxEditPanel, "AxEditPanel");
             this.AxEditPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(16)))), ((int)(((byte)(0)))));
             this.AxEditPanel.Controls.Add(this.AxEditID);
             this.AxEditPanel.Controls.Add(this.AxEditDelSubmit);
@@ -734,6 +697,7 @@
             this.AxEditPanel.Controls.Add(this.AxEditAuthLabel);
             this.AxEditPanel.Controls.Add(this.AxEditIDLabel);
             this.AxEditPanel.Controls.Add(this.AxEditAuth);
+            resources.ApplyResources(this.AxEditPanel, "AxEditPanel");
             this.AxEditPanel.Name = "AxEditPanel";
             // 
             // AxEditID
@@ -744,9 +708,9 @@
             // 
             // AxEditDelSubmit
             // 
-            resources.ApplyResources(this.AxEditDelSubmit, "AxEditDelSubmit");
             this.AxEditDelSubmit.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.AxEditDelSubmit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.AxEditDelSubmit, "AxEditDelSubmit");
             this.AxEditDelSubmit.Name = "AxEditDelSubmit";
             this.AxEditDelSubmit.UseVisualStyleBackColor = true;
             this.AxEditDelSubmit.Click += new System.EventHandler(this.AxEditDelSubmit_Click);
@@ -801,8 +765,8 @@
             // 
             // AxEditName
             // 
-            resources.ApplyResources(this.AxEditName, "AxEditName");
             this.AxEditName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(16)))), ((int)(((byte)(0)))));
+            resources.ApplyResources(this.AxEditName, "AxEditName");
             this.AxEditName.ForeColor = System.Drawing.Color.Lime;
             this.AxEditName.FormattingEnabled = true;
             this.AxEditName.Name = "AxEditName";
@@ -810,9 +774,9 @@
             // 
             // AxEditInfo
             // 
-            resources.ApplyResources(this.AxEditInfo, "AxEditInfo");
             this.AxEditInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(16)))), ((int)(((byte)(0)))));
             this.AxEditInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.AxEditInfo, "AxEditInfo");
             this.AxEditInfo.ForeColor = System.Drawing.Color.White;
             this.AxEditInfo.Name = "AxEditInfo";
             // 
@@ -830,25 +794,25 @@
             // 
             // AxEditEMail
             // 
-            resources.ApplyResources(this.AxEditEMail, "AxEditEMail");
             this.AxEditEMail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(16)))), ((int)(((byte)(0)))));
             this.AxEditEMail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.AxEditEMail, "AxEditEMail");
             this.AxEditEMail.ForeColor = System.Drawing.Color.White;
             this.AxEditEMail.Name = "AxEditEMail";
             // 
             // AxEditPasswd
             // 
-            resources.ApplyResources(this.AxEditPasswd, "AxEditPasswd");
             this.AxEditPasswd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(16)))), ((int)(((byte)(0)))));
             this.AxEditPasswd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.AxEditPasswd, "AxEditPasswd");
             this.AxEditPasswd.ForeColor = System.Drawing.Color.White;
             this.AxEditPasswd.Name = "AxEditPasswd";
             // 
             // AxEditSubmit
             // 
-            resources.ApplyResources(this.AxEditSubmit, "AxEditSubmit");
             this.AxEditSubmit.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.AxEditSubmit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.AxEditSubmit, "AxEditSubmit");
             this.AxEditSubmit.Name = "AxEditSubmit";
             this.AxEditSubmit.UseVisualStyleBackColor = true;
             this.AxEditSubmit.Click += new System.EventHandler(this.AxEditSubmit_Click);
@@ -873,16 +837,15 @@
             // 
             // AxEditAuth
             // 
-            resources.ApplyResources(this.AxEditAuth, "AxEditAuth");
             this.AxEditAuth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(16)))), ((int)(((byte)(0)))));
             this.AxEditAuth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.AxEditAuth, "AxEditAuth");
             this.AxEditAuth.ForeColor = System.Drawing.Color.Lime;
             this.AxEditAuth.FormattingEnabled = true;
             this.AxEditAuth.Name = "AxEditAuth";
             // 
             // AxAddPanel
             // 
-            resources.ApplyResources(this.AxAddPanel, "AxAddPanel");
             this.AxAddPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.AxAddPanel.Controls.Add(this.AxAddShowPasswd);
             this.AxAddPanel.Controls.Add(this.AxAddInfo);
@@ -896,6 +859,7 @@
             this.AxAddPanel.Controls.Add(this.AxAddIDLabel);
             this.AxAddPanel.Controls.Add(this.AxAddAuth);
             this.AxAddPanel.Controls.Add(this.AxAddName);
+            resources.ApplyResources(this.AxAddPanel, "AxAddPanel");
             this.AxAddPanel.Name = "AxAddPanel";
             // 
             // AxAddShowPasswd
@@ -912,10 +876,10 @@
             // 
             // AxAddInfo
             // 
-            resources.ApplyResources(this.AxAddInfo, "AxAddInfo");
             this.AxAddInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.AxAddInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.AxAddInfo.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.AxAddInfo, "AxAddInfo");
             this.AxAddInfo.Name = "AxAddInfo";
             // 
             // AxAddInfoLabel
@@ -932,25 +896,25 @@
             // 
             // AxAddEMail
             // 
-            resources.ApplyResources(this.AxAddEMail, "AxAddEMail");
             this.AxAddEMail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.AxAddEMail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.AxAddEMail.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.AxAddEMail, "AxAddEMail");
             this.AxAddEMail.Name = "AxAddEMail";
             // 
             // AxAddPasswd
             // 
-            resources.ApplyResources(this.AxAddPasswd, "AxAddPasswd");
             this.AxAddPasswd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.AxAddPasswd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.AxAddPasswd.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.AxAddPasswd, "AxAddPasswd");
             this.AxAddPasswd.Name = "AxAddPasswd";
             // 
             // AxAddSubmit
             // 
-            resources.ApplyResources(this.AxAddSubmit, "AxAddSubmit");
             this.AxAddSubmit.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.AxAddSubmit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.AxAddSubmit, "AxAddSubmit");
             this.AxAddSubmit.Name = "AxAddSubmit";
             this.AxAddSubmit.UseVisualStyleBackColor = true;
             this.AxAddSubmit.Click += new System.EventHandler(this.AxAddSubmit_Click);
@@ -975,56 +939,56 @@
             // 
             // AxAddAuth
             // 
-            resources.ApplyResources(this.AxAddAuth, "AxAddAuth");
             this.AxAddAuth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.AxAddAuth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.AxAddAuth, "AxAddAuth");
             this.AxAddAuth.ForeColor = System.Drawing.Color.Lime;
             this.AxAddAuth.FormattingEnabled = true;
             this.AxAddAuth.Name = "AxAddAuth";
             // 
             // AxAddName
             // 
-            resources.ApplyResources(this.AxAddName, "AxAddName");
             this.AxAddName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.AxAddName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.AxAddName.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.AxAddName, "AxAddName");
             this.AxAddName.Name = "AxAddName";
             // 
             // AxAllTab
             // 
-            resources.ApplyResources(this.AxAllTab, "AxAllTab");
             this.AxAllTab.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.AxAllTab.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.AxAllTab, "AxAllTab");
             this.AxAllTab.Name = "AxAllTab";
             this.AxAllTab.UseVisualStyleBackColor = true;
             this.AxAllTab.Click += new System.EventHandler(this.AxAllTab_Click);
             // 
             // AxEditTab
             // 
-            resources.ApplyResources(this.AxEditTab, "AxEditTab");
             this.AxEditTab.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.AxEditTab.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.AxEditTab, "AxEditTab");
             this.AxEditTab.Name = "AxEditTab";
             this.AxEditTab.UseVisualStyleBackColor = true;
             this.AxEditTab.Click += new System.EventHandler(this.AxEditTab_Click);
             // 
             // AxAddTab
             // 
-            resources.ApplyResources(this.AxAddTab, "AxAddTab");
             this.AxAddTab.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.AxAddTab.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.AxAddTab, "AxAddTab");
             this.AxAddTab.Name = "AxAddTab";
             this.AxAddTab.UseVisualStyleBackColor = true;
             this.AxAddTab.Click += new System.EventHandler(this.AxAddTab_Click);
             // 
             // DGVAccounts
             // 
-            resources.ApplyResources(this.DGVAccounts, "DGVAccounts");
             this.DGVAccounts.AllowUserToAddRows = false;
             this.DGVAccounts.AllowUserToDeleteRows = false;
             this.DGVAccounts.BackgroundColor = System.Drawing.Color.DimGray;
             this.DGVAccounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVAccounts.GridColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.DGVAccounts, "DGVAccounts");
             this.DGVAccounts.Name = "DGVAccounts";
             this.DGVAccounts.ReadOnly = true;
             this.DGVAccounts.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1035,16 +999,15 @@
             // 
             // MessagesPanel
             // 
-            resources.ApplyResources(this.MessagesPanel, "MessagesPanel");
             this.MessagesPanel.Controls.Add(this.MessagesReader);
             this.MessagesPanel.Controls.Add(this.DGVMessages);
             this.MessagesPanel.Controls.Add(this.MsgsSwitch);
             this.MessagesPanel.Controls.Add(this.MsgsIsRead);
+            resources.ApplyResources(this.MessagesPanel, "MessagesPanel");
             this.MessagesPanel.Name = "MessagesPanel";
             // 
             // MessagesReader
             // 
-            resources.ApplyResources(this.MessagesReader, "MessagesReader");
             this.MessagesReader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(48)))), ((int)(((byte)(32)))));
             this.MessagesReader.Controls.Add(this.MsgsID);
             this.MessagesReader.Controls.Add(this.MsgsTimeLabel);
@@ -1055,6 +1018,7 @@
             this.MessagesReader.Controls.Add(this.MsgsBriefly);
             this.MessagesReader.Controls.Add(this.MsgsFromLabel);
             this.MessagesReader.Controls.Add(this.MsgsFrom);
+            resources.ApplyResources(this.MessagesReader, "MessagesReader");
             this.MessagesReader.Name = "MessagesReader";
             // 
             // MsgsID
@@ -1071,19 +1035,19 @@
             // 
             // MsgsTime
             // 
-            resources.ApplyResources(this.MsgsTime, "MsgsTime");
             this.MsgsTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(48)))), ((int)(((byte)(32)))));
             this.MsgsTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MsgsTime.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.MsgsTime, "MsgsTime");
             this.MsgsTime.Name = "MsgsTime";
             this.MsgsTime.ReadOnly = true;
             // 
             // MsgsDetails
             // 
-            resources.ApplyResources(this.MsgsDetails, "MsgsDetails");
             this.MsgsDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(48)))), ((int)(((byte)(32)))));
             this.MsgsDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MsgsDetails.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.MsgsDetails, "MsgsDetails");
             this.MsgsDetails.Name = "MsgsDetails";
             this.MsgsDetails.ReadOnly = true;
             // 
@@ -1101,10 +1065,10 @@
             // 
             // MsgsBriefly
             // 
-            resources.ApplyResources(this.MsgsBriefly, "MsgsBriefly");
             this.MsgsBriefly.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(48)))), ((int)(((byte)(32)))));
             this.MsgsBriefly.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MsgsBriefly.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.MsgsBriefly, "MsgsBriefly");
             this.MsgsBriefly.Name = "MsgsBriefly";
             this.MsgsBriefly.ReadOnly = true;
             // 
@@ -1116,19 +1080,19 @@
             // 
             // MsgsFrom
             // 
-            resources.ApplyResources(this.MsgsFrom, "MsgsFrom");
             this.MsgsFrom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(48)))), ((int)(((byte)(32)))));
             this.MsgsFrom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MsgsFrom.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.MsgsFrom, "MsgsFrom");
             this.MsgsFrom.Name = "MsgsFrom";
             this.MsgsFrom.ReadOnly = true;
             // 
             // DGVMessages
             // 
-            resources.ApplyResources(this.DGVMessages, "DGVMessages");
             this.DGVMessages.BackgroundColor = System.Drawing.Color.DimGray;
             this.DGVMessages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVMessages.GridColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.DGVMessages, "DGVMessages");
             this.DGVMessages.MultiSelect = false;
             this.DGVMessages.Name = "DGVMessages";
             this.DGVMessages.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1140,9 +1104,9 @@
             // 
             // MsgsSwitch
             // 
-            resources.ApplyResources(this.MsgsSwitch, "MsgsSwitch");
             this.MsgsSwitch.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.MsgsSwitch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.MsgsSwitch, "MsgsSwitch");
             this.MsgsSwitch.Name = "MsgsSwitch";
             this.MsgsSwitch.UseVisualStyleBackColor = true;
             this.MsgsSwitch.Click += new System.EventHandler(this.MsgsSwitch_Click);
@@ -1175,20 +1139,68 @@
             this.PrintColors.UseVisualStyleBackColor = false;
             this.PrintColors.CheckedChanged += new System.EventHandler(this.PrintColors_CheckedChanged);
             // 
+            // LeftGames
+            // 
+            resources.ApplyResources(this.LeftGames, "LeftGames");
+            this.LeftGames.BackColor = System.Drawing.Color.Transparent;
+            this.LeftGames.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.LeftGames.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.LeftGames.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.LeftGames.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.LeftGames.Name = "LeftGames";
+            this.LeftGames.UseVisualStyleBackColor = false;
+            this.LeftGames.CheckedChanged += new System.EventHandler(this.LeftGames_CheckedChanged);
+            // 
+            // LeftAccounts
+            // 
+            resources.ApplyResources(this.LeftAccounts, "LeftAccounts");
+            this.LeftAccounts.BackColor = System.Drawing.Color.Transparent;
+            this.LeftAccounts.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.LeftAccounts.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.LeftAccounts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.LeftAccounts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.LeftAccounts.Name = "LeftAccounts";
+            this.LeftAccounts.UseVisualStyleBackColor = false;
+            this.LeftAccounts.CheckedChanged += new System.EventHandler(this.LeftAccounts_CheckedChanged);
+            // 
+            // LeftMessages
+            // 
+            resources.ApplyResources(this.LeftMessages, "LeftMessages");
+            this.LeftMessages.BackColor = System.Drawing.Color.Transparent;
+            this.LeftMessages.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.LeftMessages.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.LeftMessages.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.LeftMessages.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.LeftMessages.Name = "LeftMessages";
+            this.LeftMessages.UseVisualStyleBackColor = false;
+            this.LeftMessages.CheckedChanged += new System.EventHandler(this.LeftMessages_CheckedChanged);
+            // 
+            // LeftLogOut
+            // 
+            resources.ApplyResources(this.LeftLogOut, "LeftLogOut");
+            this.LeftLogOut.BackColor = System.Drawing.Color.Transparent;
+            this.LeftLogOut.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.LeftLogOut.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.LeftLogOut.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.LeftLogOut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.LeftLogOut.Name = "LeftLogOut";
+            this.LeftLogOut.UseVisualStyleBackColor = false;
+            this.LeftLogOut.CheckedChanged += new System.EventHandler(this.LogOutButton_CheckedChanged);
+            // 
             // AdminForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.LeftLogOut);
+            this.Controls.Add(this.LeftMessages);
+            this.Controls.Add(this.LeftAccounts);
+            this.Controls.Add(this.LeftGames);
             this.Controls.Add(this.PrintColors);
             this.Controls.Add(this.MessagesPanel);
             this.Controls.Add(this.AccountsPanel);
             this.Controls.Add(this.UserLabel);
             this.Controls.Add(this.GamesPanel);
-            this.Controls.Add(this.LeftLogOut);
-            this.Controls.Add(this.LeftMessages);
-            this.Controls.Add(this.LeftAccounts);
-            this.Controls.Add(this.LeftGames);
             this.Controls.Add(this.AdminLabel);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -1223,10 +1235,6 @@
         #endregion
 
         private System.Windows.Forms.Label AdminLabel;
-        private System.Windows.Forms.Button LeftGames;
-        private System.Windows.Forms.Button LeftAccounts;
-        private System.Windows.Forms.Button LeftMessages;
-        private System.Windows.Forms.Button LeftLogOut;
         private System.Windows.Forms.Panel GamesPanel;
         private System.Windows.Forms.Button GamesEditTab;
         private System.Windows.Forms.Button GamesAddTab;
@@ -1338,5 +1346,9 @@
         private System.Windows.Forms.TextBox GEditName;
         private System.Windows.Forms.TextBox GEditPicName;
         private System.Windows.Forms.CheckBox PrintColors;
+        private System.Windows.Forms.RadioButton LeftGames;
+        private System.Windows.Forms.RadioButton LeftAccounts;
+        private System.Windows.Forms.RadioButton LeftMessages;
+        private System.Windows.Forms.RadioButton LeftLogOut;
     }
 }
