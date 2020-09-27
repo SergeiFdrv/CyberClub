@@ -37,7 +37,7 @@ namespace CyberClub
         private void AdminForm_FormClosed(object sender, FormClosedEventArgs e) =>
             Owner.Show();
 
-        // -------------------- Кнопки левого бокового меню --------------------
+        #region LeftMenu // Кнопки левого бокового меню
         private void LeftGames_CheckedChanged(object sender, EventArgs e)
         {
             if (GamesPanel.Visible = LeftGames.Checked)
@@ -71,9 +71,10 @@ namespace CyberClub
         }
 
         private void LogOutButton_CheckedChanged(object sender, EventArgs e) => Close();
+        #endregion
 
-        // ------------------------- ИГРЫ -------------------------
-        // -------------------- Верхние кнопки --------------------
+        #region GAMES    // ИГРЫ
+        #region Top      // Верхние кнопки
         private void GamesAllTab_Click(object sender, EventArgs e)
         {
             GameAddPanel.Visible = GameEditPanel.Visible = false;
@@ -97,8 +98,19 @@ namespace CyberClub
             UpdateBox(GEditGenresCLB.Items, "genrename", "genres", "genreid");
             UpdateBox(GEditPicID.Items, "picid", "pics");
         }
+        #endregion
 
-        // ----------------------- Внутри вкладки "Добавить игру" -----------------------
+        #region Add      // Внутри вкладки "Добавить игру"
+        private void GAddLinkBtn_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = Properties.Resources.FileFilterEXE;
+                openFileDialog.ShowDialog();
+                GAddLink.Text = openFileDialog.FileName;
+            }
+        }
+
         private void GAddNewDevBtn_Click(object sender, EventArgs e)
         {
             if (AddGetDevID(GAddDev.Text) < 0) Voice.Say(Resources.Lang.AddError);
@@ -247,8 +259,9 @@ namespace CyberClub
             }
             return query.Substring(0, query.Length - 1);
         }
+        #endregion
 
-        // ---------------------- Внутри вкладки "Изменить игру" ----------------------
+        #region Edit     // Внутри вкладки "Изменить игру"
         private void DGVGames_CellDoubleClick
             (object sender, DataGridViewCellEventArgs e)
         {
@@ -304,6 +317,16 @@ namespace CyberClub
                         GEditGenresCLB.SetItemChecked(GEditGenresCLB.Items.IndexOf(
                             dataReader["genrename"].ToString()), true);
                 }
+            }
+        }
+
+        private void GEditLinkBtn_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = Properties.Resources.FileFilterEXE;
+                openFileDialog.ShowDialog();
+                GEditLink.Text = openFileDialog.FileName;
             }
         }
 
@@ -451,21 +474,19 @@ namespace CyberClub
             GEditPicID.Text = "";
             UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
         }
+        #endregion
 
-        // ----------------------- Удаление информации об играх -----------------------
+        #region Delete   // Удаление информации об играх
         private void GEditDelDevBtn_Click(object sender, EventArgs e)
         {
             if (Voice.Ask(Resources.Lang.DeleteDeveloperPrompt) == DialogResult.No) return;
             if (!int.TryParse(GEditDevID.Text, out int id)) return;
-            string query = "UPDATE games SET madeby = null WHERE madeby = @id";
             using (SqlConnection conn = new SqlConnection(LoginForm.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = query;
-                command.Parameters.Add(new SqlParameter("@id", id));
-                command.ExecuteNonQuery();
                 command.CommandText = "DELETE FROM devs WHERE devid = @id";
+                command.Parameters.Add(new SqlParameter("@id", id));
                 command.ExecuteNonQuery();
             }
             GEditDev.Text = "";
@@ -480,7 +501,8 @@ namespace CyberClub
                 Voice.Say(Resources.Lang.SelectAGenreToDelete);
                 return;
             }
-            if (Voice.Ask(Resources.Lang.DeleteGenrePrompt) == DialogResult.No) return;
+            if (Voice.Ask(Resources.Lang.DeleteGenrePrompt + ' ' +
+                GEditGenresCLB.SelectedItem.ToString()) == DialogResult.No) return;
             using (SqlConnection conn = new SqlConnection(LoginForm.CS))
             {
                 if (!ConnOpen(conn)) return;
@@ -490,10 +512,8 @@ namespace CyberClub
                 command.Parameters.Add(new SqlParameter
                     ("@name", GEditGenresCLB.SelectedItem.ToString()));
                 int id = (int)command.ExecuteScalar();
-                command.CommandText = "DELETE FROM gamegenre WHERE genre = @id";
-                command.Parameters.Add(new SqlParameter("@id", id));
-                command.ExecuteNonQuery();
                 command.CommandText = "DELETE FROM genres WHERE genreid = @id";
+                command.Parameters.Add(new SqlParameter("@id", id));
                 command.ExecuteNonQuery();
             }
             UpdateBox(GEditGenresCLB.Items, "genrename", "genres", "genreid");
@@ -508,10 +528,7 @@ namespace CyberClub
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = 
-                    "UPDATE games SET gamepic = NULL WHERE gamepic = @id";
                 command.Parameters.Add(new SqlParameter("@id", id));
-                command.ExecuteNonQuery();
                 command.CommandText = "DELETE FROM pics WHERE picid = @id";
                 command.ExecuteNonQuery();
             }
@@ -527,20 +544,18 @@ namespace CyberClub
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = "DELETE FROM gamegenre WHERE game = @id";
                 command.Parameters.Add(new SqlParameter("@id", id));
-                command.ExecuteNonQuery();
-                command.CommandText = "DELETE FROM subscriptions WHERE game = @id";
-                command.ExecuteNonQuery();
                 command.CommandText = "DELETE FROM games WHERE gameid = @id";
                 command.ExecuteNonQuery();
             }
             GEditPicID.Text = "";
             UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
         }
+        #endregion
+        #endregion
 
-        // ------------------------- УЧЕТНЫЕ ЗАПИСИ -------------------------
-        // ------------------------- Верхние кнопки -------------------------
+        #region ACCOUNTS // УЧЕТНЫЕ ЗАПИСИ
+        #region Top // ------------------------- Верхние кнопки -------------------------
         private void AxAllTab_Click(object sender, EventArgs e)
         {
             AxAddPanel.Visible = AxEditPanel.Visible = false;
@@ -562,8 +577,9 @@ namespace CyberClub
             AxEditPanel.Visible = true;
             UpdateBox(AxEditAuth.Items, "authname", "hierarchy", "authid");
         }
+        #endregion
 
-        // ----------------- Внутри вкладки "Добавить аккаунт" -----------------
+        #region Add // ----------------- Внутри вкладки "Добавить аккаунт" -----------------
         private void AxAddShowPasswd_CheckedChanged(object sender, EventArgs e) =>
             AxAddPasswd.PasswordChar = AxAddPasswd.PasswordChar == '*' ? '\0' : '*';
 
@@ -594,8 +610,9 @@ namespace CyberClub
             UpdateData(AccountsPanel, AccountsDGVQuery,
                 new ComboBox[] { AxEditName }, "username");
         }
+        #endregion
 
-        // ----------------- Внутри вкладки "Редактировать аккаунт" -----------------
+        #region Edit // ----------------- Внутри вкладки "Редактировать аккаунт" -----------------
         private void DGVAccounts_CellDoubleClick
             (object sender, DataGridViewCellEventArgs e)
         {
@@ -695,19 +712,19 @@ namespace CyberClub
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = "DELETE FROM subscriptions WHERE who = @id";
                 command.Parameters.Add(new SqlParameter("@id", id));
-                command.ExecuteNonQuery();
                 command.CommandText = "UPDATE feedback SET who = NULL WHERE who = @id";
-                command.ExecuteNonQuery();
+                command.ExecuteNonQuery(); // триггер делает не то
                 command.CommandText = "DELETE FROM users WHERE userid = @id";
                 command.ExecuteNonQuery();
             }
             UpdateData(AccountsPanel, AccountsDGVQuery,
                 new ComboBox[] { AxEditName }, "username");
         }
+        #endregion
+        #endregion
 
-        // ----------------------- Обратная связь -----------------------
+        #region Feedback // Обратная связь
         private void DGVMessages_CellClick(object sender, DataGridViewCellEventArgs e) =>
             DGVMessages.Rows[e.RowIndex].Selected = true;
 
@@ -772,8 +789,9 @@ namespace CyberClub
                 command.ExecuteNonQuery();
             }
         }
+        #endregion
 
-        // -------------------------- Обновление данных --------------------------
+        #region Update   // Обновление данных
         private static string GamesDGVQuery => "SELECT gameid AS id, " +
             "gamename AS name, devname AS dev, singleplayer AS sngl, multiplayer AS " +
             "mlt, COUNT(who) AS subs, CONVERT(varchar, ROUND(AVG(CAST(rate AS float))," +
@@ -839,6 +857,7 @@ namespace CyberClub
             }
             return true;
         }
+        #endregion
 
         // ----------------------- Заимствования -----------------------
         private static bool UpdateBox(IList items,

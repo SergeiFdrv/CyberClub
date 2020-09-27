@@ -18,8 +18,7 @@ namespace CyberClub
             InitializeComponent();
         }
 
-        public static string CS => @"Data Source=DESKTOP-LFCR3E8\SQLEXPRESS;" +
-            "Initial Catalog=CyberClub;Integrated Security=True";
+        public static string CS => Properties.Settings.Default.CyberClubConnectionString;
 
         public static int UserID { get; private set; }
 

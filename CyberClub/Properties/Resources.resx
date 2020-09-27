@@ -153,6 +153,9 @@
   <data name="ExeNotFound" xml:space="preserve">
     <value>Файл не найден. Админ раздолбай</value>
   </data>
+  <data name="FileFilterEXE" xml:space="preserve">
+    <value>Applications | *.exe</value>
+  </data>
   <data name="FillInNecessaryTextBox" xml:space="preserve">
     <value>Заполните обязательное поле.</value>
   </data>

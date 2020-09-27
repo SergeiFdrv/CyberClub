@@ -169,6 +169,15 @@ namespace CyberClub.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Applications | *.exe.
+        /// </summary>
+        internal static string FileFilterEXE {
+            get {
+                return ResourceManager.GetString("FileFilterEXE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Заполните обязательное поле..
         /// </summary>
         internal static string FillInNecessaryTextBox {

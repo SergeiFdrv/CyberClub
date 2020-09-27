@@ -63,6 +63,7 @@
             this.GEditIDLabel = new System.Windows.Forms.Label();
             this.GEditID = new System.Windows.Forms.ComboBox();
             this.GameAddPanel = new System.Windows.Forms.Panel();
+            this.GAddLinkBtn = new System.Windows.Forms.Button();
             this.GAddPicBrowse = new System.Windows.Forms.Button();
             this.GAddPicButton = new System.Windows.Forms.Button();
             this.GAddPicBox = new System.Windows.Forms.PictureBox();
@@ -145,6 +146,7 @@
             this.LeftAccounts = new System.Windows.Forms.RadioButton();
             this.LeftMessages = new System.Windows.Forms.RadioButton();
             this.LeftLogOut = new System.Windows.Forms.RadioButton();
+            this.GEditLinkBtn = new System.Windows.Forms.Button();
             this.GamesPanel.SuspendLayout();
             this.GameEditPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GEditPicBox)).BeginInit();
@@ -179,6 +181,7 @@
             // GameEditPanel
             // 
             this.GameEditPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(0)))));
+            this.GameEditPanel.Controls.Add(this.GEditLinkBtn);
             this.GameEditPanel.Controls.Add(this.GEditPicName);
             this.GameEditPanel.Controls.Add(this.GEditName);
             this.GameEditPanel.Controls.Add(this.GEditDevID);
@@ -383,6 +386,7 @@
             // 
             this.GEditGenresCLB.BackColor = System.Drawing.Color.Black;
             this.GEditGenresCLB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GEditGenresCLB.CheckOnClick = true;
             resources.ApplyResources(this.GEditGenresCLB, "GEditGenresCLB");
             this.GEditGenresCLB.ForeColor = System.Drawing.Color.White;
             this.GEditGenresCLB.FormattingEnabled = true;
@@ -449,6 +453,7 @@
             // GameAddPanel
             // 
             this.GameAddPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(32)))));
+            this.GameAddPanel.Controls.Add(this.GAddLinkBtn);
             this.GameAddPanel.Controls.Add(this.GAddPicBrowse);
             this.GameAddPanel.Controls.Add(this.GAddPicButton);
             this.GameAddPanel.Controls.Add(this.GAddPicBox);
@@ -469,6 +474,15 @@
             this.GameAddPanel.Controls.Add(this.GAddName);
             resources.ApplyResources(this.GameAddPanel, "GameAddPanel");
             this.GameAddPanel.Name = "GameAddPanel";
+            // 
+            // GAddLinkBtn
+            // 
+            this.GAddLinkBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.GAddLinkBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GAddLinkBtn, "GAddLinkBtn");
+            this.GAddLinkBtn.Name = "GAddLinkBtn";
+            this.GAddLinkBtn.UseVisualStyleBackColor = true;
+            this.GAddLinkBtn.Click += new System.EventHandler(this.GAddLinkBtn_Click);
             // 
             // GAddPicBrowse
             // 
@@ -546,6 +560,7 @@
             // 
             this.GAddGenresCLB.BackColor = System.Drawing.Color.Black;
             this.GAddGenresCLB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GAddGenresCLB.CheckOnClick = true;
             resources.ApplyResources(this.GAddGenresCLB, "GAddGenresCLB");
             this.GAddGenresCLB.ForeColor = System.Drawing.Color.White;
             this.GAddGenresCLB.FormattingEnabled = true;
@@ -1187,6 +1202,15 @@
             this.LeftLogOut.UseVisualStyleBackColor = false;
             this.LeftLogOut.CheckedChanged += new System.EventHandler(this.LogOutButton_CheckedChanged);
             // 
+            // GEditLinkBtn
+            // 
+            this.GEditLinkBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.GEditLinkBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GEditLinkBtn, "GEditLinkBtn");
+            this.GEditLinkBtn.Name = "GEditLinkBtn";
+            this.GEditLinkBtn.UseVisualStyleBackColor = true;
+            this.GEditLinkBtn.Click += new System.EventHandler(this.GEditLinkBtn_Click);
+            // 
             // AdminForm
             // 
             resources.ApplyResources(this, "$this");
@@ -1350,5 +1374,7 @@
         private System.Windows.Forms.RadioButton LeftAccounts;
         private System.Windows.Forms.RadioButton LeftMessages;
         private System.Windows.Forms.RadioButton LeftLogOut;
+        private System.Windows.Forms.Button GAddLinkBtn;
+        private System.Windows.Forms.Button GEditLinkBtn;
     }
 }

@@ -22,5 +22,16 @@ namespace CyberClub.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-LFCR3E8\\SQLEXPRESS;Initial Catalog=CyberClub;Integrated Secur" +
+            "ity=True")]
+        public string CyberClubConnectionString {
+            get {
+                return ((string)(this["CyberClubConnectionString"]));
+            }
+        }
     }
 }
