@@ -186,105 +186,6 @@
   <data name="MsgPanel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;FeedbackLabel.Name" xml:space="preserve">
-    <value>FeedbackLabel</value>
-  </data>
-  <data name="&gt;&gt;FeedbackLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FeedbackLabel.Parent" xml:space="preserve">
-    <value>MsgPanel</value>
-  </data>
-  <data name="&gt;&gt;FeedbackLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;MsgSubmit.Name" xml:space="preserve">
-    <value>MsgSubmit</value>
-  </data>
-  <data name="&gt;&gt;MsgSubmit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MsgSubmit.Parent" xml:space="preserve">
-    <value>MsgPanel</value>
-  </data>
-  <data name="&gt;&gt;MsgSubmit.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;MsgDetails.Name" xml:space="preserve">
-    <value>MsgDetails</value>
-  </data>
-  <data name="&gt;&gt;MsgDetails.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MsgDetails.Parent" xml:space="preserve">
-    <value>MsgPanel</value>
-  </data>
-  <data name="&gt;&gt;MsgDetails.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;MsgBriefly.Name" xml:space="preserve">
-    <value>MsgBriefly</value>
-  </data>
-  <data name="&gt;&gt;MsgBriefly.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MsgBriefly.Parent" xml:space="preserve">
-    <value>MsgPanel</value>
-  </data>
-  <data name="&gt;&gt;MsgBriefly.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;MsgDetailLabel.Name" xml:space="preserve">
-    <value>MsgDetailLabel</value>
-  </data>
-  <data name="&gt;&gt;MsgDetailLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MsgDetailLabel.Parent" xml:space="preserve">
-    <value>MsgPanel</value>
-  </data>
-  <data name="&gt;&gt;MsgDetailLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;MsgBrieflyLabel.Name" xml:space="preserve">
-    <value>MsgBrieflyLabel</value>
-  </data>
-  <data name="&gt;&gt;MsgBrieflyLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MsgBrieflyLabel.Parent" xml:space="preserve">
-    <value>MsgPanel</value>
-  </data>
-  <data name="&gt;&gt;MsgBrieflyLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="MsgPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 1087</value>
-  </data>
-  <data name="MsgPanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 10, 10, 10</value>
-  </data>
-  <data name="MsgPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1018, 270</value>
-  </data>
-  <data name="MsgPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="MsgPanel.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;MsgPanel.Name" xml:space="preserve">
-    <value>MsgPanel</value>
-  </data>
-  <data name="&gt;&gt;MsgPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MsgPanel.Parent" xml:space="preserve">
-    <value>FlowLayout</value>
-  </data>
-  <data name="&gt;&gt;MsgPanel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="FeedbackLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -462,6 +363,33 @@
   <data name="&gt;&gt;MsgBrieflyLabel.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="MsgPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 1087</value>
+  </data>
+  <data name="MsgPanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 10, 10, 10</value>
+  </data>
+  <data name="MsgPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1018, 270</value>
+  </data>
+  <data name="MsgPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="MsgPanel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;MsgPanel.Name" xml:space="preserve">
+    <value>MsgPanel</value>
+  </data>
+  <data name="&gt;&gt;MsgPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MsgPanel.Parent" xml:space="preserve">
+    <value>FlowLayout</value>
+  </data>
+  <data name="&gt;&gt;MsgPanel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="UserLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -495,251 +423,8 @@
   <data name="FlowLayout.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;GamePagePanel.Name" xml:space="preserve">
-    <value>GamePagePanel</value>
-  </data>
-  <data name="&gt;&gt;GamePagePanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GamePagePanel.Parent" xml:space="preserve">
-    <value>FlowLayout</value>
-  </data>
-  <data name="&gt;&gt;GamePagePanel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;GamePanel.Name" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GamePanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GamePanel.Parent" xml:space="preserve">
-    <value>FlowLayout</value>
-  </data>
-  <data name="&gt;&gt;GamePanel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;AccountPanel.Name" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;AccountPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AccountPanel.Parent" xml:space="preserve">
-    <value>FlowLayout</value>
-  </data>
-  <data name="&gt;&gt;AccountPanel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="FlowLayout.Location" type="System.Drawing.Point, System.Drawing">
-    <value>238, 41</value>
-  </data>
-  <data name="FlowLayout.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="FlowLayout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1114, 638</value>
-  </data>
-  <data name="FlowLayout.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="&gt;&gt;FlowLayout.Name" xml:space="preserve">
-    <value>FlowLayout</value>
-  </data>
-  <data name="&gt;&gt;FlowLayout.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FlowLayout.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;FlowLayout.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="GamePagePanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;GameRating.Name" xml:space="preserve">
-    <value>GameRating</value>
-  </data>
-  <data name="&gt;&gt;GameRating.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GameRating.Parent" xml:space="preserve">
-    <value>GamePagePanel</value>
-  </data>
-  <data name="&gt;&gt;GameRating.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;GameID.Name" xml:space="preserve">
-    <value>GameID</value>
-  </data>
-  <data name="&gt;&gt;GameID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GameID.Parent" xml:space="preserve">
-    <value>GamePagePanel</value>
-  </data>
-  <data name="&gt;&gt;GameID.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;GameSubscribe.Name" xml:space="preserve">
-    <value>GameSubscribe</value>
-  </data>
-  <data name="&gt;&gt;GameSubscribe.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GameSubscribe.Parent" xml:space="preserve">
-    <value>GamePagePanel</value>
-  </data>
-  <data name="&gt;&gt;GameSubscribe.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;GameRate.Name" xml:space="preserve">
-    <value>GameRate</value>
-  </data>
-  <data name="&gt;&gt;GameRate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GameRate.Parent" xml:space="preserve">
-    <value>GamePagePanel</value>
-  </data>
-  <data name="&gt;&gt;GameRate.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;GameRateNUD.Name" xml:space="preserve">
-    <value>GameRateNUD</value>
-  </data>
-  <data name="&gt;&gt;GameRateNUD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GameRateNUD.Parent" xml:space="preserve">
-    <value>GamePagePanel</value>
-  </data>
-  <data name="&gt;&gt;GameRateNUD.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;GamePageClose.Name" xml:space="preserve">
-    <value>GamePageClose</value>
-  </data>
-  <data name="&gt;&gt;GamePageClose.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GamePageClose.Parent" xml:space="preserve">
-    <value>GamePagePanel</value>
-  </data>
-  <data name="&gt;&gt;GamePageClose.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;GameFilePath.Name" xml:space="preserve">
-    <value>GameFilePath</value>
-  </data>
-  <data name="&gt;&gt;GameFilePath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GameFilePath.Parent" xml:space="preserve">
-    <value>GamePagePanel</value>
-  </data>
-  <data name="&gt;&gt;GameFilePath.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;GameModes.Name" xml:space="preserve">
-    <value>GameModes</value>
-  </data>
-  <data name="&gt;&gt;GameModes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GameModes.Parent" xml:space="preserve">
-    <value>GamePagePanel</value>
-  </data>
-  <data name="&gt;&gt;GameModes.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;GameGenres.Name" xml:space="preserve">
-    <value>GameGenres</value>
-  </data>
-  <data name="&gt;&gt;GameGenres.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GameGenres.Parent" xml:space="preserve">
-    <value>GamePagePanel</value>
-  </data>
-  <data name="&gt;&gt;GameGenres.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;GameDevName.Name" xml:space="preserve">
-    <value>GameDevName</value>
-  </data>
-  <data name="&gt;&gt;GameDevName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GameDevName.Parent" xml:space="preserve">
-    <value>GamePagePanel</value>
-  </data>
-  <data name="&gt;&gt;GameDevName.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;GamePicBox.Name" xml:space="preserve">
-    <value>GamePicBox</value>
-  </data>
-  <data name="&gt;&gt;GamePicBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GamePicBox.Parent" xml:space="preserve">
-    <value>GamePagePanel</value>
-  </data>
-  <data name="&gt;&gt;GamePicBox.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;GameName.Name" xml:space="preserve">
-    <value>GameName</value>
-  </data>
-  <data name="&gt;&gt;GameName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GameName.Parent" xml:space="preserve">
-    <value>GamePagePanel</value>
-  </data>
-  <data name="&gt;&gt;GameName.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;GameRunSubmit.Name" xml:space="preserve">
-    <value>GameRunSubmit</value>
-  </data>
-  <data name="&gt;&gt;GameRunSubmit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GameRunSubmit.Parent" xml:space="preserve">
-    <value>GamePagePanel</value>
-  </data>
-  <data name="&gt;&gt;GameRunSubmit.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="GamePagePanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="GamePagePanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 10, 10, 10</value>
-  </data>
-  <data name="GamePagePanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1018, 156</value>
-  </data>
-  <data name="GamePagePanel.TabIndex" type="System.Int32, mscorlib">
-    <value>163</value>
-  </data>
-  <data name="GamePagePanel.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;GamePagePanel.Name" xml:space="preserve">
-    <value>GamePagePanel</value>
-  </data>
-  <data name="&gt;&gt;GamePagePanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GamePagePanel.Parent" xml:space="preserve">
-    <value>FlowLayout</value>
-  </data>
-  <data name="&gt;&gt;GamePagePanel.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="GameRating.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1119,164 +804,35 @@
   <data name="&gt;&gt;GameRunSubmit.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="GamePanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="GamePagePanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
-  <data name="&gt;&gt;GGenreOrCB.Name" xml:space="preserve">
-    <value>GGenreOrCB</value>
-  </data>
-  <data name="&gt;&gt;GGenreOrCB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GGenreOrCB.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GGenreOrCB.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;GGenreAndCB.Name" xml:space="preserve">
-    <value>GGenreAndCB</value>
-  </data>
-  <data name="&gt;&gt;GGenreAndCB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GGenreAndCB.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GGenreAndCB.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;GSrchGenres.Name" xml:space="preserve">
-    <value>GSrchGenres</value>
-  </data>
-  <data name="&gt;&gt;GSrchGenres.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckedListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GSrchGenres.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GSrchGenres.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;GamesSwitch.Name" xml:space="preserve">
-    <value>GamesSwitch</value>
-  </data>
-  <data name="&gt;&gt;GamesSwitch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GamesSwitch.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GamesSwitch.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;GamesList.Name" xml:space="preserve">
-    <value>GamesList</value>
-  </data>
-  <data name="&gt;&gt;GamesList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GamesList.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GamesList.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;GSrchMultiCB.Name" xml:space="preserve">
-    <value>GSrchMultiCB</value>
-  </data>
-  <data name="&gt;&gt;GSrchMultiCB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GSrchMultiCB.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GSrchMultiCB.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;GamesLabel.Name" xml:space="preserve">
-    <value>GamesLabel</value>
-  </data>
-  <data name="&gt;&gt;GamesLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GamesLabel.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GamesLabel.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;GSrchSingleCB.Name" xml:space="preserve">
-    <value>GSrchSingleCB</value>
-  </data>
-  <data name="&gt;&gt;GSrchSingleCB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GSrchSingleCB.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GSrchSingleCB.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;GameSearch.Name" xml:space="preserve">
-    <value>GameSearch</value>
-  </data>
-  <data name="&gt;&gt;GameSearch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GameSearch.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GameSearch.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;GSrchDevLabel.Name" xml:space="preserve">
-    <value>GSrchDevLabel</value>
-  </data>
-  <data name="&gt;&gt;GSrchDevLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GSrchDevLabel.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GSrchDevLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;GSrchDev.Name" xml:space="preserve">
-    <value>GSrchDev</value>
-  </data>
-  <data name="&gt;&gt;GSrchDev.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GSrchDev.Parent" xml:space="preserve">
-    <value>GamePanel</value>
-  </data>
-  <data name="&gt;&gt;GSrchDev.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="GamePanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 165</value>
-  </data>
-  <data name="GamePanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="GamePagePanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 10, 10, 10</value>
   </data>
-  <data name="GamePanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1018, 613</value>
+  <data name="GamePagePanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1018, 156</value>
   </data>
-  <data name="GamePanel.TabIndex" type="System.Int32, mscorlib">
-    <value>162</value>
+  <data name="GamePagePanel.TabIndex" type="System.Int32, mscorlib">
+    <value>163</value>
   </data>
-  <data name="&gt;&gt;GamePanel.Name" xml:space="preserve">
-    <value>GamePanel</value>
+  <data name="GamePagePanel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;GamePanel.Type" xml:space="preserve">
+  <data name="&gt;&gt;GamePagePanel.Name" xml:space="preserve">
+    <value>GamePagePanel</value>
+  </data>
+  <data name="&gt;&gt;GamePagePanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;GamePanel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;GamePagePanel.Parent" xml:space="preserve">
     <value>FlowLayout</value>
   </data>
-  <data name="&gt;&gt;GamePanel.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;GamePagePanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="GamePanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="GGenreOrCB.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -1447,7 +1003,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADE
-        IgAAAk1TRnQBSQFMAwEBAAHAAQABwAEAAYABAAGAAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAQA
+        IgAAAk1TRnQBSQFMAwEBAAHIAQAByAEAAYABAAGAAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAQA
         AQICAAGAAwABAQEAAQgHAAEBFwABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEA
         AfABygGmAQABMwUAATMBAAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEA
         AYABfAH/AQACUAH/AQABkwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFm
@@ -1814,191 +1370,32 @@
   <data name="&gt;&gt;GSrchDev.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="AccountPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="GamePanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 165</value>
   </data>
-  <data name="&gt;&gt;PasswdRepeatLabel.Name" xml:space="preserve">
-    <value>PasswdRepeatLabel</value>
-  </data>
-  <data name="&gt;&gt;PasswdRepeatLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PasswdRepeatLabel.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;PasswdRepeatLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PasswdRepeat.Name" xml:space="preserve">
-    <value>PasswdRepeat</value>
-  </data>
-  <data name="&gt;&gt;PasswdRepeat.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PasswdRepeat.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;PasswdRepeat.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Passwd.Name" xml:space="preserve">
-    <value>Passwd</value>
-  </data>
-  <data name="&gt;&gt;Passwd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Passwd.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;Passwd.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;AccSetingsLabel.Name" xml:space="preserve">
-    <value>AccSetingsLabel</value>
-  </data>
-  <data name="&gt;&gt;AccSetingsLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AccSetingsLabel.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;AccSetingsLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;PasswdShow.Name" xml:space="preserve">
-    <value>PasswdShow</value>
-  </data>
-  <data name="&gt;&gt;PasswdShow.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PasswdShow.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;PasswdShow.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;PasswdLabel.Name" xml:space="preserve">
-    <value>PasswdLabel</value>
-  </data>
-  <data name="&gt;&gt;PasswdLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PasswdLabel.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;PasswdLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;EMail.Name" xml:space="preserve">
-    <value>EMail</value>
-  </data>
-  <data name="&gt;&gt;EMail.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;EMail.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;EMail.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;EMailLabel.Name" xml:space="preserve">
-    <value>EMailLabel</value>
-  </data>
-  <data name="&gt;&gt;EMailLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;EMailLabel.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;EMailLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;AccSubmit.Name" xml:space="preserve">
-    <value>AccSubmit</value>
-  </data>
-  <data name="&gt;&gt;AccSubmit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AccSubmit.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;AccSubmit.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;UserInfo.Name" xml:space="preserve">
-    <value>UserInfo</value>
-  </data>
-  <data name="&gt;&gt;UserInfo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;UserInfo.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;UserInfo.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;UserName.Name" xml:space="preserve">
-    <value>UserName</value>
-  </data>
-  <data name="&gt;&gt;UserName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;UserName.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;UserName.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;UserInfoLabel.Name" xml:space="preserve">
-    <value>UserInfoLabel</value>
-  </data>
-  <data name="&gt;&gt;UserInfoLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;UserInfoLabel.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;UserInfoLabel.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;UserNameLabel.Name" xml:space="preserve">
-    <value>UserNameLabel</value>
-  </data>
-  <data name="&gt;&gt;UserNameLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;UserNameLabel.Parent" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;UserNameLabel.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="AccountPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 784</value>
-  </data>
-  <data name="AccountPanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="GamePanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 10, 10, 10</value>
   </data>
-  <data name="AccountPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1018, 297</value>
+  <data name="GamePanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1018, 613</value>
   </data>
-  <data name="AccountPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
+  <data name="GamePanel.TabIndex" type="System.Int32, mscorlib">
+    <value>162</value>
   </data>
-  <data name="AccountPanel.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;GamePanel.Name" xml:space="preserve">
+    <value>GamePanel</value>
   </data>
-  <data name="&gt;&gt;AccountPanel.Name" xml:space="preserve">
-    <value>AccountPanel</value>
-  </data>
-  <data name="&gt;&gt;AccountPanel.Type" xml:space="preserve">
+  <data name="&gt;&gt;GamePanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;AccountPanel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;GamePanel.Parent" xml:space="preserve">
     <value>FlowLayout</value>
   </data>
-  <data name="&gt;&gt;AccountPanel.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;GamePanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="AccountPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="PasswdRepeatLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2374,6 +1771,57 @@
   </data>
   <data name="&gt;&gt;UserNameLabel.ZOrder" xml:space="preserve">
     <value>12</value>
+  </data>
+  <data name="AccountPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 784</value>
+  </data>
+  <data name="AccountPanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 10, 10, 10</value>
+  </data>
+  <data name="AccountPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1018, 297</value>
+  </data>
+  <data name="AccountPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="AccountPanel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;AccountPanel.Name" xml:space="preserve">
+    <value>AccountPanel</value>
+  </data>
+  <data name="&gt;&gt;AccountPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AccountPanel.Parent" xml:space="preserve">
+    <value>FlowLayout</value>
+  </data>
+  <data name="&gt;&gt;AccountPanel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="FlowLayout.Location" type="System.Drawing.Point, System.Drawing">
+    <value>238, 41</value>
+  </data>
+  <data name="FlowLayout.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="FlowLayout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1114, 638</value>
+  </data>
+  <data name="FlowLayout.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;FlowLayout.Name" xml:space="preserve">
+    <value>FlowLayout</value>
+  </data>
+  <data name="&gt;&gt;FlowLayout.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FlowLayout.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;FlowLayout.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="PrintColors.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>

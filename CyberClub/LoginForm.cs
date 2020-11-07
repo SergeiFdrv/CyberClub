@@ -81,15 +81,12 @@ namespace CyberClub
             using (SqlConnection conn = new SqlConnection(CS))
             {
                 if (!ConnOpen(conn)) return false;
-                if (select.Contains(',') || select.Contains(' '))
-                    select = select.Substring(0, select.IndexOf(','))
-                        .Substring(0, select.IndexOf(' '));
-                if (from.Contains(',') || from.Contains(' '))
-                    from = from.Substring(0, from.IndexOf(','))
-                        .Substring(0, from.IndexOf(' '));
-                if (order.Contains(',') || order.Contains(' '))
-                    order = order.Substring(0, order.IndexOf(','))
-                        .Substring(0, order.IndexOf(' '));
+                if (select.Contains(',')) select = select.Substring(0, select.IndexOf(','));
+                if (select.Contains(' ')) select = select.Substring(0, select.IndexOf(' '));
+                if (from.Contains(',')) from = from.Substring(0, from.IndexOf(','));
+                if (from.Contains(' ')) from = from.Substring(0, from.IndexOf(' '));
+                if (order.Contains(',')) order = order.Substring(0, order.IndexOf(','));
+                if (order.Contains(' ')) order = order.Substring(0, order.IndexOf(' '));
                 using (SqlCommand command = new
                     SqlCommand($"SELECT {select} FROM {from} ORDER BY {order}", conn))
                 {

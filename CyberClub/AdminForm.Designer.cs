@@ -32,6 +32,7 @@
             this.AdminLabel = new System.Windows.Forms.Label();
             this.GamesPanel = new System.Windows.Forms.Panel();
             this.GameEditPanel = new System.Windows.Forms.Panel();
+            this.GEditLinkBtn = new System.Windows.Forms.Button();
             this.GEditPicName = new System.Windows.Forms.TextBox();
             this.GEditName = new System.Windows.Forms.TextBox();
             this.GEditDevID = new System.Windows.Forms.Label();
@@ -146,7 +147,6 @@
             this.LeftAccounts = new System.Windows.Forms.RadioButton();
             this.LeftMessages = new System.Windows.Forms.RadioButton();
             this.LeftLogOut = new System.Windows.Forms.RadioButton();
-            this.GEditLinkBtn = new System.Windows.Forms.Button();
             this.GamesPanel.SuspendLayout();
             this.GameEditPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GEditPicBox)).BeginInit();
@@ -214,6 +214,15 @@
             this.GameEditPanel.Controls.Add(this.GEditID);
             resources.ApplyResources(this.GameEditPanel, "GameEditPanel");
             this.GameEditPanel.Name = "GameEditPanel";
+            // 
+            // GEditLinkBtn
+            // 
+            this.GEditLinkBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.GEditLinkBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.GEditLinkBtn, "GEditLinkBtn");
+            this.GEditLinkBtn.Name = "GEditLinkBtn";
+            this.GEditLinkBtn.UseVisualStyleBackColor = true;
+            this.GEditLinkBtn.Click += new System.EventHandler(this.GEditLinkBtn_Click);
             // 
             // GEditPicName
             // 
@@ -1201,15 +1210,6 @@
             this.LeftLogOut.Name = "LeftLogOut";
             this.LeftLogOut.UseVisualStyleBackColor = false;
             this.LeftLogOut.CheckedChanged += new System.EventHandler(this.LogOutButton_CheckedChanged);
-            // 
-            // GEditLinkBtn
-            // 
-            this.GEditLinkBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.GEditLinkBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.GEditLinkBtn, "GEditLinkBtn");
-            this.GEditLinkBtn.Name = "GEditLinkBtn";
-            this.GEditLinkBtn.UseVisualStyleBackColor = true;
-            this.GEditLinkBtn.Click += new System.EventHandler(this.GEditLinkBtn_Click);
             // 
             // AdminForm
             // 

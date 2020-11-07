@@ -16,7 +16,9 @@ namespace CyberClub
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            Form startForm = new LoginForm();
+            Application.Run(startForm);
+            startForm.Dispose();
         }
     }
 }
