@@ -79,7 +79,7 @@ namespace CyberClub
 
         private void GameSubscribe_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -114,7 +114,7 @@ namespace CyberClub
 
         private void GameRate_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -161,7 +161,7 @@ namespace CyberClub
         { // Если отмечены жанры или разработчик, включить их в критерии поиска
             bool genres = GSrchGenres.CheckedItems.Count > 0;
             bool dev = GSrchDev.Text.Length > 0;
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 string query = "SELECT DISTINCT gameid, gamename, devname, " +
@@ -228,7 +228,7 @@ namespace CyberClub
         private void GamesList_Click(object sender, EventArgs e)
         {
             GameName.Text = GamesList.SelectedItems[0].Text;
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -249,9 +249,16 @@ namespace CyberClub
                 GameDevName.Text = dataReader["devname"].ToString();
                 GameFilePath.Text = dataReader["gamelink"].ToString();
                 GameRating.Text = dataReader["rating"].ToString();
-                GamePicBox.Image = dataReader["bin"] == DBNull.Value ?
-                    GamePics.Images[0] :
-                    Image.FromStream(new MemoryStream((byte[])dataReader["bin"]));
+                if (dataReader["bin"] == DBNull.Value)
+                {
+                    GamePicBox.Image = GamePics.Images[0];
+                }
+                else
+                {
+                    MemoryStream memoryStream = new MemoryStream((byte[])dataReader["bin"]);
+                    GamePicBox.Image = Image.FromStream(memoryStream);
+                    memoryStream.Dispose();
+                }
                 GameModes.Text = "";
                 if ((bool)dataReader["singleplayer"])
                 {
@@ -301,7 +308,7 @@ namespace CyberClub
         // ------------------------------ Аккаунт ------------------------------
         private void GetUserData()
         {
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -322,7 +329,7 @@ namespace CyberClub
         { // Обновить запись пользователя
             if (Passwd.Text != PasswdRepeat.Text ||
                 Voice.Ask(Resources.Lang.UpdateAccountPrompt) == DialogResult.No) return;
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -351,7 +358,7 @@ namespace CyberClub
                 Voice.Say(Resources.Lang.FillInNecessaryTextBox);
                 return;
             }
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -370,10 +377,14 @@ namespace CyberClub
         // ----------------------- Заимствования -----------------------
         private static bool UpdateBox
             (IList items, string select, string from, string order = "") =>
-            LoginForm.UpdateBox(items, select, from, order);
+            AppWide.UpdateBox(items, select, from, order);
 
-        private static bool ConnOpen(SqlConnection conn) => LoginForm.ConnOpen(conn);
+        private static bool ConnOpen(SqlConnection conn) => AppWide.ConnOpen(conn);
 
+        /// <summary>
+        /// Change colors to bright to make the form printable.
+        /// This was a college study project and they needed the form printed on paper
+        /// </summary>
         private void PrintColors_CheckedChanged(object sender, EventArgs e)
         {
             PrintColors.Dispose();

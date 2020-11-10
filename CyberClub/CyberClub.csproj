@@ -73,6 +73,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CyberClubDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="AppWide.cs" />
     <Compile Include="Resources\Lang.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

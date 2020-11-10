@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 namespace CyberClub
 {
     /// <summary>
-    /// Наш "дизайнерский" MessageBox. Haute couture
+    /// Our flexible version of MessageBox. Contains all we need and nothing else
     /// </summary>
     public partial class Voice : Form
     {
@@ -32,13 +33,20 @@ namespace CyberClub
                     ef.No.Visible = true;
                 }
                 ef.ErrorText.Text = text;
-                // Делаем размер окна зависимым от длины текста
-                ef.ErrorText.Height = ef.ErrorText.Font.Height + 
-                    ef.ErrorText.Font.Height *
-                    ef.ErrorText.PreferredSize.Width / ef.ErrorText.Width;
-                ef.Height += ef.ErrorText.Height - ef.ErrorText.Font.Height;
-                return ef.ShowDialog(); // Вернуть значение DialogResult
+                AdjustFormHeight(ef);
+                return ef.ShowDialog();
             }
+        }
+
+        /// <summary>
+        /// Make window height depend on the text length
+        /// </summary>
+        private static void AdjustFormHeight(Voice form)
+        {
+            form.ErrorText.Height = form.ErrorText.Font.Height +
+                form.ErrorText.Font.Height *
+                form.ErrorText.PreferredSize.Width / form.ErrorText.Width;
+            form.Height += form.ErrorText.Height - form.ErrorText.Font.Height;
         }
 
         public static DialogResult Ask(string text) => 

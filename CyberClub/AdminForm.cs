@@ -21,9 +21,10 @@ namespace CyberClub
             InitializeComponent();
         }
 
+        #region Form     // Загрузка и выгрузка формы
         private void AdminForm_Load(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -36,6 +37,7 @@ namespace CyberClub
 
         private void AdminForm_FormClosed(object sender, FormClosedEventArgs e) =>
             Owner.Show();
+        #endregion
 
         #region LeftMenu // Кнопки левого бокового меню
         private void LeftGames_CheckedChanged(object sender, EventArgs e)
@@ -125,7 +127,7 @@ namespace CyberClub
         private static int AddGetDevID(string name)
         {
             if (name.Length == 0) return -1;
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return -1;
                 SqlCommand command = conn.CreateCommand();
@@ -152,7 +154,7 @@ namespace CyberClub
         private void GAddNewGenreBtn_Click(object sender, EventArgs e)
         { // Добавить в базу новый жанр
             if (GAddNewGenre.Text.Length == 0) return;
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -185,7 +187,7 @@ namespace CyberClub
             ImageConverter imgConverter = new ImageConverter();
             byte[] image = (byte[])
                 imgConverter.ConvertTo(GAddPicBox.Image, typeof(byte[]));
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return -1;
                 SqlCommand command = conn.CreateCommand();
@@ -202,7 +204,7 @@ namespace CyberClub
         private void GAddSubmit_Click(object sender, EventArgs e)
         { // Добавить в базу новую игру
             if (GAddName.Text.Length == 0) return;
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 // Добавить игру
@@ -283,7 +285,7 @@ namespace CyberClub
                 return;
             }
             GEditName.Enabled = true;
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -334,11 +336,11 @@ namespace CyberClub
         { // Выбор редактируемого имени разработчика
             if (GEditDev.Text.Length == 0)
             {
-                GEditDevID.Text += '_';
+                GEditDevID.Text = string.Empty;
                 return;
             }
             string query = "SELECT TOP 1 devid FROM devs WHERE devname = @name";
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -356,7 +358,7 @@ namespace CyberClub
                 return;
             if (!int.TryParse(GEditDevID.Text, out int id)) return;
             string query = "UPDATE devs SET devname = @name WHERE devid = @id";
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -383,7 +385,7 @@ namespace CyberClub
             if (Voice.Ask(Resources.Lang.RenameGenrePrompt) == DialogResult.No)
                 return;
             string query = "UPDATE genres SET genrename = @n0 WHERE genrename = @n1";
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS)) 
+            using (SqlConnection conn = new SqlConnection(AppWide.CS)) 
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -405,7 +407,7 @@ namespace CyberClub
                 GEditPicBox.Image = GEditPicBox.InitialImage;
                 return;
             }
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -427,7 +429,7 @@ namespace CyberClub
         private void GEditPicBtn_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(GEditPicID.Text, out int id)) return;
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -443,7 +445,7 @@ namespace CyberClub
         { // Обновить запись об игре
             if (Voice.Ask(Resources.Lang.UpdateGamePrompt) == DialogResult.No) return;
             if (!int.TryParse(GEditID.Text, out int id)) return;
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -481,7 +483,7 @@ namespace CyberClub
         {
             if (Voice.Ask(Resources.Lang.DeleteDeveloperPrompt) == DialogResult.No) return;
             if (!int.TryParse(GEditDevID.Text, out int id)) return;
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -503,7 +505,7 @@ namespace CyberClub
             }
             if (Voice.Ask(Resources.Lang.DeleteGenrePrompt + ' ' +
                 GEditGenresCLB.SelectedItem.ToString()) == DialogResult.No) return;
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -524,7 +526,7 @@ namespace CyberClub
         {
             if (Voice.Ask(Resources.Lang.DeleteImagePrompt) == DialogResult.No) return;
             if (!int.TryParse(GEditPicID.Text, out int id)) return;
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -540,7 +542,7 @@ namespace CyberClub
         {
             if (Voice.Ask(Resources.Lang.DeleteGamePrompt) == DialogResult.No) return;
             if (!int.TryParse(GEditID.Text, out int id)) return;
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -586,7 +588,7 @@ namespace CyberClub
         private void AxAddSubmit_Click(object sender, EventArgs e)
         { // Добавить в базу новую учетную запись
             if (AxAddName.Text.Length == 0) return;
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 // Добавить аккаунт
@@ -635,7 +637,7 @@ namespace CyberClub
                 AxEditEMail.Text = AxEditInfo.Text = AxEditAuth.Text = AxEditPasswd.Text = "";
                 return;
             }
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -683,7 +685,7 @@ namespace CyberClub
             if (!int.TryParse(AxEditID.Text, out int id)) return;
             string query = "UPDATE users SET username = @name, email = @email, " +
                 "info = @info, authority = @auth, passwd = @pwd WHERE userid = @id";
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -708,7 +710,7 @@ namespace CyberClub
         { // Удалить аккаунт
             if (Voice.Ask(Resources.Lang.DeleteAccountPrompt) == DialogResult.No) return;
             if (!int.TryParse(AxEditID.Text, out int id)) return;
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -745,7 +747,7 @@ namespace CyberClub
                     DGVMessages.Rows[e.RowIndex].Cells["id"].Value.ToString();
                 MsgsSwitch.Text = Resources.Lang.Back;
                 MsgsIsRead.Checked = MsgsIsRead.Visible = true;
-                using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+                using (SqlConnection conn = new SqlConnection(AppWide.CS))
                 {
                     if (!ConnOpen(conn)) return;
                     SqlCommand command = conn.CreateCommand();
@@ -778,7 +780,7 @@ namespace CyberClub
         private void MsgsIsRead_CheckedChanged(object sender, EventArgs e)
         {
             string query = "UPDATE feedback SET isread = @isread WHERE messageid = @id";
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
@@ -814,24 +816,22 @@ namespace CyberClub
         private static void UpdateData
             (Panel panel, string DGVQuery, ComboBox[] CB, params string[] fields)
         {
+            ClearFields(panel);
+            DataGridView DGV = panel.Controls.OfType<DataGridView>().First();
+            if (!UpdateTable(DGV, DGVQuery)) return;
+            PopulateLists(DGV, CB, fields);
+        }
+
+        /// <summary>
+        /// Clear text boxes and checkboxes within the given Panel
+        /// </summary>
+        private static void ClearFields(Panel panel)
+        {
             foreach (Control el in panel.Controls.OfType<Panel>())
             {
                 foreach (TextBox i in el.Controls.OfType<TextBox>()) i.Text = "";
                 foreach (CheckBox i in el.Controls.OfType<CheckBox>()) i.Checked = false;
             }
-            DataGridView DGV = panel.Controls.OfType<DataGridView>().First();
-            if (!UpdateTable(DGV, DGVQuery)) return;
-            if (CB is null || fields is null) return;
-            // Заполнить списки
-            int count = (CB.Length > fields.Length ? fields.Length : CB.Length);
-            for (int i = 0; i < count; i++)
-            {
-                CB[i].Items.Clear();
-                CB[i].Text = "";
-            }
-            for (int i = 1; i <= DGV.RowCount; i++)
-                for (int j = 0; j < count; j++)
-                    CB[j].Items.Add(DGV.Rows[i - 1].Cells[fields[j]].Value);
         }
 
         /// <summary>
@@ -839,7 +839,7 @@ namespace CyberClub
         /// </summary>
         private static bool UpdateTable(DataGridView DGV, string query)
         {
-            using (SqlConnection conn = new SqlConnection(LoginForm.CS))
+            using (SqlConnection conn = new SqlConnection(AppWide.CS))
             {
                 if (!ConnOpen(conn)) return false;
                 using (SqlCommand command = new SqlCommand(query, conn))
@@ -857,15 +857,37 @@ namespace CyberClub
             }
             return true;
         }
+
+        /// <summary>
+        /// Update items in the comboboxes based on the given gata grid and fields
+        /// </summary>
+        private static void PopulateLists
+            (DataGridView DGV, ComboBox[] comboBoxes, params string[] fields)
+        {
+            if (comboBoxes is null || fields is null) return;
+            int count = comboBoxes.Length > fields.Length ? fields.Length : comboBoxes.Length;
+            for (int i = 0; i < count; i++)
+            {
+                comboBoxes[i].Items.Clear();
+                comboBoxes[i].Text = "";
+            }
+            for (int i = 1; i <= DGV.RowCount; i++)
+                for (int j = 0; j < count; j++)
+                    comboBoxes[j].Items.Add(DGV.Rows[i - 1].Cells[fields[j]].Value);
+        }
         #endregion
 
         // ----------------------- Заимствования -----------------------
         private static bool UpdateBox(IList items,
             string select, string from, string order = "") =>
-            LoginForm.UpdateBox(items, select, from, order);
+            AppWide.UpdateBox(items, select, from, order);
 
-        private static bool ConnOpen(SqlConnection conn) => LoginForm.ConnOpen(conn);
+        private static bool ConnOpen(SqlConnection conn) => AppWide.ConnOpen(conn);
 
+        /// <summary>
+        /// Change colors to bright to make the form printable.
+        /// This was a college study project and they needed the form printed on paper
+        /// </summary>
         private void PrintColors_CheckedChanged(object sender, EventArgs e)
         {
             PrintColors.Dispose();
