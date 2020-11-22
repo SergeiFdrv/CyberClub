@@ -2,7 +2,6 @@
 using System.Collections;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -24,37 +23,26 @@ namespace CyberClub
         { // Вход в аккаунт
             if (!string.IsNullOrEmpty(UserName.Text))
             {
-                string query = "SELECT userid, authority, authname " +
-                    "FROM users INNER JOIN hierarchy ON users.authority = " +
-                    "hierarchy.authid WHERE username = @name AND passwd = @pwd";
-                using (SqlConnection conn = new SqlConnection(AppWide.CS))
+                IDictionary account = AppWide.GetAccount(UserName.Text, Password.Text);
+                if (account is null)
                 {
-                    if (!AppWide.ConnOpen(conn)) return;
-                    using (SqlCommand command = new SqlCommand(query, conn))
-                    {
-                        command.Parameters.Add(new SqlParameter("@name", UserName.Text));
-                        command.Parameters.Add(new SqlParameter("@pwd", Password.Text));
-                        SqlDataReader dataReader = command.ExecuteReader();
-                        if (dataReader.Read())
-                        {
-                            UserName.Text = Password.Text = "";
-                            UserID = (int)dataReader["userid"];
-                            string authname = (string)dataReader["authname"];
-                            if (authname == "banned")
-                            {
-                                Voice.Say(Resources.Lang.YouAreBanned);
-                                return;
-                            }
-                            Hide();
-                            if (authname == "admin")
-                                using (AdminForm af = new AdminForm { Owner = this })
-                                    af.ShowDialog();
-                            else using (UserForm uf = new UserForm { Owner = this })
-                                    uf.ShowDialog();
-                        }
-                        else Voice.Say(Resources.Lang.LoginPasswordNotFound);
-                    }
+                    Voice.Say(Resources.Lang.LoginPasswordNotFound);
+                    return;
                 }
+                UserName.Text = Password.Text = "";
+                string authname = (string)account["authname"];
+                if (authname == "banned")
+                {
+                    Voice.Say(Resources.Lang.YouAreBanned);
+                    return;
+                }
+                UserID = (int)account["userid"];
+                Hide();
+                if (authname == "admin")
+                    using (AdminForm af = new AdminForm { Owner = this })
+                        af.ShowDialog();
+                else using (UserForm uf = new UserForm { Owner = this })
+                        uf.ShowDialog();
             }
         }
 

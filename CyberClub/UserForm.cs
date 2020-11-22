@@ -29,9 +29,9 @@ namespace CyberClub
         private void UserForm_Load(object sender, EventArgs e)
         {
             GetUserData();
-            LoadGameList(GamesList, GamesSwitch);
-            UpdateBox(GSrchDev.Items, "devname", "devs", "devid");
-            UpdateBox(GSrchGenres.Items, "genrename", "genres", "genreid");
+            LoadGameList();
+            AppWide.UpdateBox(GSrchDev.Items, "devname", "devs", "devid");
+            AppWide.UpdateBox(GSrchGenres.Items, "genrename", "genres", "genreid");
         }
 
         // ------------------------------ Кнопки слева ------------------------------
@@ -79,57 +79,37 @@ namespace CyberClub
 
         private void GameSubscribe_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
+            if (GameSubscribe.Checked)
             {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.Parameters.Add(new SqlParameter("@me", LoginForm.UserID));
-                command.Parameters.Add(new SqlParameter("@id", int.Parse(GameID.Text,
-                    CultureInfo.InvariantCulture)));
-                if (GameSubscribe.Checked)
-                {
-                    GameSubscribe.Text = Resources.Lang.Unsubscribe;
-                    GameRunSubmit.Visible = GameRate.Visible = GameRateNUD.Visible = true;
-                    command.CommandText = 
-                        "INSERT INTO subscriptions (who, game) VALUES (@me, @id)";
-                    command.ExecuteNonQuery();
-                    GameRate.Checked = false;
-                    GameRateNUD.Value = 5;
-                }
-                else if (Voice.Ask(Resources.Lang.UnsubscribePrompt) == DialogResult.No)
-                {
-                    GameSubscribe.Checked = true;
-                    return;
-                }
-                else
-                {
-                    GameSubscribe.Text = Resources.Lang.Subscribe;
-                    GameRunSubmit.Visible = GameRate.Visible = GameRateNUD.Visible = false;
-                    command.CommandText = 
-                        "DELETE FROM subscriptions WHERE who = @me AND game = @id";
-                    command.ExecuteNonQuery();
-                }
+                GameSubscribe.Text = Resources.Lang.Unsubscribe;
+                GameRunSubmit.Visible = GameRate.Visible = GameRateNUD.Visible = true;
+                AppWide.Subscribe(LoginForm.UserID, int.Parse(GameID.Text,
+                    CultureInfo.CurrentCulture));
+                GameRate.Checked = false;
+                GameRateNUD.Value = 5;
+            }
+            else if (Voice.Ask(Resources.Lang.UnsubscribePrompt) == DialogResult.No)
+            {
+                GameSubscribe.Checked = true;
+                return;
+            }
+            else
+            {
+                GameSubscribe.Text = Resources.Lang.Subscribe;
+                GameRunSubmit.Visible = GameRate.Visible = GameRateNUD.Visible = false;
+                AppWide.Unsubscribe(LoginForm.UserID, int.Parse(GameID.Text,
+                    CultureInfo.CurrentCulture));
             }
         }
 
         private void GameRate_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
-            {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = "UPDATE subscriptions SET rate = @rate " +
-                    "WHERE who = @me AND game = @game";
-                command.Parameters.Add(
-                    new SqlParameter("@game", int.Parse(GameID.Text,
-                        CultureInfo.InvariantCulture)));
-                command.Parameters.Add(new SqlParameter("@me", LoginForm.UserID));
-                if (GameRate.Checked)
-                    command.Parameters.Add(new SqlParameter("@rate", 
-                        GameRateNUD.Value));
-                else command.Parameters.Add(new SqlParameter("@rate", DBNull.Value));
-                command.ExecuteNonQuery();
-            }
+            if (GameRate.Checked) AppWide.ChangeRate(
+                int.Parse(GameID.Text, CultureInfo.CurrentCulture),
+                LoginForm.UserID, GameRateNUD.Value);
+            else AppWide.ChangeRate(
+                int.Parse(GameID.Text, CultureInfo.CurrentCulture),
+                LoginForm.UserID);
         }
 
         private void GamePageClose_Click(object sender, EventArgs e)
@@ -143,160 +123,77 @@ namespace CyberClub
         {
             GamesSwitch.Text = GamesSwitch.Checked ?
                 Resources.Lang.SearchGames : Resources.Lang.MyGames;
-            LoadGameList(GamesList, GamesSwitch);
+            LoadGameList();
         }
 
         private void RefreshGamesEventHandler(object sender, EventArgs e) =>
-            LoadGameList(GamesList, GamesSwitch);
+            LoadGameList();
 
         private void GSrchGenres_ItemCheck(object sender, ItemCheckEventArgs e) =>
-            BeginInvoke((MethodInvoker)(() => LoadGameList(GamesList, GamesSwitch)));
+            BeginInvoke((MethodInvoker)(() => LoadGameList()));
 
-        /// <summary>
-        /// Обновить элемент ListView с играми. 
-        /// Встроен поиск по жанрам, разработчикам, режимам игры и по подпискам
-        /// </summary>
-        /// <param name="Switch">Если отмечен, искать только подписки</param>
-        private void LoadGameList(ListView LV, CheckBox Switch)
-        { // Если отмечены жанры или разработчик, включить их в критерии поиска
-            bool genres = GSrchGenres.CheckedItems.Count > 0;
-            bool dev = GSrchDev.Text.Length > 0;
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
-            {
-                if (!ConnOpen(conn)) return;
-                string query = "SELECT DISTINCT gameid, gamename, devname, " +
-                    "singleplayer, multiplayer, picname, bin FROM games " +
-                    "LEFT JOIN pics ON gamepic = picid " + (dev ? " INNER" : " LEFT") + 
-                    " JOIN devs ON madeby = devid" + (genres ? " INNER JOIN " +
-                    "(gamegenre LEFT JOIN genres ON genre = genreid) ON " +
-                    "gameid = game" : "") + (Switch.Checked ? "" :
-                    " INNER JOIN subscriptions ON games.gameid = subscriptions.game") +
-                    " WHERE gamelink != ''" + (GameSearch.Text.Length == 0 ? 
-                    "" : " AND gamename LIKE @name") + (Switch.Checked ? 
-                    "" : " AND who = @id") + (GSrchSingleCB.Checked ? 
-                    " AND singleplayer = 1" : "") + (GSrchMultiCB.Checked ? 
-                    " AND multiplayer = 1" : "") + (dev ? " AND devname LIKE @dev" : "");
-                if (genres)
-                {
-                    query += " AND (";
-                    string op = GGenreOrCB.Checked ? "OR" : "AND";
-                    for (int i = 0; i < GSrchGenres.CheckedItems.Count; i++)
-                    {
-                        query += $" genrename = '{GSrchGenres.CheckedItems[i]}' " + op;
-                    }
-                    query = query.Substring(0, query.Length - 3) + ')';
-                }
-                LV.Clear();
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = query;
-                command.Parameters.Add(
-                    new SqlParameter("@name", '%' + GameSearch.Text + '%'));
-                command.Parameters.Add(new SqlParameter("@id", LoginForm.UserID));
-                command.Parameters.Add(
-                    new SqlParameter("@dev", '%' + GSrchDev.Text + '%'));
-                SqlDataReader dataReader = command.ExecuteReader();
-                while (dataReader.Read())
-                {
-                    string item = dataReader["gamename"].ToString() + " (";
-                    if (dataReader["devname"].ToString().Length > 0)
-                    {
-                        item += dataReader["devname"];
-                        if ((bool)dataReader["singleplayer"]) item += ", singleplayer";
-                        if ((bool)dataReader["multiplayer"]) item += ", multiplayer";
-                    }
-                    LV.Items.Add(new ListViewItem
-                    {
-                        Text = item + ')',
-                        ToolTipText = dataReader["gameid"].ToString()
-                    });
-                    if (dataReader["bin"] == DBNull.Value)
-                    {
-                        LV.Items[LV.Items.Count - 1].ImageIndex = 0;
-                    }
-                    else using (MemoryStream memoryStream =
-                            new MemoryStream((byte[])dataReader["bin"]))
-                    {
-                        GamePics.Images.Add(dataReader["picname"].ToString(), 
-                            Image.FromStream(memoryStream));
-                        LV.Items[LV.Items.Count - 1].ImageIndex = 
-                            GamePics.Images.Count - 1;
-                    }
-                }
-            }
+        private void LoadGameList()
+        {
+            GamesList.Clear();
+            AppWide.PopulateGameList(GamesList,
+                GameSearch.Text,
+                GSrchDev.Text,
+                GSrchGenres.CheckedItems,
+                GamePics,
+                GamesSwitch.Checked,
+                GSrchSingleCB.Checked,
+                GSrchMultiCB.Checked,
+                GGenreAndCB.Checked);
         }
-
+        
         private void GamesList_Click(object sender, EventArgs e)
         {
-            GameName.Text = GamesList.SelectedItems[0].Text;
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
+            GameID.Text = GamesList.SelectedItems[0].ToolTipText;
+            int id = int.Parse(GamesList.SelectedItems[0].ToolTipText,
+                CultureInfo.CurrentCulture);
+            var game = AppWide.SelectGame(id);
+            GameName.Text = game["gamename"].ToString();
+            GameDevName.Text = game["devname"].ToString();
+            GameFilePath.Text = game["gamelink"].ToString();
+            GameRating.Text = game["rating"].ToString();
+            if (game["bin"] == DBNull.Value)
             {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = "SELECT gamename, devname, singleplayer, " +
-                    "multiplayer, gamelink, bin, CONVERT(varchar, " +
-                    "ROUND(AVG(CAST(rate AS float)), 2)) + ' (' + CONVERT(varchar, " +
-                    "COUNT(rate)) + ')' AS rating FROM games LEFT JOIN pics ON " +
-                    "gamepic = picid LEFT JOIN devs ON madeby = devid LEFT JOIN " +
-                    "subscriptions ON gameid = game WHERE gameid = @id GROUP BY " +
-                    "gamename, devname, singleplayer, multiplayer, gamelink, bin";
-                string id = GamesList.SelectedItems[0].ToolTipText;
-                command.Parameters.Add(new SqlParameter("@id", int.Parse(id,
-                    CultureInfo.InvariantCulture)));
-                GameID.Text = id;
-                SqlDataReader dataReader = command.ExecuteReader();
-                dataReader.Read();
-                GameName.Text = dataReader["gamename"].ToString();
-                GameDevName.Text = dataReader["devname"].ToString();
-                GameFilePath.Text = dataReader["gamelink"].ToString();
-                GameRating.Text = dataReader["rating"].ToString();
-                if (dataReader["bin"] == DBNull.Value)
-                {
-                    GamePicBox.Image = GamePics.Images[0];
-                }
-                else
-                {
-                    MemoryStream memoryStream = new MemoryStream((byte[])dataReader["bin"]);
-                    GamePicBox.Image = Image.FromStream(memoryStream);
-                    memoryStream.Dispose();
-                }
-                GameModes.Text = "";
-                if ((bool)dataReader["singleplayer"])
-                {
-                    GameModes.Text = Resources.Lang.SinglePlayer;
-                    if ((bool)dataReader["multiplayer"])
-                        GameModes.Text += ", мультиплеер";
-                }
-                else if ((bool)dataReader["multiplayer"])
-                    GameModes.Text = Resources.Lang.Multiplayer;
-                dataReader.Close();
-                command.CommandText = "SELECT genrename FROM gamegenre " +
-                    "INNER JOIN genres ON genre = genreid WHERE game = @id";
-                dataReader = command.ExecuteReader();
-                GameGenres.Text = "";
-                while (dataReader.Read())
-                    GameGenres.Text += dataReader["genrename"].ToString() + ", ";
-                dataReader.Close();
-                if (GameGenres.Text.Length > 0) GameGenres.Text = 
-                    GameGenres.Text.Substring(0, GameGenres.Text.LastIndexOf(','));
-                command.CommandText = "SELECT * FROM subscriptions WHERE who = @me " +
-                    "AND game = @id";
-                command.Parameters.Add(new SqlParameter("@me", LoginForm.UserID));
-                dataReader = command.ExecuteReader();
-                if (GameSubscribe.Checked = dataReader.Read())
-                {
-                    GameSubscribe.Text = Resources.Lang.Unsubscribe;
-                    GameRunSubmit.Visible = GameRate.Visible = GameRateNUD.Visible = true;
-                    GameID.Text = dataReader["game"].ToString();
-                    if (GameRate.Checked = dataReader["rate"] != DBNull.Value)
-                        GameRateNUD.Value = decimal.Parse(dataReader["rate"].ToString(),
-                                CultureInfo.InvariantCulture);
-                    else GameRateNUD.Value = 5;
-                }
-                else
-                {
-                    GameSubscribe.Text = Resources.Lang.Subscribe;
-                    GameRunSubmit.Visible = GameRate.Visible = GameRateNUD.Visible = false;
-                }
+                GamePicBox.Image = GamePics.Images[0];
+            }
+            else
+            {
+                MemoryStream memoryStream = new MemoryStream((byte[])game["bin"]);
+                GamePicBox.Image = Image.FromStream(memoryStream);
+                memoryStream.Dispose();
+            }
+            GameModes.Text = string.Empty;
+            if ((bool)game["singleplayer"])
+            {
+                GameModes.Text = Resources.Lang.SinglePlayer;
+                if ((bool)game["multiplayer"])
+                    GameModes.Text += ", " + Resources.Lang.Multiplayer;
+            }
+            else if ((bool)game["multiplayer"])
+                GameModes.Text = Resources.Lang.Multiplayer;
+            AppWide.PopulateGenres(id, GameGenres);
+            var subscriptions = AppWide.GetSubscription(LoginForm.UserID, id);
+            GameSubscribe.Checked =
+            GameRunSubmit.Visible =
+            GameRate.Visible =
+            GameRateNUD.Visible = subscriptions != null;
+            if (GameSubscribe.Checked)
+            {
+                GameSubscribe.Text = Resources.Lang.Unsubscribe;
+                GameID.Text = subscriptions["game"].ToString();
+                GameRate.Checked = subscriptions["rate"] != DBNull.Value;
+                if (GameRate.Checked)
+                    GameRateNUD.Value = decimal.Parse(subscriptions["rate"].ToString(),
+                        CultureInfo.CurrentCulture);
+                else GameRateNUD.Value = 5;
+            }
+            else
+            {
+                GameSubscribe.Text = Resources.Lang.Subscribe;
             }
             if (!GamePagePanel.Visible)
             {
@@ -306,43 +203,22 @@ namespace CyberClub
         }
 
         // ------------------------------ Аккаунт ------------------------------
+
         private void GetUserData()
         {
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
-            {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = "SELECT username, email, info, passwd, authname " +
-                    "FROM users INNER JOIN hierarchy ON authority = authid " +
-                    "WHERE userid = @id";
-                command.Parameters.Add(new SqlParameter("@id", LoginForm.UserID));
-                SqlDataReader dataReader = command.ExecuteReader();
-                dataReader.Read();
-                UserLabel.Text = UserName.Text = dataReader["username"].ToString();
-                EMail.Text = dataReader["email"].ToString();
-                UserInfo.Text = dataReader["info"].ToString();
-                Passwd.Text = dataReader["passwd"].ToString();
-            }
+            var user = AppWide.GetUserData(LoginForm.UserID);
+            UserLabel.Text = UserName.Text = user["username"].ToString();
+            EMail.Text = user["email"].ToString();
+            UserInfo.Text = user["info"].ToString();
+            Passwd.Text = user["passwd"].ToString();
         }
 
         private void AccSubmit_Click(object sender, EventArgs e)
         { // Обновить запись пользователя
             if (Passwd.Text != PasswdRepeat.Text ||
                 Voice.Ask(Resources.Lang.UpdateAccountPrompt) == DialogResult.No) return;
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
-            {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = "UPDATE users SET " +
-                    (UserName.Text.Length == 0 ? "" : "username = @name, ") +
-                    "email = @email, info = @info, passwd = @pwd WHERE userid = @id";
-                command.Parameters.Add(new SqlParameter("@name", UserName.Text));
-                command.Parameters.Add(new SqlParameter("@email", EMail.Text));
-                command.Parameters.Add(new SqlParameter("@info", UserInfo.Text));
-                command.Parameters.Add(new SqlParameter("@pwd", Passwd.Text));
-                command.Parameters.Add(new SqlParameter("@id", LoginForm.UserID));
-                command.ExecuteNonQuery();
-            }
+            AppWide.UpdateAccount(
+                LoginForm.UserID, UserName.Text, EMail.Text, UserInfo.Text, Passwd.Text);
             Voice.Say(Resources.Lang.UpdatedSuccessfully);
         }
 
@@ -353,38 +229,22 @@ namespace CyberClub
         // ---------------------------- Обратная связь ----------------------------
         private void MsgSubmit_Click(object sender, EventArgs e)
         {
-            if (MsgBriefly.Text.Length == 0)
+            if (string.IsNullOrWhiteSpace(MsgBriefly.Text))
             {
                 Voice.Say(Resources.Lang.FillInNecessaryTextBox);
                 return;
             }
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
-            {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = "INSERT INTO feedback (who, briefly, indetails, " +
-                    "dt, isread) VALUES (@me, @br, @de, @dt, @rd)";
-                command.Parameters.Add(new SqlParameter("@me", LoginForm.UserID));
-                command.Parameters.Add(new SqlParameter("@br", MsgBriefly.Text));
-                command.Parameters.Add(new SqlParameter("@de", MsgDetails.Text));
-                command.Parameters.Add(new SqlParameter("@dt", DateTime.Now));
-                command.Parameters.Add(new SqlParameter("@rd", false));
-                command.ExecuteNonQuery();
-            }
+            AppWide.SendMessage(LoginForm.UserID, MsgBriefly.Text, MsgDetails.Text);
             Voice.Say(Resources.Lang.SentSuccessfully);
         }
 
         // ----------------------- Заимствования -----------------------
-        private static bool UpdateBox
-            (IList items, string select, string from, string order = "") =>
-            AppWide.UpdateBox(items, select, from, order);
-
-        private static bool ConnOpen(SqlConnection conn) => AppWide.ConnOpen(conn);
-
         /// <summary>
         /// Change colors to bright to make the form printable.
-        /// This was a college study project and they needed the form printed on paper
         /// </summary>
+        /// <remarks>
+        /// This was a college study project and they needed the form printed on paper
+        /// </remarks>
         private void PrintColors_CheckedChanged(object sender, EventArgs e)
         {
             PrintColors.Dispose();
