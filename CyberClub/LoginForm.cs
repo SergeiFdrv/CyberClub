@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CyberClub.Data;
+using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Data;
@@ -17,28 +18,31 @@ namespace CyberClub
             InitializeComponent();
         }
 
+        private LoginDatabase DB { get; } = new LoginDatabase();
+
         public static int UserID { get; private set; }
 
         private void LogInButton_Click(object sender, EventArgs e)
         { // Вход в аккаунт
             if (!string.IsNullOrEmpty(UserName.Text))
             {
-                IDictionary account = AppWide.GetAccount(UserName.Text, Password.Text);
+                System.Collections.Generic.Dictionary<string, object> account
+                    = DB.GetAccount(UserName.Text, Password.Text);
                 if (account is null)
                 {
                     Voice.Say(Resources.Lang.LoginPasswordNotFound);
                     return;
                 }
                 UserName.Text = Password.Text = "";
-                AppWide.UserLevel level = (AppWide.UserLevel)account["UserLevel"];
-                if (level == AppWide.UserLevel.Banned)
+                UserLevel level = (UserLevel)account["UserLevel"];
+                if (level == UserLevel.Banned)
                 {
                     Voice.Say(Resources.Lang.YouAreBanned);
                     return;
                 }
                 UserID = (int)account["UserID"];
                 Hide();
-                if (level == AppWide.UserLevel.Admin)
+                if (level == UserLevel.Admin)
                     using (AdminForm af = new AdminForm { Owner = this })
                         af.ShowDialog();
                 else using (UserForm uf = new UserForm { Owner = this })

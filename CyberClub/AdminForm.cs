@@ -11,6 +11,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CyberClub.Data;
 
 namespace CyberClub
 {
@@ -21,11 +22,13 @@ namespace CyberClub
             InitializeComponent();
         }
 
+        private AdminDatabase DB { get; } = new AdminDatabase();
+
         #region Form     // Загрузка и выгрузка формы
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
-            UserLabel.Text = AppWide.GetUserName(LoginForm.UserID);
+            UserLabel.Text = DB.GetUserName(LoginForm.UserID);
             LeftGames.Checked = true;
         }
 
@@ -119,14 +122,14 @@ namespace CyberClub
 
         private void GAddNewDevBtn_Click(object sender, EventArgs e)
         {
-            if (AppWide.AddGetDevID(GAddDev.Text) < 0) Voice.Say(Resources.Lang.AddError);
+            if (DB.AddGetDevID(GAddDev.Text) < 0) Voice.Say(Resources.Lang.AddError);
             GAddDev.Text = "";
             UpdateBox(GAddDev.Items, "devname", "devs", "devid");
         }
 
         private void GAddNewGenreBtn_Click(object sender, EventArgs e)
         { // Добавить в базу новый жанр
-            byte addStatus = AppWide.AddGenre(GAddNewGenre.Text);
+            byte addStatus = DB.AddGenre(GAddNewGenre.Text);
             switch (addStatus)
             {
                 case 3:
@@ -151,12 +154,12 @@ namespace CyberClub
         }
 
         private void GAddPicButton_Click(object sender, EventArgs e) =>
-            Voice.Say(AppWide.AddGetPicID(GAddPicName.Text, GAddPicBox.Image) < 0 ? 
+            Voice.Say(DB.AddGetPicID(GAddPicName.Text, GAddPicBox.Image) < 0 ? 
                 Resources.Lang.NameNotEntered : Resources.Lang.AddedSuccessfully);
 
         private void GAddSubmit_Click(object sender, EventArgs e)
         { // Добавить в базу новую игру
-            AppWide.AddGame(GAddName.Text, GAddDev.Text, GAddLink.Text,
+            DB.AddGame(GAddName.Text, GAddDev.Text, GAddLink.Text,
                 GAddPicName.Text, GAddPicBox.Image,
                 GAddSingleCB.Checked, GAddMultiCB.Checked, GAddGenresCLB);
             UpdateBox(GAddDev.Items, "devname", "devs", "devid"); // перенести
@@ -187,7 +190,7 @@ namespace CyberClub
                 return;
             }
             GEditName.Enabled = true;
-            var game = AppWide.GetGame(id);
+            var game = DB.GetGame(id);
             if (game != null)
             {
                 GEditName.Text = game["GameName"].ToString();
@@ -201,7 +204,7 @@ namespace CyberClub
                 GEditRatingN.Text = game["rating"].ToString();
                 for (int i = 0; i < GEditGenresCLB.Items.Count; i++)
                     GEditGenresCLB.SetItemChecked(i, false);
-                var genres = AppWide.GetGameGenres(id);
+                var genres = DB.GetGameGenres(id);
                 if (genres is null) return;
                 foreach (string genre in genres)
                     GEditGenresCLB.SetItemChecked(
@@ -226,7 +229,7 @@ namespace CyberClub
                 GEditDevID.Text = string.Empty;
                 return;
             }
-            var dev = AppWide.GetDeveloper(GEditDev.Text);
+            var dev = DB.GetDeveloper(GEditDev.Text);
             if (dev != null) GEditDevID.Text = dev["DeveloperID"].ToString();
         }
 
@@ -235,7 +238,7 @@ namespace CyberClub
             if (Voice.Ask(Resources.Lang.RenameDeveloperPrompt) == DialogResult.No)
                 return;
             if (!int.TryParse(GEditDevID.Text, out int id)) return;
-            byte opRes = AppWide.RenameDeveloper(id, GEditDev.Text);
+            byte opRes = DB.RenameDeveloper(id, GEditDev.Text);
             if (opRes == 2)
             {
                 Voice.Say(Resources.Lang.DBError);
@@ -262,7 +265,7 @@ namespace CyberClub
             }
             if (Voice.Ask(Resources.Lang.RenameGenrePrompt) == DialogResult.No)
                 return;
-            byte opRes = AppWide
+            byte opRes = DB
                 .RenameGenre(GEditGenresCLB.SelectedItem.ToString(), GEditGenre.Text);
             if (opRes == 2)
             {
@@ -285,7 +288,7 @@ namespace CyberClub
                 GEditPicBox.Image = GEditPicBox.InitialImage;
                 return;
             }
-            var image = AppWide.GetImage(id);
+            var image = DB.GetImage(id);
             if (image != null)
             {
                 GEditPicName.Text = image["picname"].ToString();
@@ -300,7 +303,7 @@ namespace CyberClub
         private void GEditPicBtn_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(GEditPicID.Text, out int id)) return;
-            AppWide.RenameImage(id, GEditPicName.Text);
+            DB.RenameImage(id, GEditPicName.Text);
             UpdateBox(GEditPicID.Items, "picid", "pics");
         }
 
@@ -310,7 +313,7 @@ namespace CyberClub
             if (!int.TryParse(GEditID.Text, out int id)) return;
             if (!int.TryParse(GEditDevID.Text, out int dev)) dev = -1;
             if (!int.TryParse(GEditPicID.Text, out int pic)) pic = -1;
-            AppWide.UpdateGame(id, GEditName.Text, dev, GEditLink.Text, pic,
+            DB.UpdateGame(id, GEditName.Text, dev, GEditLink.Text, pic,
                 GEditSingleCB.Checked, GEditMultiCB.Checked, GEditGenresCLB);
             GEditPicID.Text = "";
             UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
@@ -322,7 +325,7 @@ namespace CyberClub
         {
             if (Voice.Ask(Resources.Lang.DeleteDeveloperPrompt) == DialogResult.No) return;
             if (!int.TryParse(GEditDevID.Text, out int id)) return;
-            AppWide.DeleteDeveloper(id);
+            DB.DeleteDeveloper(id);
             GEditDev.Text = "";
             UpdateBox(GEditDev.Items, "devname", "devs", "devid");
             UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
@@ -337,7 +340,7 @@ namespace CyberClub
             }
             if (Voice.Ask(Resources.Lang.DeleteGenrePrompt + ' ' +
                 GEditGenresCLB.SelectedItem.ToString()) == DialogResult.No) return;
-            AppWide.DeleteGenre(GEditGenresCLB.SelectedItem.ToString());
+            DB.DeleteGenre(GEditGenresCLB.SelectedItem.ToString());
             UpdateBox(GEditGenresCLB.Items, "genrename", "genres", "genreid");
             UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
         }
@@ -346,7 +349,7 @@ namespace CyberClub
         {
             if (Voice.Ask(Resources.Lang.DeleteImagePrompt) == DialogResult.No) return;
             if (!int.TryParse(GEditPicID.Text, out int id)) return;
-            AppWide.DeleteImage(id);
+            DB.DeleteImage(id);
             GEditPicID.Text = "";
             UpdateBox(GEditPicID.Items, "picid", "pics");
         }
@@ -355,7 +358,7 @@ namespace CyberClub
         {
             if (Voice.Ask(Resources.Lang.DeleteGamePrompt) == DialogResult.No) return;
             if (!int.TryParse(GEditID.Text, out int id)) return;
-            AppWide.DeleteGame(id);
+            DB.DeleteGame(id);
             GEditPicID.Text = "";
             UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
         }
@@ -392,7 +395,7 @@ namespace CyberClub
         private void AxAddSubmit_Click(object sender, EventArgs e)
         { // Добавить в базу новую учетную запись
             if (string.IsNullOrWhiteSpace(AxAddName.Text)) return;
-            byte addResult = AppWide.AddAccount(AxAddName.Text, (int)AxAddAuth.SelectedItem,
+            byte addResult = DB.AddAccount(AxAddName.Text, (int)AxAddAuth.SelectedItem,
                 AxAddEMail.Text, AxAddInfo.Text, AxAddPasswd.Text);
             switch (addResult)
             {
@@ -429,7 +432,7 @@ namespace CyberClub
                 AxEditEMail.Text = AxEditInfo.Text = AxEditAuth.Text = AxEditPasswd.Text = "";
                 return;
             }
-            var account = AppWide.GetAccountByName(AxEditName.Text);
+            var account = DB.GetAccountByName(AxEditName.Text);
             if (account != null)
             {
                 AxEditID.Text = account["userid"].ToString();
@@ -437,13 +440,13 @@ namespace CyberClub
                 AxEditEMail.Enabled = true;
                 AxEditInfo.Text = account["info"].ToString();
                 AxEditInfo.Enabled = true;
-                AxEditAuth.Text = ((AppWide.UserLevel)account["userlevel"]).ToString();
+                AxEditAuth.Text = ((UserLevel)account["userlevel"]).ToString();
                 AxEditAuth.Enabled = int.Parse(AxEditID.Text,
                     CultureInfo.CurrentCulture) != LoginForm.UserID;
                 AxEditPasswd.Text = account["passwd"].ToString();
                 AxEditPasswd.Enabled = true;
                 int id = (int)account["userid"];
-                var stats = AppWide.GetAccountStats(id);
+                var stats = DB.GetAccountStats(id);
                 AxEditSubsN.Text = stats["subs"].ToString();
                 AxEditRatesN.Text = stats["rates"].ToString();
                 AxEditMsgsN.Text = stats["messages"].ToString();
@@ -458,7 +461,7 @@ namespace CyberClub
         { // Обновить запись пользователя
             if (Voice.Ask(Resources.Lang.UpdateAccountPrompt) == DialogResult.No) return;
             if (!int.TryParse(AxEditID.Text, out int id)) return;
-            byte editResult = AppWide.UpdateAccount(id, AxEditName.Text, AxEditEMail.Text,
+            byte editResult = DB.UpdateAccount(id, AxEditName.Text, AxEditEMail.Text,
                 AxEditInfo.Text, (int)AxEditAuth.SelectedItem, AxEditPasswd.Text);
             switch (editResult)
             {
@@ -475,7 +478,7 @@ namespace CyberClub
         { // Удалить аккаунт
             if (Voice.Ask(Resources.Lang.DeleteAccountPrompt) == DialogResult.No) return;
             if (!int.TryParse(AxEditID.Text, out int id)) return;
-            AppWide.DeleteAccount(id);
+            DB.DeleteAccount(id);
             UpdateData(AccountsPanel, AccountsDGVQuery,
                 new ComboBox[] { AxEditName }, "username");
         }
@@ -510,7 +513,7 @@ namespace CyberClub
                 DGVMessages.Rows[e.RowIndex].Cells["id"].Value.ToString();
             MsgsSwitch.Text = Resources.Lang.Back;
             MsgsIsRead.Checked = MsgsIsRead.Visible = true;
-            MsgsDetails.Text = AppWide
+            MsgsDetails.Text = DB
                 .GetMessageText((int)DGVMessages.Rows[e.RowIndex].Cells["id"].Value);
         }
 
@@ -537,7 +540,7 @@ namespace CyberClub
 
         private void MsgsIsRead_CheckedChanged(object sender, EventArgs e)
         {
-            AppWide.SetMessageIsRead(
+            DB.SetMessageIsRead(
                 int.Parse(MsgsID.Text, CultureInfo.CurrentCulture),
                 MsgsIsRead.Checked);
         }
@@ -563,7 +566,7 @@ namespace CyberClub
         /// Очищает текстбоксы и чекбоксы, обновляет dataGridView и данные 
         /// в элементах "поле со списком" внутри элемента panel.
         /// </summary>
-        private static void UpdateData
+        private void UpdateData
             (Panel panel, string DGVQuery, ComboBox[] CB, params string[] fields)
         {
             ClearFields(panel);
@@ -587,9 +590,9 @@ namespace CyberClub
         /// <summary>
         /// Обновляет данные в dataGridView.
         /// </summary>
-        private static bool UpdateTable(DataGridView DGV, string query)
+        private bool UpdateTable(DataGridView DGV, string query)
         {
-            var source = AppWide.GetDataTable(query);
+            var source = DB.GetDataTable(query);
             if (source is null) return false;
             DGV.DataSource = source;
             DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
@@ -619,9 +622,9 @@ namespace CyberClub
         #endregion
 
         // ----------------------- Заимствования -----------------------
-        private static bool UpdateBox(IList items,
+        private bool UpdateBox(IList items,
             string select, string from, string order = "") =>
-            AppWide.UpdateBox(items, select, from, order);
+            DB.UpdateBox(items, select, from, order);
 
         /// <summary>
         /// Change colors to bright to make the form printable.

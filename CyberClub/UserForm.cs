@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CyberClub.Data;
+using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,8 @@ namespace CyberClub
             InitializeComponent();
         }
 
+        private UserDatabase DB { get; } = new UserDatabase();
+
         private void LogOutButton_Click(object sender, EventArgs e) => Close();
 
         private void UserForm_FormClosed(object sender, FormClosedEventArgs e) =>
@@ -30,8 +33,8 @@ namespace CyberClub
         {
             GetUserData();
             LoadGameList();
-            AppWide.UpdateBox(GSrchDev.Items, "devname", "devs", "devid");
-            AppWide.UpdateBox(GSrchGenres.Items, "genrename", "genres", "genreid");
+            DB.UpdateBox(GSrchDev.Items, "devname", "devs", "devid");
+            DB.UpdateBox(GSrchGenres.Items, "genrename", "genres", "genreid");
         }
 
         // ------------------------------ Кнопки слева ------------------------------
@@ -83,7 +86,7 @@ namespace CyberClub
             {
                 GameSubscribe.Text = Resources.Lang.Unsubscribe;
                 GameRunSubmit.Visible = GameRate.Visible = GameRateNUD.Visible = true;
-                AppWide.Subscribe(LoginForm.UserID, int.Parse(GameID.Text,
+                DB.Subscribe(LoginForm.UserID, int.Parse(GameID.Text,
                     CultureInfo.CurrentCulture));
                 GameRate.Checked = false;
                 GameRateNUD.Value = 5;
@@ -97,17 +100,17 @@ namespace CyberClub
             {
                 GameSubscribe.Text = Resources.Lang.Subscribe;
                 GameRunSubmit.Visible = GameRate.Visible = GameRateNUD.Visible = false;
-                AppWide.Unsubscribe(LoginForm.UserID, int.Parse(GameID.Text,
+                DB.Unsubscribe(LoginForm.UserID, int.Parse(GameID.Text,
                     CultureInfo.CurrentCulture));
             }
         }
 
         private void GameRate_Click(object sender, EventArgs e)
         {
-            if (GameRate.Checked) AppWide.ChangeRate(
+            if (GameRate.Checked) DB.ChangeRate(
                 int.Parse(GameID.Text, CultureInfo.CurrentCulture),
                 LoginForm.UserID, GameRateNUD.Value);
-            else AppWide.ChangeRate(
+            else DB.ChangeRate(
                 int.Parse(GameID.Text, CultureInfo.CurrentCulture),
                 LoginForm.UserID);
         }
@@ -135,7 +138,7 @@ namespace CyberClub
         private void LoadGameList()
         {
             GamesList.Clear();
-            AppWide.PopulateGameList(GamesList,
+            DB.PopulateGameList(GamesList,
                 GameSearch.Text,
                 GSrchDev.Text,
                 GSrchGenres.CheckedItems,
@@ -151,7 +154,7 @@ namespace CyberClub
             GameID.Text = GamesList.SelectedItems[0].ToolTipText;
             int id = int.Parse(GamesList.SelectedItems[0].ToolTipText,
                 CultureInfo.CurrentCulture);
-            var game = AppWide.SelectGame(id);
+            var game = DB.SelectGame(id);
             GameName.Text = game["gamename"].ToString();
             GameDevName.Text = game["devname"].ToString();
             GameFilePath.Text = game["gamelink"].ToString();
@@ -175,8 +178,8 @@ namespace CyberClub
             }
             else if ((bool)game["multiplayer"])
                 GameModes.Text = Resources.Lang.Multiplayer;
-            AppWide.PopulateGenres(id, GameGenres);
-            var subscriptions = AppWide.GetSubscription(LoginForm.UserID, id);
+            DB.PopulateGenres(id, GameGenres);
+            var subscriptions = DB.GetSubscription(LoginForm.UserID, id);
             GameSubscribe.Checked =
             GameRunSubmit.Visible =
             GameRate.Visible =
@@ -206,7 +209,7 @@ namespace CyberClub
 
         private void GetUserData()
         {
-            var user = AppWide.GetUserData(LoginForm.UserID);
+            var user = DB.GetUserData(LoginForm.UserID);
             UserLabel.Text = UserName.Text = user["username"].ToString();
             EMail.Text = user["email"].ToString();
             UserInfo.Text = user["info"].ToString();
@@ -217,7 +220,7 @@ namespace CyberClub
         { // Обновить запись пользователя
             if (Passwd.Text != PasswdRepeat.Text ||
                 Voice.Ask(Resources.Lang.UpdateAccountPrompt) == DialogResult.No) return;
-            AppWide.UpdateAccount(
+            DB.UpdateAccount(
                 LoginForm.UserID, UserName.Text, EMail.Text, UserInfo.Text, Passwd.Text);
             Voice.Say(Resources.Lang.UpdatedSuccessfully);
         }
@@ -234,7 +237,7 @@ namespace CyberClub
                 Voice.Say(Resources.Lang.FillInNecessaryTextBox);
                 return;
             }
-            AppWide.SendMessage(LoginForm.UserID, MsgBriefly.Text, MsgDetails.Text);
+            DB.SendMessage(LoginForm.UserID, MsgBriefly.Text, MsgDetails.Text);
             Voice.Say(Resources.Lang.SentSuccessfully);
         }
 
