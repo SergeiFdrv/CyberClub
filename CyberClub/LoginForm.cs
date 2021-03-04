@@ -30,15 +30,15 @@ namespace CyberClub
                     return;
                 }
                 UserName.Text = Password.Text = "";
-                string authname = (string)account["authname"];
-                if (authname == "banned")
+                AppWide.UserLevel level = (AppWide.UserLevel)account["UserLevel"];
+                if (level == AppWide.UserLevel.Banned)
                 {
                     Voice.Say(Resources.Lang.YouAreBanned);
                     return;
                 }
-                UserID = (int)account["userid"];
+                UserID = (int)account["UserID"];
                 Hide();
-                if (authname == "admin")
+                if (level == AppWide.UserLevel.Admin)
                     using (AdminForm af = new AdminForm { Owner = this })
                         af.ShowDialog();
                 else using (UserForm uf = new UserForm { Owner = this })

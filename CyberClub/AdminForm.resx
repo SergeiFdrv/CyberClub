@@ -144,7 +144,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;AdminLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="GEditLinkBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
@@ -3713,7 +3713,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;GamesPanel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="UserLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3740,7 +3740,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;UserLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="AxEditID.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4790,7 +4790,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;AccountsPanel.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="MsgsID.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5159,7 +5159,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;MessagesPanel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <metadata name="GamePicOFD.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -5204,7 +5204,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;PrintColors.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="LeftGames.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
     <value>Button</value>
@@ -5237,7 +5237,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LeftGames.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="LeftAccounts.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
     <value>Button</value>
@@ -5273,7 +5273,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LeftAccounts.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="LeftMessages.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
     <value>Button</value>
@@ -5309,7 +5309,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LeftMessages.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="LeftLogOut.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
     <value>Button</value>
@@ -5321,7 +5321,7 @@
     <value>NoControl</value>
   </data>
   <data name="LeftLogOut.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 182</value>
+    <value>12, 228</value>
   </data>
   <data name="LeftLogOut.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 40</value>
@@ -5345,6 +5345,42 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LeftLogOut.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="LeftGoAsUser.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="LeftGoAsUser.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="LeftGoAsUser.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LeftGoAsUser.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 182</value>
+  </data>
+  <data name="LeftGoAsUser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 40</value>
+  </data>
+  <data name="LeftGoAsUser.TabIndex" type="System.Int32, mscorlib">
+    <value>170</value>
+  </data>
+  <data name="LeftGoAsUser.Text" xml:space="preserve">
+    <value>Пользователь</value>
+  </data>
+  <data name="LeftGoAsUser.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;LeftGoAsUser.Name" xml:space="preserve">
+    <value>LeftGoAsUser</value>
+  </data>
+  <data name="&gt;&gt;LeftGoAsUser.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LeftGoAsUser.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LeftGoAsUser.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

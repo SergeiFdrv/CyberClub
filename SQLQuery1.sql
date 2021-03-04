@@ -1,47 +1,66 @@
 CREATE DATABASE CyberClub
 GO
 USE CyberClub -- создать таблицы
-CREATE TABLE hierarchy (authid INT PRIMARY KEY IDENTITY , authname NVARCHAR(30) NOT NULL UNIQUE)
-CREATE TABLE users (userid INT PRIMARY KEY IDENTITY, username NVARCHAR(20) NOT NULL UNIQUE, 
-email NVARCHAR(64), info NVARCHAR(200), authority INT FOREIGN KEY REFERENCES hierarchy (authid), 
-passwd NVARCHAR(255))
-CREATE TABLE feedback (messageid INT PRIMARY KEY IDENTITY, 
-who INT FOREIGN KEY REFERENCES users (userid), briefly NVARCHAR(50) NOT NULL, 
-indetails NVARCHAR(255), dt DATETIME NOT NULL, isread BIT)
-CREATE TABLE pics (picid INT PRIMARY KEY IDENTITY, picname NVARCHAR(255) NOT NULL, bin VARBINARY(MAX) NOT NULL)
-CREATE TABLE devs (devid INT PRIMARY KEY IDENTITY, devname NVARCHAR(50) NOT NULL UNIQUE)
-CREATE TABLE games (gameid INT PRIMARY KEY IDENTITY, gamename NVARCHAR(50) NOT NULL, 
-madeby INT FOREIGN KEY REFERENCES devs (devid), gamelink NVARCHAR(255), 
-gamepic INT FOREIGN KEY REFERENCES pics (picid), singleplayer BIT, multiplayer BIT)
-CREATE TABLE genres (genreid INT PRIMARY KEY IDENTITY, genrename NVARCHAR(30) NOT NULL UNIQUE)
-CREATE TABLE gamegenre (game INT FOREIGN KEY REFERENCES games (gameid) ON DELETE CASCADE, 
-genre INT FOREIGN KEY REFERENCES genres (genreid) ON DELETE CASCADE, PRIMARY KEY (game, genre))
-CREATE TABLE subscriptions (who INT FOREIGN KEY REFERENCES users (userid) ON DELETE CASCADE, 
-game INT FOREIGN KEY REFERENCES games (gameid) ON DELETE CASCADE,
-rate tinyint check(rate >= 0 AND rate <= 10), PRIMARY KEY (who, game))
+--
+CREATE TABLE Users (
+UserID INT PRIMARY KEY IDENTITY, UserName NVARCHAR(20) NOT NULL UNIQUE, Email NVARCHAR(64), 
+About NVARCHAR(255), UserLevel INT NOT NULL, UserPass NVARCHAR(255), LastLogin DATETIME)
+--
+CREATE TABLE TextMessages (MessageID INT PRIMARY KEY IDENTITY, 
+Sender INT FOREIGN KEY REFERENCES Users (UserID), Reciever INT FOREIGN KEY REFERENCES Users (UserID), 
+ShortText NVARCHAR(50) NOT NULL, LongText NVARCHAR(255), DT DATETIME NOT NULL, IsRead BIT)
+--
+CREATE TABLE Images (
+ImageID INT PRIMARY KEY IDENTITY, ImageName NVARCHAR(255) NOT NULL, Bin VARBINARY(MAX) NOT NULL)
+--
+CREATE TABLE Developers (DeveloperID INT PRIMARY KEY IDENTITY, DeveloperName NVARCHAR(50) NOT NULL UNIQUE)
+--
+CREATE TABLE Games (GameID INT PRIMARY KEY IDENTITY, GameName NVARCHAR(50) NOT NULL, 
+Developer INT FOREIGN KEY REFERENCES Developers (DeveloperID), GameExePath NVARCHAR(255), 
+GameIcon INT FOREIGN KEY REFERENCES Images (ImageID), IsSingleplayer BIT, IsMultiplayer BIT)
+--
+CREATE TABLE Genres (GenreID INT PRIMARY KEY IDENTITY, GenreName NVARCHAR(30) NOT NULL UNIQUE)
+--
+CREATE TABLE GameGenre (Game INT FOREIGN KEY REFERENCES Games (GameID) ON DELETE CASCADE, 
+Genre INT FOREIGN KEY REFERENCES Genres (GenreID) ON DELETE CASCADE, PRIMARY KEY (Game, Genre))
+--
+CREATE TABLE Subscriptions (Subscriber INT FOREIGN KEY REFERENCES Users (UserID) ON DELETE CASCADE, 
+Game INT FOREIGN KEY REFERENCES Games (GameID) ON DELETE CASCADE,
+Rate TINYINT CHECK(Rate >= 0 AND Rate <= 10), PRIMARY KEY (Subscriber, Game))
 -- триггеры
 GO
-CREATE TRIGGER Devs_GamesForget
-ON devs
+CREATE TRIGGER Developers_GamesForget
+ON Developers
 INSTEAD OF DELETE
 AS
-    UPDATE games SET madeby = null WHERE madeby IN (SELECT devid FROM deleted)
-    DELETE FROM devs WHERE devid IN (SELECT devid FROM deleted)
+    UPDATE Games SET Developer = null WHERE Developer IN (SELECT DeveloperID FROM Deleted)
+    DELETE FROM Developers WHERE DeveloperID IN (SELECT DeveloperID FROM Deleted)
 GO
-CREATE TRIGGER Pics_GamesForget
-ON pics
+CREATE TRIGGER Images_GamesForget
+ON Images
 INSTEAD OF DELETE
 AS
-    UPDATE games SET gamepic = null WHERE gamepic IN (SELECT picid FROM deleted)
-    DELETE FROM pics WHERE picid IN (SELECT picid FROM deleted)
-GO/*
-CREATE TRIGGER Users_FeedbackForget
-ON users
+    UPDATE Games SET GameIcon = null WHERE GameIcon IN (SELECT ImageID FROM Deleted)
+    DELETE FROM Images WHERE ImageID IN (SELECT ImageID FROM Deleted)
+GO
+CREATE TRIGGER Users_TextMessagesForget
+ON Users
 INSTEAD OF DELETE
 AS
-    UPDATE feedback SET who = null WHERE who IN (SELECT who FROM deleted)
-    DELETE FROM users WHERE userid IN (SELECT userid FROM deleted)
-*/GO
+    UPDATE TextMessages SET Sender = null WHERE Sender IN (SELECT UserID FROM Deleted)
+    DELETE FROM Users WHERE UserID IN (SELECT UserID FROM Deleted)
+GO
 -- добавить начальные данные
-INSERT hierarchy VALUES ('admin'), ('player'), ('banned')
-INSERT users (username, authority, passwd) VALUES ('admin', 1, '')
+INSERT Users (UserName, UserLevel) VALUES ('admin', 0)
+
+        /*[Required]
+        public virtual int LevelID
+        {
+            get => (int)Level;
+            set
+            {
+                Level = (UserLevel)LevelID;
+            }
+        }
+        [EnumDataType(typeof(UserLevel))]
+        public virtual UserLevel Level { get; set; }*/

@@ -22,16 +22,10 @@ namespace CyberClub
         }
 
         #region Form     // Загрузка и выгрузка формы
+
         private void AdminForm_Load(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
-            {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = "SELECT username FROM users WHERE userid = @id";
-                command.Parameters.Add(new SqlParameter("@id", LoginForm.UserID));
-                UserLabel.Text = command.ExecuteScalar().ToString();
-            }
+            UserLabel.Text = AppWide.GetUserName(LoginForm.UserID);
             LeftGames.Checked = true;
         }
 
@@ -69,6 +63,16 @@ namespace CyberClub
                         i.DefaultCellStyle.Font = new Font(DGVMessages.Font, FontStyle.Bold);
                     }
                 }
+            }
+        }
+
+        private void LeftGoAsUser_Click(object sender, EventArgs e)
+        {
+            if (LeftGoAsUser.Checked)
+            {
+                Hide();
+                using (UserForm uf = new UserForm { Owner = this })
+                    uf.ShowDialog();
             }
         }
 
@@ -115,53 +119,22 @@ namespace CyberClub
 
         private void GAddNewDevBtn_Click(object sender, EventArgs e)
         {
-            if (AddGetDevID(GAddDev.Text) < 0) Voice.Say(Resources.Lang.AddError);
+            if (AppWide.AddGetDevID(GAddDev.Text) < 0) Voice.Say(Resources.Lang.AddError);
             GAddDev.Text = "";
             UpdateBox(GAddDev.Items, "devname", "devs", "devid");
         }
 
-        /// <summary>
-        /// Если возможно, по имени находит в базе данных индекс разработчика.
-        /// Иначе добавляет нового разработчика с именем name и возвращает индекс.
-        /// </summary>
-        private static int AddGetDevID(string name)
-        {
-            if (name.Length == 0) return -1;
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
-            {
-                if (!ConnOpen(conn)) return -1;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = 
-                    "SELECT count(devid) AS num FROM devs WHERE devname = @name";
-                command.Parameters.Add(new SqlParameter("@name", name));
-                if ((int)command.ExecuteScalar() > 0)
-                { // Если найден, получить номер
-                    command.CommandText = 
-                        "SELECT TOP 1 devid FROM devs WHERE devname = @name";
-                }
-                else
-                { // Если не найден, создать и...
-                    command.CommandText = "INSERT INTO devs (devname) VALUES (@name)";
-                    command.ExecuteNonQuery();
-                    // ...получить номер
-                    command.CommandText = "SELECT TOP 1 devid FROM devs " +
-                        "WHERE devname = @name ORDER BY devid DESC";
-                }
-                return (int)command.ExecuteScalar();
-            }
-        }
-
         private void GAddNewGenreBtn_Click(object sender, EventArgs e)
         { // Добавить в базу новый жанр
-            if (GAddNewGenre.Text.Length == 0) return;
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
+            byte addStatus = AppWide.AddGenre(GAddNewGenre.Text);
+            switch (addStatus)
             {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = "INSERT INTO genres (genrename) VALUES (@gnr)";
-                command.Parameters.Add(new SqlParameter("@gnr", GAddNewGenre.Text));
-                try { command.ExecuteNonQuery(); }
-                catch (SqlException) { Voice.Say(Resources.Lang.NameAlreadyUsed); }
+                case 3:
+                    Voice.Say(Resources.Lang.NameNotEntered); return;
+                case 2:
+                    Voice.Say(Resources.Lang.DBError); return;
+                case 1:
+                    Voice.Say(Resources.Lang.NameAlreadyUsed); return;
             }
             UpdateBox(GAddGenresCLB.Items, "genrename", "genres", "genreid");
             GAddNewGenre.Text = "";
@@ -178,88 +151,17 @@ namespace CyberClub
         }
 
         private void GAddPicButton_Click(object sender, EventArgs e) =>
-            Voice.Say(AddGetPicID(GAddPicName.Text) < 0 ? 
+            Voice.Say(AppWide.AddGetPicID(GAddPicName.Text, GAddPicBox.Image) < 0 ? 
                 Resources.Lang.NameNotEntered : Resources.Lang.AddedSuccessfully);
-
-        private int AddGetPicID(string name)
-        { // Добавить картинку в БД
-            if (name.Length == 0) return -1;
-            ImageConverter imgConverter = new ImageConverter();
-            byte[] image = (byte[])
-                imgConverter.ConvertTo(GAddPicBox.Image, typeof(byte[]));
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
-            {
-                if (!ConnOpen(conn)) return -1;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = "INSERT INTO pics (picname, bin) VALUES (@n, @b)";
-                command.Parameters.Add(new SqlParameter("@n", GAddPicName.Text));
-                command.Parameters.Add(new SqlParameter("@b", image));
-                command.ExecuteNonQuery();
-                command.CommandText = "SELECT TOP 1 picid FROM pics WHERE bin = @b " +
-                    "AND picname = @n";
-                return (int)command.ExecuteScalar();
-            }
-        }
 
         private void GAddSubmit_Click(object sender, EventArgs e)
         { // Добавить в базу новую игру
-            if (GAddName.Text.Length == 0) return;
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
-            {
-                if (!ConnOpen(conn)) return;
-                // Добавить игру
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = "INSERT INTO games (gamename, madeby, " +
-                    "gamelink, gamepic, singleplayer, multiplayer)" +
-                    "VALUES (@name, @dev, @link, @pic, @sp, @mp)";
-                command.Parameters.Add(new SqlParameter("@name", GAddName.Text));
-                if (GAddDev.Text.Length == 0)
-                    command.Parameters.Add(new SqlParameter("@dev", DBNull.Value));
-                else
-                {
-                    command.Parameters.Add(new SqlParameter("@dev",
-                        AddGetDevID(GAddDev.Text)));
-                    UpdateBox(GAddDev.Items, "devname", "devs", "devid");
-                }
-                command.Parameters.Add(new SqlParameter("@link", GAddLink.Text));
-                if (GAddPicName.Text.Length == 0)
-                    command.Parameters.Add(new SqlParameter("@pic", DBNull.Value));
-                else
-                    command.Parameters.Add(new SqlParameter("@pic",
-                        AddGetPicID(GAddPicName.Text)));
-                command.Parameters.Add(new SqlParameter("@sp", GAddSingleCB.Checked));
-                command.Parameters.Add(new SqlParameter("@mp", GAddMultiCB.Checked));
-                command.ExecuteNonQuery();
-                if (GAddGenresCLB.CheckedItems.Count > 0)
-                {
-                    // Получить индекс игры
-                    command.CommandText = "SELECT TOP 1 gameid FROM games " +
-                        "WHERE gamename = @name ORDER BY gameid DESC";
-                    int id = (int)command.ExecuteScalar();
-                    // Присвоить игре жанры
-                    string query = "INSERT INTO gamegenre (game, genre) VALUES";
-                    command.CommandText = query + GenreValues(GAddGenresCLB, command);
-                    command.Parameters.Add(new SqlParameter("@id", id));
-                    command.ExecuteNonQuery();
-                }
-            }
+            AppWide.AddGame(GAddName.Text, GAddDev.Text, GAddLink.Text,
+                GAddPicName.Text, GAddPicBox.Image,
+                GAddSingleCB.Checked, GAddMultiCB.Checked, GAddGenresCLB);
+            UpdateBox(GAddDev.Items, "devname", "devs", "devid"); // перенести
             Voice.Say(Resources.Lang.GameAddedToDB);
             UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
-        }
-
-        private static string GenreValues(CheckedListBox CLB, SqlCommand command)
-        {
-            string query = "";
-            for (int i = 0; i < CLB.CheckedItems.Count; i++)
-            {
-                command.CommandText = $"SELECT genreid FROM genres WHERE genrename = @g{i}";
-                command.Parameters.Add(new SqlParameter($"@g{i}",
-                    CLB.CheckedItems[i].ToString()));
-                query += $" (@id, @i{i}),";
-                command.Parameters.Add(new SqlParameter($"@i{i}",
-                    command.ExecuteScalar().ToString()));
-            }
-            return query.Substring(0, query.Length - 1);
         }
         #endregion
 
@@ -285,40 +187,25 @@ namespace CyberClub
                 return;
             }
             GEditName.Enabled = true;
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
+            var game = AppWide.GetGame(id);
+            if (game != null)
             {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = "SELECT TOP 1 gamename, gamelink, gamepic, " +
-                    "singleplayer, multiplayer, devname, COUNT(who) AS subs, " +
-                    "COUNT(rate) AS rates, CONVERT(varchar, AVG(CAST(rate AS float))) " +
-                    "AS rating FROM games LEFT JOIN subscriptions ON gameid = game " +
-                    "LEFT JOIN devs ON madeby = devid WHERE gameid = @gid GROUP BY " +
-                    "multiplayer, singleplayer, gamepic, gamelink, " +
-                    "devname, gamename, gameid";
-                command.Parameters.Add(new SqlParameter("@gid", id));
-                SqlDataReader dataReader = command.ExecuteReader();
-                if (dataReader.Read())
-                {
-                    GEditName.Text = dataReader["gamename"].ToString();
-                    GEditLink.Text = dataReader["gamelink"].ToString();
-                    GEditDev.Text = dataReader["devname"].ToString();
-                    GEditPicID.Text = dataReader["gamepic"].ToString();
-                    GEditSingleCB.Checked = (bool)dataReader["singleplayer"];
-                    GEditMultiCB.Checked = (bool)dataReader["multiplayer"];
-                    GEditSubsN.Text = dataReader["subs"].ToString();
-                    GEditRatesN.Text = dataReader["rates"].ToString();
-                    GEditRatingN.Text = dataReader["rating"].ToString();
-                    dataReader.Close();
-                    command.CommandText = "SELECT genrename FROM gamegenre " +
-                        "LEFT JOIN genres ON genre = genreid WHERE game = @gid";
-                    dataReader = command.ExecuteReader();
-                    for (int i = 0; i < GEditGenresCLB.Items.Count; i++)
-                        GEditGenresCLB.SetItemChecked(i, false);
-                    while (dataReader.Read())
-                        GEditGenresCLB.SetItemChecked(GEditGenresCLB.Items.IndexOf(
-                            dataReader["genrename"].ToString()), true);
-                }
+                GEditName.Text = game["GameName"].ToString();
+                GEditLink.Text = game["GameExePath"].ToString();
+                GEditDev.Text = game["DeveloperName"].ToString();
+                GEditPicID.Text = game["GameIcon"].ToString();
+                GEditSingleCB.Checked = (bool)game["IsSingleplayer"];
+                GEditMultiCB.Checked = (bool)game["IsMultiplayer"];
+                GEditSubsN.Text = game["subs"].ToString();
+                GEditRatesN.Text = game["rates"].ToString();
+                GEditRatingN.Text = game["rating"].ToString();
+                for (int i = 0; i < GEditGenresCLB.Items.Count; i++)
+                    GEditGenresCLB.SetItemChecked(i, false);
+                var genres = AppWide.GetGameGenres(id);
+                if (genres is null) return;
+                foreach (string genre in genres)
+                    GEditGenresCLB.SetItemChecked(
+                        GEditGenresCLB.Items.IndexOf(genre), true);
             }
         }
 
@@ -339,17 +226,8 @@ namespace CyberClub
                 GEditDevID.Text = string.Empty;
                 return;
             }
-            string query = "SELECT TOP 1 devid FROM devs WHERE devname = @name";
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
-            {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = query;
-                command.Parameters.Add(new SqlParameter("@name", GEditDev.Text));
-                SqlDataReader dataReader = command.ExecuteReader();
-                if (dataReader.Read())
-                    GEditDevID.Text = dataReader["devid"].ToString();
-            }
+            var dev = AppWide.GetDeveloper(GEditDev.Text);
+            if (dev != null) GEditDevID.Text = dev["DeveloperID"].ToString();
         }
 
         private void GEditDevBtn_Click(object sender, EventArgs e)
@@ -357,16 +235,16 @@ namespace CyberClub
             if (Voice.Ask(Resources.Lang.RenameDeveloperPrompt) == DialogResult.No)
                 return;
             if (!int.TryParse(GEditDevID.Text, out int id)) return;
-            string query = "UPDATE devs SET devname = @name WHERE devid = @id";
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
+            byte opRes = AppWide.RenameDeveloper(id, GEditDev.Text);
+            if (opRes == 2)
             {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = query;
-                command.Parameters.Add(new SqlParameter("@name", GEditDev.Text));
-                command.Parameters.Add(new SqlParameter("@id", id));
-                try { command.ExecuteNonQuery(); }
-                catch (SqlException) { Voice.Say(Resources.Lang.NameAlreadyUsed); }
+                Voice.Say(Resources.Lang.DBError);
+                return;
+            }
+            else if (opRes == 1)
+            {
+                Voice.Say(Resources.Lang.NameAlreadyUsed);
+                return;
             }
             UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
             UpdateBox(GEditDev.Items, "devname", "devs", "devid");
@@ -384,17 +262,17 @@ namespace CyberClub
             }
             if (Voice.Ask(Resources.Lang.RenameGenrePrompt) == DialogResult.No)
                 return;
-            string query = "UPDATE genres SET genrename = @n0 WHERE genrename = @n1";
-            using (SqlConnection conn = new SqlConnection(AppWide.CS)) 
+            byte opRes = AppWide
+                .RenameGenre(GEditGenresCLB.SelectedItem.ToString(), GEditGenre.Text);
+            if (opRes == 2)
             {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = query;
-                command.Parameters.Add(new SqlParameter("@n0", GEditGenre.Text));
-                command.Parameters.Add(new SqlParameter("@n1",
-                    GEditGenresCLB.SelectedItem.ToString()));
-                try { command.ExecuteNonQuery(); }
-                catch (SqlException) { Voice.Say(Resources.Lang.NameAlreadyUsed); }
+                Voice.Say(Resources.Lang.DBError);
+                return;
+            }
+            else if (opRes == 1)
+            {
+                Voice.Say(Resources.Lang.NameAlreadyUsed);
+                return;
             }
             UpdateBox(GEditGenresCLB.Items, "genrename", "genres", "genreid");
         }
@@ -407,21 +285,14 @@ namespace CyberClub
                 GEditPicBox.Image = GEditPicBox.InitialImage;
                 return;
             }
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
+            var image = AppWide.GetImage(id);
+            if (image != null)
             {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = "SELECT picname, bin FROM pics WHERE picid = @id";
-                command.Parameters.Add(new SqlParameter("@id", id));
-                SqlDataReader dataReader = command.ExecuteReader();
-                if (dataReader.Read())
+                GEditPicName.Text = image["picname"].ToString();
+                using (MemoryStream memoryStream =
+                    new MemoryStream((byte[])image["bin"]))
                 {
-                    GEditPicName.Text = dataReader["picname"].ToString();
-                    using (MemoryStream memoryStream =
-                        new MemoryStream((byte[])dataReader["bin"]))
-                    {
-                        GEditPicBox.Image = Image.FromStream(memoryStream);
-                    }
+                    GEditPicBox.Image = Image.FromStream(memoryStream);
                 }
             }
         }
@@ -429,15 +300,7 @@ namespace CyberClub
         private void GEditPicBtn_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(GEditPicID.Text, out int id)) return;
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
-            {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = "UPDATE pics SET picname = @n WHERE picid = @id";
-                command.Parameters.Add(new SqlParameter("@n", GEditPicName.Text));
-                command.Parameters.Add(new SqlParameter("@id", id));
-                command.ExecuteNonQuery();
-            }
+            AppWide.RenameImage(id, GEditPicName.Text);
             UpdateBox(GEditPicID.Items, "picid", "pics");
         }
 
@@ -445,34 +308,10 @@ namespace CyberClub
         { // Обновить запись об игре
             if (Voice.Ask(Resources.Lang.UpdateGamePrompt) == DialogResult.No) return;
             if (!int.TryParse(GEditID.Text, out int id)) return;
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
-            {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = "UPDATE games SET gamename = @name, " +
-                    "madeby = @dev, gamelink = @link, gamepic = @pic, " +
-                    "singleplayer = @sp, multiplayer = @mp WHERE gameid = @id";
-                command.Parameters.Add(new SqlParameter("@name", GEditName.Text));
-                if (int.TryParse(GEditDevID.Text, out int dev))
-                    command.Parameters.Add(new SqlParameter("@dev", dev));
-                else command.Parameters.Add(new SqlParameter("@dev", DBNull.Value));
-                command.Parameters.Add(new SqlParameter("@link", GEditLink.Text));
-                if (int.TryParse(GEditPicID.Text, out int pic))
-                    command.Parameters.Add(new SqlParameter("@pic", pic));
-                else command.Parameters.Add(new SqlParameter("@pic", DBNull.Value));
-                command.Parameters.Add(new SqlParameter("@sp", GEditSingleCB.Checked));
-                command.Parameters.Add(new SqlParameter("@mp", GEditMultiCB.Checked));
-                command.Parameters.Add(new SqlParameter("@id", id));
-                command.ExecuteNonQuery();
-                command.CommandText = "DELETE FROM gamegenre WHERE game = @id";
-                command.ExecuteNonQuery();
-                if (GEditGenresCLB.CheckedItems.Count > 0)
-                {
-                    string query = "INSERT INTO gamegenre (game, genre) VALUES";
-                    command.CommandText = query + GenreValues(GEditGenresCLB, command);
-                    command.ExecuteNonQuery();
-                }
-            }
+            if (!int.TryParse(GEditDevID.Text, out int dev)) dev = -1;
+            if (!int.TryParse(GEditPicID.Text, out int pic)) pic = -1;
+            AppWide.UpdateGame(id, GEditName.Text, dev, GEditLink.Text, pic,
+                GEditSingleCB.Checked, GEditMultiCB.Checked, GEditGenresCLB);
             GEditPicID.Text = "";
             UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
         }
@@ -483,14 +322,7 @@ namespace CyberClub
         {
             if (Voice.Ask(Resources.Lang.DeleteDeveloperPrompt) == DialogResult.No) return;
             if (!int.TryParse(GEditDevID.Text, out int id)) return;
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
-            {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = "DELETE FROM devs WHERE devid = @id";
-                command.Parameters.Add(new SqlParameter("@id", id));
-                command.ExecuteNonQuery();
-            }
+            AppWide.DeleteDeveloper(id);
             GEditDev.Text = "";
             UpdateBox(GEditDev.Items, "devname", "devs", "devid");
             UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
@@ -505,19 +337,7 @@ namespace CyberClub
             }
             if (Voice.Ask(Resources.Lang.DeleteGenrePrompt + ' ' +
                 GEditGenresCLB.SelectedItem.ToString()) == DialogResult.No) return;
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
-            {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = 
-                    "SELECT TOP 1 genreid FROM genres WHERE genrename = @name";
-                command.Parameters.Add(new SqlParameter
-                    ("@name", GEditGenresCLB.SelectedItem.ToString()));
-                int id = (int)command.ExecuteScalar();
-                command.CommandText = "DELETE FROM genres WHERE genreid = @id";
-                command.Parameters.Add(new SqlParameter("@id", id));
-                command.ExecuteNonQuery();
-            }
+            AppWide.DeleteGenre(GEditGenresCLB.SelectedItem.ToString());
             UpdateBox(GEditGenresCLB.Items, "genrename", "genres", "genreid");
             UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
         }
@@ -526,14 +346,7 @@ namespace CyberClub
         {
             if (Voice.Ask(Resources.Lang.DeleteImagePrompt) == DialogResult.No) return;
             if (!int.TryParse(GEditPicID.Text, out int id)) return;
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
-            {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.Parameters.Add(new SqlParameter("@id", id));
-                command.CommandText = "DELETE FROM pics WHERE picid = @id";
-                command.ExecuteNonQuery();
-            }
+            AppWide.DeleteImage(id);
             GEditPicID.Text = "";
             UpdateBox(GEditPicID.Items, "picid", "pics");
         }
@@ -542,14 +355,7 @@ namespace CyberClub
         {
             if (Voice.Ask(Resources.Lang.DeleteGamePrompt) == DialogResult.No) return;
             if (!int.TryParse(GEditID.Text, out int id)) return;
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
-            {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.Parameters.Add(new SqlParameter("@id", id));
-                command.CommandText = "DELETE FROM games WHERE gameid = @id";
-                command.ExecuteNonQuery();
-            }
+            AppWide.DeleteGame(id);
             GEditPicID.Text = "";
             UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
         }
@@ -570,14 +376,12 @@ namespace CyberClub
         {
             DGVAccounts.Visible = AxEditPanel.Visible = false;
             AxAddPanel.Visible = true;
-            UpdateBox(AxAddAuth.Items, "authname", "hierarchy", "authid");
         }
 
         private void AxEditTab_Click(object sender, EventArgs e)
         {
             DGVAccounts.Visible = AxAddPanel.Visible = false;
             AxEditPanel.Visible = true;
-            UpdateBox(AxEditAuth.Items, "authname", "hierarchy", "authid");
         }
         #endregion
 
@@ -587,27 +391,15 @@ namespace CyberClub
 
         private void AxAddSubmit_Click(object sender, EventArgs e)
         { // Добавить в базу новую учетную запись
-            if (AxAddName.Text.Length == 0) return;
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
+            if (string.IsNullOrWhiteSpace(AxAddName.Text)) return;
+            byte addResult = AppWide.AddAccount(AxAddName.Text, (int)AxAddAuth.SelectedItem,
+                AxAddEMail.Text, AxAddInfo.Text, AxAddPasswd.Text);
+            switch (addResult)
             {
-                if (!ConnOpen(conn)) return;
-                // Добавить аккаунт
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = "SELECT authid FROM hierarchy WHERE authname = @a";
-                command.Parameters.Add(new SqlParameter("@a", AxAddAuth.Text));
-                int? authid = (int?)command.ExecuteScalar();
-                command.CommandText = "INSERT INTO users (username, email, info, " +
-                    "authority, passwd) VALUES (@name, @email, @info, @auth, @passwd)";
-                command.Parameters.Add(new SqlParameter("@name", AxAddName.Text));
-                command.Parameters.Add(new SqlParameter("@email", AxAddEMail.Text));
-                command.Parameters.Add(new SqlParameter("@info", AxAddInfo.Text));
-                command.Parameters.Add(new SqlParameter("@auth", authid));
-                command.Parameters.Add(new SqlParameter("@passwd", AxAddPasswd.Text));
-                try { command.ExecuteNonQuery(); }
-                catch (SqlException)
-                {
-                    Voice.Say(Resources.Lang.AccountFailMissingParamsOrNameAlreadyUsed);
-                }
+                case 2:
+                    Voice.Say(Resources.Lang.DBError); return;
+                case 1:
+                    Voice.Say(Resources.Lang.AccountFailMissingParamsOrNameAlreadyUsed); return;
             }
             UpdateData(AccountsPanel, AccountsDGVQuery,
                 new ComboBox[] { AxEditName }, "username");
@@ -628,7 +420,7 @@ namespace CyberClub
 
         private void AxEditName_TextChanged(object sender, EventArgs e)
         { // Выбор редактируемой учетной записи
-            if (AxEditName.Text.Length == 0)
+            if (string.IsNullOrWhiteSpace(AxEditName.Text))
             {
                 AxEditEMail.Enabled = AxEditInfo.Enabled = false;
                 AxEditAuth.Enabled = AxEditPasswd.Enabled = false;
@@ -637,45 +429,28 @@ namespace CyberClub
                 AxEditEMail.Text = AxEditInfo.Text = AxEditAuth.Text = AxEditPasswd.Text = "";
                 return;
             }
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
+            var account = AppWide.GetAccountByName(AxEditName.Text);
+            if (account != null)
             {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = "SELECT TOP 1 userid, email, info, authname, " +
-                    "passwd FROM users INNER JOIN hierarchy ON authority = authid " +
-                    "WHERE username = @name GROUP BY userid, email, info, authname, passwd";
-                command.Parameters.Add(new SqlParameter("@name", AxEditName.Text));
-                SqlDataReader dataReader = command.ExecuteReader();
-                if (dataReader.Read())
-                {
-                    AxEditID.Text = dataReader["userid"].ToString();
-                    AxEditEMail.Text = dataReader["email"].ToString();
-                    AxEditEMail.Enabled = true;
-                    AxEditInfo.Text = dataReader["info"].ToString();
-                    AxEditInfo.Enabled = true;
-                    AxEditAuth.Text = dataReader["authname"].ToString();
-                    AxEditAuth.Enabled = int.Parse(AxEditID.Text,
-                        CultureInfo.InvariantCulture) != LoginForm.UserID;
-                    AxEditPasswd.Text = dataReader["passwd"].ToString();
-                    dataReader.Close();
-                    AxEditPasswd.Enabled = true;
-                    command.CommandText = "SELECT COUNT(game) AS subs " +
-                        "FROM subscriptions WHERE who = @me";
-                    command.Parameters.Add(
-                        new SqlParameter("@me", int.Parse(AxEditID.Text,
-                            CultureInfo.InvariantCulture)));
-                    AxEditSubsN.Text = command.ExecuteScalar().ToString();
-                    command.CommandText = "SELECT COUNT(rate) AS rates " +
-                        "FROM subscriptions WHERE who = @me";
-                    AxEditRatesN.Text = command.ExecuteScalar().ToString();
-                    command.CommandText = "SELECT COUNT(messageid) AS msgs " +
-                        "FROM feedback WHERE who = @me";
-                    AxEditMsgsN.Text = command.ExecuteScalar().ToString();
-                }
+                AxEditID.Text = account["userid"].ToString();
+                AxEditEMail.Text = account["email"].ToString();
+                AxEditEMail.Enabled = true;
+                AxEditInfo.Text = account["info"].ToString();
+                AxEditInfo.Enabled = true;
+                AxEditAuth.Text = ((AppWide.UserLevel)account["userlevel"]).ToString();
+                AxEditAuth.Enabled = int.Parse(AxEditID.Text,
+                    CultureInfo.CurrentCulture) != LoginForm.UserID;
+                AxEditPasswd.Text = account["passwd"].ToString();
+                AxEditPasswd.Enabled = true;
+                int id = (int)account["userid"];
+                var stats = AppWide.GetAccountStats(id);
+                AxEditSubsN.Text = stats["subs"].ToString();
+                AxEditRatesN.Text = stats["rates"].ToString();
+                AxEditMsgsN.Text = stats["messages"].ToString();
+                AxEditDelSubmit.Enabled = id != LoginForm.UserID;
             }
-            AxEditDelSubmit.Enabled = int.Parse(AxEditID.Text,
-                CultureInfo.InvariantCulture) != LoginForm.UserID;
         }
+
         private void AxEditShowPasswd_CheckedChanged(object sender, EventArgs e) =>
             AxEditPasswd.PasswordChar = AxEditPasswd.PasswordChar == '*' ? '\0' : '*';
 
@@ -683,24 +458,14 @@ namespace CyberClub
         { // Обновить запись пользователя
             if (Voice.Ask(Resources.Lang.UpdateAccountPrompt) == DialogResult.No) return;
             if (!int.TryParse(AxEditID.Text, out int id)) return;
-            string query = "UPDATE users SET username = @name, email = @email, " +
-                "info = @info, authority = @auth, passwd = @pwd WHERE userid = @id";
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
+            byte editResult = AppWide.UpdateAccount(id, AxEditName.Text, AxEditEMail.Text,
+                AxEditInfo.Text, (int)AxEditAuth.SelectedItem, AxEditPasswd.Text);
+            switch (editResult)
             {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = query;
-                command.Parameters.Add(new SqlParameter("@name", AxEditName.Text));
-                command.Parameters.Add(new SqlParameter("@email", AxEditEMail.Text));
-                command.Parameters.Add(new SqlParameter("@info", AxEditInfo.Text));
-                command.Parameters.Add(new SqlParameter("@auth", AxEditAuth.SelectedIndex+1));
-                command.Parameters.Add(new SqlParameter("@pwd", AxEditPasswd.Text));
-                command.Parameters.Add(new SqlParameter("@id", id));
-                try { command.ExecuteNonQuery(); }
-                catch (SqlException)
-                {
-                    Voice.Say(Resources.Lang.AccountFailMissingParamsOrNameAlreadyUsed);
-                }
+                case 2:
+                    Voice.Say(Resources.Lang.DBError); return;
+                case 1:
+                    Voice.Say(Resources.Lang.AccountFailMissingParamsOrNameAlreadyUsed); return;
             }
             UpdateData(AccountsPanel, AccountsDGVQuery,
                 new ComboBox[] { AxEditName }, "username");
@@ -710,16 +475,7 @@ namespace CyberClub
         { // Удалить аккаунт
             if (Voice.Ask(Resources.Lang.DeleteAccountPrompt) == DialogResult.No) return;
             if (!int.TryParse(AxEditID.Text, out int id)) return;
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
-            {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.Parameters.Add(new SqlParameter("@id", id));
-                command.CommandText = "UPDATE feedback SET who = NULL WHERE who = @id";
-                command.ExecuteNonQuery(); // триггер делает не то
-                command.CommandText = "DELETE FROM users WHERE userid = @id";
-                command.ExecuteNonQuery();
-            }
+            AppWide.DeleteAccount(id);
             UpdateData(AccountsPanel, AccountsDGVQuery,
                 new ComboBox[] { AxEditName }, "username");
         }
@@ -735,34 +491,31 @@ namespace CyberClub
             if (DGVMessages.Visible)
             {
                 if (DGVMessages.Rows.Count <= 1) return;
-                DGVMessages.Visible = false;
-                MessagesReader.Visible = true;
-                MsgsFrom.Text =
-                    DGVMessages.Rows[e.RowIndex].Cells["sender"].Value.ToString();
-                MsgsBriefly.Text =
-                    DGVMessages.Rows[e.RowIndex].Cells["briefly"].Value.ToString();
-                MsgsTime.Text =
-                    DGVMessages.Rows[e.RowIndex].Cells["senddate"].Value.ToString();
-                MsgsID.Text =
-                    DGVMessages.Rows[e.RowIndex].Cells["id"].Value.ToString();
-                MsgsSwitch.Text = Resources.Lang.Back;
-                MsgsIsRead.Checked = MsgsIsRead.Visible = true;
-                using (SqlConnection conn = new SqlConnection(AppWide.CS))
-                {
-                    if (!ConnOpen(conn)) return;
-                    SqlCommand command = conn.CreateCommand();
-                    command.CommandText = "SELECT TOP 1 indetails FROM feedback " +
-                    "WHERE messageid = @id";
-                    command.Parameters.Add(new SqlParameter("@id",
-                        (int)DGVMessages.Rows[e.RowIndex].Cells["id"].Value));
-                    MsgsDetails.Text = command.ExecuteScalar().ToString();
-                    command.CommandText = "UPDATE feedback SET isread = @isread " +
-                    "WHERE messageid = @id";
-                    command.Parameters.Add(new SqlParameter("@isread", true));
-                    command.ExecuteNonQuery();
-                }
-                return;
+                OpenMessage(e);
             }
+            else CloseMessage();
+        }
+
+        private void OpenMessage(DataGridViewCellEventArgs e)
+        {
+            DGVMessages.Visible = false;
+            MessagesReader.Visible = true;
+            MsgsFrom.Text =
+                DGVMessages.Rows[e.RowIndex].Cells["sender"].Value.ToString();
+            MsgsBriefly.Text =
+                DGVMessages.Rows[e.RowIndex].Cells["briefly"].Value.ToString();
+            MsgsTime.Text =
+                DGVMessages.Rows[e.RowIndex].Cells["senddate"].Value.ToString();
+            MsgsID.Text =
+                DGVMessages.Rows[e.RowIndex].Cells["id"].Value.ToString();
+            MsgsSwitch.Text = Resources.Lang.Back;
+            MsgsIsRead.Checked = MsgsIsRead.Visible = true;
+            MsgsDetails.Text = AppWide
+                .GetMessageText((int)DGVMessages.Rows[e.RowIndex].Cells["id"].Value);
+        }
+
+        private void CloseMessage()
+        {
             MsgsSwitch.Text = Resources.Lang.Open;
             MsgsIsRead.Visible = MessagesReader.Visible = false;
             DGVMessages.Visible = true;
@@ -772,6 +525,11 @@ namespace CyberClub
                     i.DefaultCellStyle.Font = new Font(DGVMessages.Font, FontStyle.Bold);
         }
 
+        /// <summary>
+        /// MsgsSwitch is a button. If you select an iten on the datagrid
+        /// clicking it opens the selected item details.
+        /// On the details tab it serves as a back button
+        /// </summary>
         private void MsgsSwitch_Click(object sender, EventArgs e) =>
             DGVMessages_CellDoubleClick(sender, new DataGridViewCellEventArgs
                 (DGVMessages.SelectedCells[0].ColumnIndex, 
@@ -779,17 +537,9 @@ namespace CyberClub
 
         private void MsgsIsRead_CheckedChanged(object sender, EventArgs e)
         {
-            string query = "UPDATE feedback SET isread = @isread WHERE messageid = @id";
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
-            {
-                if (!ConnOpen(conn)) return;
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = query;
-                command.Parameters.Add(new SqlParameter("@isread", MsgsIsRead.Checked));
-                command.Parameters.Add(new SqlParameter("@id", int.Parse(MsgsID.Text,
-                    CultureInfo.InvariantCulture)));
-                command.ExecuteNonQuery();
-            }
+            AppWide.SetMessageIsRead(
+                int.Parse(MsgsID.Text, CultureInfo.CurrentCulture),
+                MsgsIsRead.Checked);
         }
         #endregion
 
@@ -801,10 +551,10 @@ namespace CyberClub
             "LEFT JOIN subscriptions ON gameid = game) LEFT JOIN devs ON madeby = " +
             "devid GROUP BY singleplayer, multiplayer, devname, gamename, gameid";
         private static string AccountsDGVQuery => "SELECT userid AS id, " +
-            "username, email, info, authname AS auth FROM ((users LEFT JOIN " +
-            "hierarchy ON authority = authid) LEFT JOIN subscriptions on " +
-            "userid = who) LEFT JOIN feedback ON userid = feedback.who " +
-            "GROUP BY userid, username, email, info, authname";
+            "username, email, info, userlevel AS level FROM users " +
+            "LEFT JOIN subscriptions on userid = who) " +
+            "LEFT JOIN feedback ON userid = feedback.who " +
+            "GROUP BY userid, username, email, info, userlevel";
         private static string MessagesDGVQuery => "SELECT messageid AS id, " +
             "username AS sender, briefly, dt AS senddate, isread FROM feedback " +
             "LEFT JOIN users ON who = userid ORDER BY dt DESC";
@@ -839,22 +589,12 @@ namespace CyberClub
         /// </summary>
         private static bool UpdateTable(DataGridView DGV, string query)
         {
-            using (SqlConnection conn = new SqlConnection(AppWide.CS))
-            {
-                if (!ConnOpen(conn)) return false;
-                using (SqlCommand command = new SqlCommand(query, conn))
-                {
-                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
-                    using (DataSet dataSet = new DataSet())
-                    {
-                        dataAdapter.Fill(dataSet);
-                        DGV.DataSource = dataSet.Tables[0];
-                    }
-                    DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
-                    DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                    DGV.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
-            }
+            var source = AppWide.GetDataTable(query);
+            if (source is null) return false;
+            DGV.DataSource = source;
+            DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            DGV.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             return true;
         }
 
@@ -868,8 +608,9 @@ namespace CyberClub
             int count = comboBoxes.Length > fields.Length ? fields.Length : comboBoxes.Length;
             for (int i = 0; i < count; i++)
             {
-                comboBoxes[i].Items.Clear();
-                comboBoxes[i].Text = "";
+                ref ComboBox comboBox = ref comboBoxes[i];
+                comboBox.Items.Clear();
+                comboBox.Text = "";
             }
             for (int i = 1; i <= DGV.RowCount; i++)
                 for (int j = 0; j < count; j++)
@@ -881,8 +622,6 @@ namespace CyberClub
         private static bool UpdateBox(IList items,
             string select, string from, string order = "") =>
             AppWide.UpdateBox(items, select, from, order);
-
-        private static bool ConnOpen(SqlConnection conn) => AppWide.ConnOpen(conn);
 
         /// <summary>
         /// Change colors to bright to make the form printable.

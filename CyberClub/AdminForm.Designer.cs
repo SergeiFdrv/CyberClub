@@ -147,6 +147,7 @@
             this.LeftAccounts = new System.Windows.Forms.RadioButton();
             this.LeftMessages = new System.Windows.Forms.RadioButton();
             this.LeftLogOut = new System.Windows.Forms.RadioButton();
+            this.LeftGoAsUser = new System.Windows.Forms.RadioButton();
             this.GamesPanel.SuspendLayout();
             this.GameEditPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GEditPicBox)).BeginInit();
@@ -1211,11 +1212,24 @@
             this.LeftLogOut.UseVisualStyleBackColor = false;
             this.LeftLogOut.CheckedChanged += new System.EventHandler(this.LogOutButton_CheckedChanged);
             // 
+            // LeftGoAsUser
+            // 
+            resources.ApplyResources(this.LeftGoAsUser, "LeftGoAsUser");
+            this.LeftGoAsUser.BackColor = System.Drawing.Color.Transparent;
+            this.LeftGoAsUser.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.LeftGoAsUser.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.LeftGoAsUser.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.LeftGoAsUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.LeftGoAsUser.Name = "LeftGoAsUser";
+            this.LeftGoAsUser.UseVisualStyleBackColor = false;
+            this.LeftGoAsUser.Click += new System.EventHandler(this.LeftGoAsUser_Click);
+            // 
             // AdminForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.LeftGoAsUser);
             this.Controls.Add(this.LeftLogOut);
             this.Controls.Add(this.LeftMessages);
             this.Controls.Add(this.LeftAccounts);
@@ -1376,5 +1390,6 @@
         private System.Windows.Forms.RadioButton LeftLogOut;
         private System.Windows.Forms.Button GAddLinkBtn;
         private System.Windows.Forms.Button GEditLinkBtn;
+        private System.Windows.Forms.RadioButton LeftGoAsUser;
     }
 }
