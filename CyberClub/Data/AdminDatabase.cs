@@ -432,17 +432,20 @@ namespace CyberClub.Data
             {
                 if (!ConnOpen(conn)) return null;
                 SqlCommand command = conn.CreateCommand();
+                Dictionary<string, object> res = new Dictionary<string, object>(3)
+                {
+                    { "subs", null }, { "rates", null }, { "messsages", null }
+                };
                 command.CommandText = "SELECT COUNT(game) AS subs " +
                     "FROM subscriptions WHERE who = @me";
                 command.Parameters.Add(new SqlParameter("@me", id));
-                Dictionary<string, object> res = new Dictionary<string, object>();
-                res.Add("subs", command.ExecuteScalar().ToString());
+                res["subs"] = command.ExecuteScalar().ToString();
                 command.CommandText = "SELECT COUNT(rate) AS rates " +
                     "FROM subscriptions WHERE who = @me";
-                res.Add("rates", command.ExecuteScalar().ToString());
+                res["rates"] = command.ExecuteScalar().ToString();
                 command.CommandText = "SELECT COUNT(messageid) AS msgs " +
                     "FROM feedback WHERE who = @me";
-                res.Add("messages", command.ExecuteScalar().ToString());
+                res["messages"] = command.ExecuteScalar().ToString();
                 return res;
             }
         }

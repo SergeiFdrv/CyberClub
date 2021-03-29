@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace CyberClub.Data
 {
     /// <summary>
-    /// Represents a facade for database inteaction
+    /// Represents a facade for database interaction
     /// </summary>
     public class Database
     {

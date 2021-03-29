@@ -63,15 +63,14 @@ namespace CyberClub
 
         private static void RunApp(string path)
         { // Как из нашего приложения запустить стороннюю программу:
-            // Шаг 1: подключить System.Diagnostics (см. выше)
+            // Шаг 1: using System.Diagnostics; (вверху)
             // Шаг 2:
             if (!(File.Exists(path) || 
                 File.Exists(Environment.SystemDirectory + '\\' + path)))
             {
                 Voice.Say(Resources.Lang.ExeNotFound);
-                return;
             }
-            Process.Start(new ProcessStartInfo
+            else Process.Start(new ProcessStartInfo
             {
                 WorkingDirectory =
                 path.Contains('\\') ? path.Substring(0, path.LastIndexOf('\\')) : "",
