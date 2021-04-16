@@ -33,7 +33,7 @@ namespace CyberClub
         {
             GetUserData();
             LoadGameList();
-            DB.UpdateBox(GSrchDev.Items, "devname", "devs", "devid");
+            DB.UpdateBox(GSrchDev.Items, "developername", "developers", "developerid");
             DB.UpdateBox(GSrchGenres.Items, "genrename", "genres", "genreid");
         }
 
@@ -155,8 +155,8 @@ namespace CyberClub
                 CultureInfo.CurrentCulture);
             var game = DB.SelectGame(id);
             GameName.Text = game["gamename"].ToString();
-            GameDevName.Text = game["devname"].ToString();
-            GameFilePath.Text = game["gamelink"].ToString();
+            GameDevName.Text = game["developername"].ToString();
+            GameFilePath.Text = game["gameexepath"].ToString();
             GameRating.Text = game["rating"].ToString();
             if (game["bin"] == DBNull.Value)
             {
@@ -169,13 +169,13 @@ namespace CyberClub
                 memoryStream.Dispose();
             }
             GameModes.Text = string.Empty;
-            if ((bool)game["singleplayer"])
+            if ((bool)game["issingleplayer"])
             {
                 GameModes.Text = Resources.Lang.SinglePlayer;
-                if ((bool)game["multiplayer"])
+                if ((bool)game["ismultiplayer"])
                     GameModes.Text += ", " + Resources.Lang.Multiplayer;
             }
-            else if ((bool)game["multiplayer"])
+            else if ((bool)game["ismultiplayer"])
                 GameModes.Text = Resources.Lang.Multiplayer;
             DB.PopulateGenres(id, GameGenres);
             var subscriptions = DB.GetSubscription(LoginForm.UserID, id);
@@ -211,8 +211,8 @@ namespace CyberClub
             var user = DB.GetUserData(LoginForm.UserID);
             UserLabel.Text = UserName.Text = user["username"].ToString();
             EMail.Text = user["email"].ToString();
-            UserInfo.Text = user["info"].ToString();
-            Passwd.Text = user["passwd"].ToString();
+            UserInfo.Text = user["about"].ToString();
+            Passwd.Text = user["userpass"].ToString();
         }
 
         private void AccSubmit_Click(object sender, EventArgs e)

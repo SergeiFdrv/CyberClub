@@ -27,20 +27,21 @@ namespace CyberClub
             if (!string.IsNullOrEmpty(UserName.Text))
             {
                 System.Collections.Generic.Dictionary<string, object> account
-                    = DB.GetAccount(UserName.Text, Password.Text);
-                if (account is null)
+                    = DB.GetAccount(UserName.Text);
+                if (account is null || account.ContainsKey("userpass") && 
+                    account["userpass"] == Password.Text)
                 {
                     Voice.Say(Resources.Lang.LoginPasswordNotFound);
                     return;
                 }
                 UserName.Text = Password.Text = "";
-                UserLevel level = (UserLevel)account["UserLevel"];
+                UserLevel level = (UserLevel)account["userlevel"];
                 if (level == UserLevel.Banned)
                 {
                     Voice.Say(Resources.Lang.YouAreBanned);
                     return;
                 }
-                UserID = (int)account["UserID"];
+                UserID = (int)account["userid"];
                 Hide();
                 if (level == UserLevel.Admin)
                     using (AdminForm af = new AdminForm { Owner = this })

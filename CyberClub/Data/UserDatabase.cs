@@ -23,7 +23,7 @@ namespace CyberClub.Data
                 command.Parameters.AddWithValue("@me", user);
                 command.Parameters.AddWithValue("@id", game);
                 command.CommandText =
-                    "INSERT INTO subscriptions (who, game) VALUES (@me, @id)";
+                    "INSERT INTO subscriptions (subscriber, game) VALUES (@me, @id)";
                 command.ExecuteNonQuery();
             }
         }
@@ -37,7 +37,7 @@ namespace CyberClub.Data
                 command.Parameters.AddWithValue("@me", user);
                 command.Parameters.AddWithValue("@id", game);
                 command.CommandText =
-                    "DELETE FROM subscriptions WHERE who = @me AND game = @id";
+                    "DELETE FROM subscriptions WHERE subscriber = @me AND game = @id";
                 command.ExecuteNonQuery();
             }
         }
@@ -49,7 +49,7 @@ namespace CyberClub.Data
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
                 command.CommandText = "UPDATE subscriptions SET rate = @rate " +
-                    "WHERE who = @me AND game = @game";
+                    "WHERE subscriber = @me AND game = @game";
                 command.Parameters.AddWithValue("@game", game);
                 command.Parameters.AddWithValue("@me", user);
                 if (rate.HasValue)
@@ -83,31 +83,31 @@ namespace CyberClub.Data
             bool devSelected = !string.IsNullOrWhiteSpace(dev);
             bool genresSelected = genres?.Count > 0;
 
-            string query = "SELECT DISTINCT gameid, gamename, devname, " +
-                "singleplayer, multiplayer, picname, bin FROM games " +
-                "LEFT JOIN pics ON gamepic = picid";
-            string where = " WHERE gamelink != ''";
+            string query = "SELECT DISTINCT gameid, gamename, developername, " +
+                "issingleplayer, ismultiplayer, imagename, bin FROM games " +
+                "LEFT JOIN images ON gameicon = imageid";
+            string where = " WHERE gameexepath != ''";
             if (devSelected)
             {
                 query += " INNER";
-                where += " AND devname LIKE @dev";
+                where += " AND developername LIKE @dev";
             }
             else query += " LEFT";
-            query += " JOIN devs ON madeby = devid";
+            query += " JOIN developers ON developer = developerid";
             if (genresSelected) query += " INNER JOIN (gamegenre LEFT JOIN genres" +
                     " ON genre = genreid) ON gameid = game";
             if (!onlyMyGames)
             {
                 query +=
                     " INNER JOIN subscriptions ON games.gameid = subscriptions.game";
-                where += " AND who = @id";
+                where += " AND subscriber = @id";
             }
             if (nameEntered)
                 where += " AND gamename LIKE @name";
             if (singleplayer)
-                where += " AND singleplayer = 1";
+                where += " AND issingleplayer = 1";
             if (multiplayer)
-                where += " AND multiplayer = 1";
+                where += " AND ismultiplayer = 1";
             query += where;
             if (genresSelected)
             {
@@ -142,11 +142,11 @@ namespace CyberClub.Data
                 while (dataReader.Read())
                 {
                     item = dataReader["gamename"].ToString() + " (";
-                    if (dataReader["devname"].ToString().Length > 0)
+                    if (dataReader["developername"].ToString().Length > 0)
                     {
-                        item += dataReader["devname"];
-                        if ((bool)dataReader["singleplayer"]) item += ", singleplayer";
-                        if ((bool)dataReader["multiplayer"]) item += ", multiplayer";
+                        item += dataReader["developername"];
+                        if ((bool)dataReader["issingleplayer"]) item += ", issingleplayer";
+                        if ((bool)dataReader["ismultiplayer"]) item += ", ismultiplayer";
                     }
                     games.Items.Add(new ListViewItem
                     {
@@ -161,7 +161,7 @@ namespace CyberClub.Data
                     else using (MemoryStream memoryStream =
                             new MemoryStream((byte[])dataReader["bin"]))
                         {
-                            pics.Images.Add(dataReader["picname"].ToString(),
+                            pics.Images.Add(dataReader["imagename"].ToString(),
                                 Image.FromStream(memoryStream));
                             games.Items[games.Items.Count - 1].ImageIndex =
                                 pics.Images.Count - 1;
@@ -177,13 +177,13 @@ namespace CyberClub.Data
             {
                 if (!ConnOpen(conn)) return null;
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = "SELECT gamename, devname, singleplayer, " +
-                    "multiplayer, gamelink, bin, CONVERT(varchar, " +
+                command.CommandText = "SELECT gamename, developername, issingleplayer, " +
+                    "ismultiplayer, gameexepath, bin, CONVERT(varchar, " +
                     "ROUND(AVG(CAST(rate AS float)), 2)) + ' (' + CONVERT(varchar, " +
-                    "COUNT(rate)) + ')' AS rating FROM games LEFT JOIN pics ON " +
-                    "gamepic = picid LEFT JOIN devs ON madeby = devid LEFT JOIN " +
+                    "COUNT(rate)) + ')' AS rating FROM games LEFT JOIN images ON " +
+                    "gameicon = imageid LEFT JOIN developers ON developer = developerid LEFT JOIN " +
                     "subscriptions ON gameid = game WHERE gameid = @id GROUP BY " +
-                    "gamename, devname, singleplayer, multiplayer, gamelink, bin";
+                    "gamename, developername, issingleplayer, ismultiplayer, gameexepath, bin";
                 command.Parameters.AddWithValue("@id", id);
                 SqlDataReader dataReader = command.ExecuteReader();
                 dataReader.Read();
@@ -216,7 +216,7 @@ namespace CyberClub.Data
                 if (!ConnOpen(conn)) return null;
                 SqlCommand command = conn.CreateCommand();
                 command.CommandText =
-                    "SELECT * FROM subscriptions WHERE who = @me AND game = @id";
+                    "SELECT * FROM subscriptions WHERE subscriber = @me AND game = @id";
                 command.Parameters.AddWithValue("@id", game);
                 command.Parameters.AddWithValue("@me", user);
                 SqlDataReader dataReader = command.ExecuteReader();
@@ -235,7 +235,7 @@ namespace CyberClub.Data
             {
                 if (!ConnOpen(conn)) return null;
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = "SELECT username, email, info, passwd, userlevel " +
+                command.CommandText = "SELECT username, email, about, userpass, userlevel " +
                     "FROM users WHERE userid = @id";
                 command.Parameters.Add(new SqlParameter("@id", id));
                 SqlDataReader dataReader = command.ExecuteReader();
@@ -254,11 +254,11 @@ namespace CyberClub.Data
                 command.CommandText = "UPDATE users SET " +
                     (string.IsNullOrWhiteSpace(name) ?
                     "" : "username = @name, ") +
-                    "email = @email, info = @info, passwd = @pwd WHERE userid = @id";
+                    "email = @email, about = @about, userpass = @pwd WHERE userid = @id";
                 command.Parameters.Add(new SqlParameter("@id", id));
                 command.Parameters.Add(new SqlParameter("@name", name));
                 command.Parameters.Add(new SqlParameter("@email", email));
-                command.Parameters.Add(new SqlParameter("@info", about));
+                command.Parameters.Add(new SqlParameter("@about", about));
                 command.Parameters.Add(new SqlParameter("@pwd", password));
                 command.ExecuteNonQuery();
             }
@@ -270,7 +270,7 @@ namespace CyberClub.Data
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = "INSERT INTO feedback (who, briefly, indetails, " +
+                command.CommandText = "INSERT INTO textmessages (sender, shorttext, longtext, " +
                     "dt, isread) VALUES (@me, @br, @de, @dt, @rd)";
                 command.Parameters.Add(new SqlParameter("@me", from));
                 command.Parameters.Add(new SqlParameter("@br", topic));

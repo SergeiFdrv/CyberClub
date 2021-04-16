@@ -38,20 +38,20 @@ namespace CyberClub.Data
                 if (!ConnOpen(conn)) return -1;
                 SqlCommand command = conn.CreateCommand();
                 command.CommandText =
-                    "SELECT count(devid) AS num FROM devs WHERE devname = @name";
+                    "SELECT count(developerid) AS num FROM developers WHERE developername = @name";
                 command.Parameters.Add(new SqlParameter("@name", name));
                 if ((int)command.ExecuteScalar() > 0)
                 { // Если найден, получить номер
                     command.CommandText =
-                        "SELECT TOP 1 devid FROM devs WHERE devname = @name";
+                        "SELECT TOP 1 developerid FROM developers WHERE developername = @name";
                 }
                 else
                 { // Если не найден, создать и...
-                    command.CommandText = "INSERT INTO devs (devname) VALUES (@name)";
+                    command.CommandText = "INSERT INTO developers (developername) VALUES (@name)";
                     command.ExecuteNonQuery();
                     // ...получить номер
-                    command.CommandText = "SELECT TOP 1 devid FROM devs " +
-                        "WHERE devname = @name ORDER BY devid DESC";
+                    command.CommandText = "SELECT TOP 1 developerid FROM developers " +
+                        "WHERE developername = @name ORDER BY developerid DESC";
                 }
                 return (int)command.ExecuteScalar();
             }
@@ -71,12 +71,12 @@ namespace CyberClub.Data
             {
                 if (!ConnOpen(conn)) return -1;
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = "INSERT INTO pics (picname, bin) VALUES (@n, @b)";
+                command.CommandText = "INSERT INTO images (imagename, bin) VALUES (@n, @b)";
                 command.Parameters.Add(new SqlParameter("@n", name));
                 command.Parameters.Add(new SqlParameter("@b", imageBytes));
                 command.ExecuteNonQuery();
-                command.CommandText = "SELECT TOP 1 picid FROM pics WHERE bin = @b " +
-                    "AND picname = @n";
+                command.CommandText = "SELECT TOP 1 imageid FROM images WHERE bin = @b " +
+                    "AND imagename = @n";
                 return (int)command.ExecuteScalar();
             }
         }
@@ -116,9 +116,9 @@ namespace CyberClub.Data
                 if (!ConnOpen(conn)) return;
                 // Добавить игру
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = "INSERT INTO games (gamename, madeby, " +
-                    "gamelink, gamepic, singleplayer, multiplayer)" +
-                    "VALUES (@name, @dev, @link, @pic, @sp, @mp)";
+                command.CommandText = "INSERT INTO games (gamename, developer, " +
+                    "gameexepath, gameicon, issingleplayer, ismultiplayer)" +
+                    "VALUES (@name, @dev, @link, @image, @sp, @mp)";
                 command.Parameters.Add(new SqlParameter("@name", name));
                 if (string.IsNullOrWhiteSpace(dev))
                     command.Parameters.Add(new SqlParameter("@dev", DBNull.Value));
@@ -126,9 +126,9 @@ namespace CyberClub.Data
                     command.Parameters.Add(new SqlParameter("@dev", AddGetDevID(dev)));
                 command.Parameters.Add(new SqlParameter("@link", path));
                 if (string.IsNullOrWhiteSpace(imageName))
-                    command.Parameters.Add(new SqlParameter("@pic", DBNull.Value));
+                    command.Parameters.Add(new SqlParameter("@image", DBNull.Value));
                 else
-                    command.Parameters.Add(new SqlParameter("@pic",
+                    command.Parameters.Add(new SqlParameter("@image",
                         AddGetPicID(imageName, image)));
                 command.Parameters.Add(new SqlParameter("@sp", singleplayer));
                 command.Parameters.Add(new SqlParameter("@mp", multiplayer));
@@ -149,7 +149,7 @@ namespace CyberClub.Data
             }
         }
 
-        public void UpdateGame(int id, string name, int dev, string path, int pic,
+        public void UpdateGame(int id, string name, int dev, string path, int image,
             bool sp, bool mp, CheckedListBox genres)
         {
             using (SqlConnection conn = new SqlConnection(CS))
@@ -157,16 +157,16 @@ namespace CyberClub.Data
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
                 command.CommandText = "UPDATE games SET gamename = @name, " +
-                    "madeby = @dev, gamelink = @link, gamepic = @pic, " +
-                    "singleplayer = @sp, multiplayer = @mp WHERE gameid = @id";
+                    "developer = @dev, gameexepath = @link, gameimage = @image, " +
+                    "issingleplayer = @sp, ismultiplayer = @mp WHERE gameid = @id";
                 command.Parameters.Add(new SqlParameter("@name", name));
                 if (dev > -1)
                     command.Parameters.Add(new SqlParameter("@dev", dev));
                 else command.Parameters.Add(new SqlParameter("@dev", DBNull.Value));
                 command.Parameters.Add(new SqlParameter("@link", path));
-                if (pic > -1)
-                    command.Parameters.Add(new SqlParameter("@pic", pic));
-                else command.Parameters.Add(new SqlParameter("@pic", DBNull.Value));
+                if (image > -1)
+                    command.Parameters.Add(new SqlParameter("@image", image));
+                else command.Parameters.Add(new SqlParameter("@image", DBNull.Value));
                 command.Parameters.Add(new SqlParameter("@sp", sp));
                 command.Parameters.Add(new SqlParameter("@mp", mp));
                 command.Parameters.Add(new SqlParameter("@id", id));
@@ -204,13 +204,13 @@ namespace CyberClub.Data
             {
                 if (!ConnOpen(conn)) return null;
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = "SELECT TOP 1 gamename, gamelink, gamepic, " +
-                    "singleplayer, multiplayer, devname, COUNT(who) AS subs, " +
+                command.CommandText = "SELECT TOP 1 gamename, gameexepath, gameicon, " +
+                    "issingleplayer, ismultiplayer, developername, COUNT(subscriber) AS subs, " +
                     "COUNT(rate) AS rates, CONVERT(varchar, AVG(CAST(rate AS float))) " +
                     "AS rating FROM games LEFT JOIN subscriptions ON gameid = game " +
-                    "LEFT JOIN devs ON madeby = devid WHERE gameid = @gid GROUP BY " +
-                    "multiplayer, singleplayer, gamepic, gamelink, " +
-                    "devname, gamename, gameid";
+                    "LEFT JOIN developers ON developer = developerid WHERE gameid = @gid GROUP BY " +
+                    "ismultiplayer, issingleplayer, gameicon, gameexepath, " +
+                    "developername, gamename, gameid";
                 command.Parameters.Add(new SqlParameter("@gid", id));
                 SqlDataReader dataReader = command.ExecuteReader();
                 if (dataReader.Read())
@@ -232,7 +232,7 @@ namespace CyberClub.Data
                     "LEFT JOIN genres ON genre = genreid WHERE game = @gid";
                 SqlDataReader dataReader = command.ExecuteReader();
                 List<string> res = new List<string>();
-                while (dataReader.Read()) res.Add(dataReader["GenreName"].ToString());
+                while (dataReader.Read()) res.Add(dataReader["genrename"].ToString());
                 return res.ToArray();
             }
         }
@@ -243,7 +243,7 @@ namespace CyberClub.Data
             {
                 if (!ConnOpen(conn)) return null;
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = "SELECT TOP 1 devid FROM devs WHERE devname = @name";
+                command.CommandText = "SELECT TOP 1 developerid FROM developers WHERE developername = @name";
                 command.Parameters.Add(new SqlParameter("@name", name));
                 SqlDataReader dataReader = command.ExecuteReader();
                 if (dataReader.Read())
@@ -260,7 +260,7 @@ namespace CyberClub.Data
             {
                 if (!ConnOpen(conn)) return 2;
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = "UPDATE devs SET devname = @name WHERE devid = @id";
+                command.CommandText = "UPDATE developers SET developername = @name WHERE developerid = @id";
                 command.Parameters.Add(new SqlParameter("@name", name));
                 command.Parameters.Add(new SqlParameter("@id", id));
                 try
@@ -303,7 +303,7 @@ namespace CyberClub.Data
             {
                 if (!ConnOpen(conn)) return null;
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = "SELECT picname, bin FROM pics WHERE picid = @id";
+                command.CommandText = "SELECT imagename, bin FROM images WHERE imageid = @id";
                 command.Parameters.Add(new SqlParameter("@id", id));
                 SqlDataReader dataReader = command.ExecuteReader();
                 if (dataReader.Read())
@@ -320,7 +320,7 @@ namespace CyberClub.Data
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = "UPDATE pics SET picname = @n WHERE picid = @id";
+                command.CommandText = "UPDATE images SET imagename = @n WHERE imageid = @id";
                 command.Parameters.Add(new SqlParameter("@n", name));
                 command.Parameters.Add(new SqlParameter("@id", id));
                 command.ExecuteNonQuery();
@@ -333,7 +333,7 @@ namespace CyberClub.Data
             {
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = "DELETE FROM devs WHERE devid = @id";
+                command.CommandText = "DELETE FROM developers WHERE developerid = @id";
                 command.Parameters.Add(new SqlParameter("@id", id));
                 command.ExecuteNonQuery();
             }
@@ -362,7 +362,7 @@ namespace CyberClub.Data
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
                 command.Parameters.Add(new SqlParameter("@id", id));
-                command.CommandText = "DELETE FROM pics WHERE picid = @id";
+                command.CommandText = "DELETE FROM images WHERE imageid = @id";
                 command.ExecuteNonQuery();
             }
         }
@@ -381,20 +381,20 @@ namespace CyberClub.Data
         #endregion
         #region - account
         public byte AddAccount(
-            string name, int level, string email, string info, string password)
+            string name, int level, string email, string about, string password)
         {
             using (SqlConnection conn = new SqlConnection(CS))
             {
                 if (!ConnOpen(conn)) return 2;
                 // Добавить аккаунт
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = "INSERT INTO users (username, email, info, " +
-                    "userlevel, passwd) VALUES (@name, @email, @info, @lvl, @passwd)";
+                command.CommandText = "INSERT INTO users (username, email, about, " +
+                    "userlevel, userpass) VALUES (@name, @email, @about, @lvl, @userpass)";
                 command.Parameters.Add(new SqlParameter("@name", name));
                 command.Parameters.Add(new SqlParameter("@email", email));
-                command.Parameters.Add(new SqlParameter("@info", info));
+                command.Parameters.Add(new SqlParameter("@about", about));
                 command.Parameters.Add(new SqlParameter("@lvl", level));
-                command.Parameters.Add(new SqlParameter("@passwd", password));
+                command.Parameters.Add(new SqlParameter("@userpass", password));
                 try
                 {
                     command.ExecuteNonQuery();
@@ -413,9 +413,9 @@ namespace CyberClub.Data
             {
                 if (!ConnOpen(conn)) return null;
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = "SELECT TOP 1 userid, email, info, userlevel, passwd " +
+                command.CommandText = "SELECT TOP 1 userid, email, about, userlevel, userpass " +
                     "FROM users " +
-                    "WHERE username = @name GROUP BY userid, email, info, userlevel, passwd";
+                    "WHERE username = @name GROUP BY userid, email, about, userlevel, userpass";
                 command.Parameters.Add(new SqlParameter("@name", name));
                 SqlDataReader dataReader = command.ExecuteReader();
                 if (dataReader.Read())
@@ -437,31 +437,31 @@ namespace CyberClub.Data
                     { "subs", null }, { "rates", null }, { "messsages", null }
                 };
                 command.CommandText = "SELECT COUNT(game) AS subs " +
-                    "FROM subscriptions WHERE who = @me";
+                    "FROM subscriptions WHERE subscriber = @me";
                 command.Parameters.Add(new SqlParameter("@me", id));
                 res["subs"] = command.ExecuteScalar().ToString();
                 command.CommandText = "SELECT COUNT(rate) AS rates " +
-                    "FROM subscriptions WHERE who = @me";
+                    "FROM subscriptions WHERE subscriber = @me";
                 res["rates"] = command.ExecuteScalar().ToString();
                 command.CommandText = "SELECT COUNT(messageid) AS msgs " +
-                    "FROM feedback WHERE who = @me";
+                    "FROM textmessages WHERE subscriber = @me";
                 res["messages"] = command.ExecuteScalar().ToString();
                 return res;
             }
         }
 
         public byte UpdateAccount(int id,
-            string name, string email, string info, int level, string password)
+            string name, string email, string about, int level, string password)
         {
             using (SqlConnection conn = new SqlConnection(CS))
             {
                 if (!ConnOpen(conn)) return 2;
                 SqlCommand command = conn.CreateCommand();
                 command.CommandText = "UPDATE users SET username = @name, email = @email, " +
-                "info = @info, userlevel = @lvl, passwd = @pwd WHERE userid = @id";
+                "about = @about, userlevel = @lvl, userpass = @pwd WHERE userid = @id";
                 command.Parameters.Add(new SqlParameter("@name", name));
                 command.Parameters.Add(new SqlParameter("@email", email));
-                command.Parameters.Add(new SqlParameter("@info", info));
+                command.Parameters.Add(new SqlParameter("@about", about));
                 command.Parameters.Add(new SqlParameter("@lvl", level));
                 command.Parameters.Add(new SqlParameter("@pwd", password));
                 command.Parameters.Add(new SqlParameter("@id", id));
@@ -484,7 +484,7 @@ namespace CyberClub.Data
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
                 command.Parameters.Add(new SqlParameter("@id", id));
-                command.CommandText = "UPDATE feedback SET who = NULL WHERE who = @id";
+                command.CommandText = "UPDATE textmessages SET sender = NULL WHERE sender = @id";
                 command.ExecuteNonQuery(); // триггер делает не то
                 command.CommandText = "DELETE FROM users WHERE userid = @id";
                 command.ExecuteNonQuery();
@@ -499,12 +499,12 @@ namespace CyberClub.Data
                 if (!ConnOpen(conn)) return null;
                 SqlCommand command = conn.CreateCommand();
                 command.CommandText =
-                    "SELECT TOP 1 indetails FROM feedback WHERE messageid = @id";
+                    "SELECT TOP 1 longtext FROM textmessages WHERE messageid = @id";
                 command.Parameters.Add(new SqlParameter("@id",
                     id));
                 string res = command.ExecuteScalar().ToString();
                 command.CommandText =
-                    "UPDATE feedback SET isread = @isread WHERE messageid = @id";
+                    "UPDATE textmessages SET isread = @isread WHERE messageid = @id";
                 command.Parameters.Add(new SqlParameter("@isread", true));
                 command.ExecuteNonQuery();
                 return res;
@@ -518,7 +518,7 @@ namespace CyberClub.Data
                 if (!ConnOpen(conn)) return;
                 SqlCommand command = conn.CreateCommand();
                 command.CommandText =
-                    "UPDATE feedback SET isread = @isread WHERE messageid = @id";
+                    "UPDATE textmessages SET isread = @isread WHERE messageid = @id";
                 command.Parameters.Add(new SqlParameter("@isread", status));
                 command.Parameters.Add(new SqlParameter("@id", id));
                 command.ExecuteNonQuery();

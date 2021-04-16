@@ -95,7 +95,7 @@ namespace CyberClub
         {
             DGVGames.Visible = GameEditPanel.Visible = false;
             GameAddPanel.Visible = true;
-            UpdateBox(GAddDev.Items, "devname", "devs", "devid");
+            UpdateBox(GAddDev.Items, "developername", "developers", "developerid");
             UpdateBox(GAddGenresCLB.Items, "genrename", "genres", "genreid");
         }
 
@@ -103,9 +103,9 @@ namespace CyberClub
         {
             DGVGames.Visible = GameAddPanel.Visible = false;
             GameEditPanel.Visible = true;
-            UpdateBox(GEditDev.Items, "devname", "devs", "devid");
+            UpdateBox(GEditDev.Items, "developername", "developers", "developerid");
             UpdateBox(GEditGenresCLB.Items, "genrename", "genres", "genreid");
-            UpdateBox(GEditPicID.Items, "picid", "pics");
+            UpdateBox(GEditPicID.Items, "imageid", "images");
         }
         #endregion
 
@@ -124,7 +124,7 @@ namespace CyberClub
         {
             if (DB.AddGetDevID(GAddDev.Text) < 0) Voice.Say(Resources.Lang.AddError);
             GAddDev.Text = "";
-            UpdateBox(GAddDev.Items, "devname", "devs", "devid");
+            UpdateBox(GAddDev.Items, "developername", "developers", "developerid");
         }
 
         private void GAddNewGenreBtn_Click(object sender, EventArgs e)
@@ -162,7 +162,7 @@ namespace CyberClub
             DB.AddGame(GAddName.Text, GAddDev.Text, GAddLink.Text,
                 GAddPicName.Text, GAddPicBox.Image,
                 GAddSingleCB.Checked, GAddMultiCB.Checked, GAddGenresCLB);
-            UpdateBox(GAddDev.Items, "devname", "devs", "devid"); // перенести
+            UpdateBox(GAddDev.Items, "developername", "developers", "developerid"); // перенести
             Voice.Say(Resources.Lang.GameAddedToDB);
             UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
         }
@@ -193,12 +193,12 @@ namespace CyberClub
             var game = DB.GetGame(id);
             if (game != null)
             {
-                GEditName.Text = game["GameName"].ToString();
-                GEditLink.Text = game["GameExePath"].ToString();
-                GEditDev.Text = game["DeveloperName"].ToString();
-                GEditPicID.Text = game["GameIcon"].ToString();
-                GEditSingleCB.Checked = (bool)game["IsSingleplayer"];
-                GEditMultiCB.Checked = (bool)game["IsMultiplayer"];
+                GEditName.Text = game["gamename"].ToString();
+                GEditLink.Text = game["gameexepath"].ToString();
+                GEditDev.Text = game["developername"].ToString();
+                GEditPicID.Text = game["gameicon"].ToString();
+                GEditSingleCB.Checked = (bool)game["issingleplayer"];
+                GEditMultiCB.Checked = (bool)game["ismultiplayer"];
                 GEditSubsN.Text = game["subs"].ToString();
                 GEditRatesN.Text = game["rates"].ToString();
                 GEditRatingN.Text = game["rating"].ToString();
@@ -230,7 +230,7 @@ namespace CyberClub
                 return;
             }
             var dev = DB.GetDeveloper(GEditDev.Text);
-            if (dev != null) GEditDevID.Text = dev["DeveloperID"].ToString();
+            if (dev != null) GEditDevID.Text = dev["developerid"].ToString();
         }
 
         private void GEditDevBtn_Click(object sender, EventArgs e)
@@ -250,7 +250,7 @@ namespace CyberClub
                 return;
             }
             UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
-            UpdateBox(GEditDev.Items, "devname", "devs", "devid");
+            UpdateBox(GEditDev.Items, "developername", "developers", "developerid");
         }
 
         private void GEditGenresCLB_SelectedIndexChanged(object sender, EventArgs e) =>
@@ -291,7 +291,7 @@ namespace CyberClub
             var image = DB.GetImage(id);
             if (image != null)
             {
-                GEditPicName.Text = image["picname"].ToString();
+                GEditPicName.Text = image["imagename"].ToString();
                 using (MemoryStream memoryStream =
                     new MemoryStream((byte[])image["bin"]))
                 {
@@ -304,7 +304,7 @@ namespace CyberClub
         {
             if (!int.TryParse(GEditPicID.Text, out int id)) return;
             DB.RenameImage(id, GEditPicName.Text);
-            UpdateBox(GEditPicID.Items, "picid", "pics");
+            UpdateBox(GEditPicID.Items, "imageid", "images");
         }
 
         private void GEditSubmit_Click(object sender, EventArgs e)
@@ -327,7 +327,7 @@ namespace CyberClub
             if (!int.TryParse(GEditDevID.Text, out int id)) return;
             DB.DeleteDeveloper(id);
             GEditDev.Text = "";
-            UpdateBox(GEditDev.Items, "devname", "devs", "devid");
+            UpdateBox(GEditDev.Items, "developername", "developers", "developerid");
             UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
         }
 
@@ -351,7 +351,7 @@ namespace CyberClub
             if (!int.TryParse(GEditPicID.Text, out int id)) return;
             DB.DeleteImage(id);
             GEditPicID.Text = "";
-            UpdateBox(GEditPicID.Items, "picid", "pics");
+            UpdateBox(GEditPicID.Items, "imageid", "images");
         }
 
         private void GEditDelSubmit_Click(object sender, EventArgs e)
@@ -438,12 +438,12 @@ namespace CyberClub
                 AxEditID.Text = account["userid"].ToString();
                 AxEditEMail.Text = account["email"].ToString();
                 AxEditEMail.Enabled = true;
-                AxEditInfo.Text = account["info"].ToString();
+                AxEditInfo.Text = account["about"].ToString();
                 AxEditInfo.Enabled = true;
                 AxEditAuth.Text = ((UserLevel)account["userlevel"]).ToString();
                 AxEditAuth.Enabled = int.Parse(AxEditID.Text,
                     CultureInfo.CurrentCulture) != LoginForm.UserID;
-                AxEditPasswd.Text = account["passwd"].ToString();
+                AxEditPasswd.Text = account["userpass"].ToString();
                 AxEditPasswd.Enabled = true;
                 int id = (int)account["userid"];
                 var stats = DB.GetAccountStats(id);
@@ -506,7 +506,7 @@ namespace CyberClub
             MsgsFrom.Text =
                 DGVMessages.Rows[e.RowIndex].Cells["sender"].Value.ToString();
             MsgsBriefly.Text =
-                DGVMessages.Rows[e.RowIndex].Cells["briefly"].Value.ToString();
+                DGVMessages.Rows[e.RowIndex].Cells["shorttext"].Value.ToString();
             MsgsTime.Text =
                 DGVMessages.Rows[e.RowIndex].Cells["senddate"].Value.ToString();
             MsgsID.Text =
@@ -548,19 +548,19 @@ namespace CyberClub
 
         #region Update   // Обновление данных
         private static string GamesDGVQuery => "SELECT gameid AS id, " +
-            "gamename AS name, devname AS dev, singleplayer AS sngl, multiplayer AS " +
-            "mlt, COUNT(who) AS subs, CONVERT(varchar, ROUND(AVG(CAST(rate AS float))," +
+            "gamename AS name, developername AS dev, issingleplayer AS sngl, ismultiplayer AS " +
+            "mlt, COUNT(subscriber) AS subs, CONVERT(varchar, ROUND(AVG(CAST(rate AS float))," +
             " 2)) + ' (' + CONVERT(varchar, COUNT(rate)) + ')' AS rating FROM (games " +
-            "LEFT JOIN subscriptions ON gameid = game) LEFT JOIN devs ON madeby = " +
-            "devid GROUP BY singleplayer, multiplayer, devname, gamename, gameid";
+            "LEFT JOIN subscriptions ON gameid = game) LEFT JOIN developers ON developer = " +
+            "developerid GROUP BY issingleplayer, ismultiplayer, developername, gamename, gameid";
         private static string AccountsDGVQuery => "SELECT userid AS id, " +
-            "username, email, info, userlevel AS level FROM users " +
-            "LEFT JOIN subscriptions on userid = who) " +
-            "LEFT JOIN feedback ON userid = feedback.who " +
-            "GROUP BY userid, username, email, info, userlevel";
+            "username, email, about, userlevel AS level FROM (users " +
+            "LEFT JOIN subscriptions on userid = subscriber) " +
+            "LEFT JOIN textmessages ON userid = textmessages.sender " +
+            "GROUP BY userid, username, email, about, userlevel";
         private static string MessagesDGVQuery => "SELECT messageid AS id, " +
-            "username AS sender, briefly, dt AS senddate, isread FROM feedback " +
-            "LEFT JOIN users ON who = userid ORDER BY dt DESC";
+            "username AS sender, shorttext, dt AS senddate, isread FROM textmessages " +
+            "LEFT JOIN users ON sender = userid ORDER BY dt DESC";
 
         /// <summary>
         /// Очищает текстбоксы и чекбоксы, обновляет dataGridView и данные 

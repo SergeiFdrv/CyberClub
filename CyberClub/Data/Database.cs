@@ -42,7 +42,7 @@ namespace CyberClub.Data
         {
             if (dr is null) return null;
             return Enumerable.Range(0, dr.FieldCount).ToDictionary(
-                i => dr.GetName(i),
+                i => dr.GetName(i).ToLower(),
                 i => dr.GetValue(i));
         }
 
