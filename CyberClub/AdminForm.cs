@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CyberClub.Data;
+using System.Threading;
 
 namespace CyberClub
 {
@@ -29,7 +30,26 @@ namespace CyberClub
         private void AdminForm_Load(object sender, EventArgs e)
         {
             UserLabel.Text = DB.GetUserName(LoginForm.UserID);
+            Task.Run(() => {
+                while (!CancellationTokenSource.Token.IsCancellationRequested)
+                {
+                    Upd?.Invoke();
+                    Thread.Sleep(10000);
+                }
+            }, CancellationTokenSource.Token);
             LeftGames.Checked = true;
+        }
+
+        private Action Upd;
+
+        private void AdminForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CancellationTokenSource.Cancel();
+            Task.Run(() =>
+            {
+                Thread.Sleep(10000);
+                CancellationTokenSource.Dispose();
+            });
         }
 
         private void AdminForm_FormClosed(object sender, FormClosedEventArgs e) =>
@@ -41,7 +61,9 @@ namespace CyberClub
         {
             if (GamesPanel.Visible = LeftGames.Checked)
             {
-                UpdateData(GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id");
+                Upd = () => UPD(LeftGames.Checked, GamesPanel, () => UpdateData(
+                    GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id"));
+                Upd();
             }
         }
 
@@ -49,8 +71,12 @@ namespace CyberClub
         {
             if (AccountsPanel.Visible = LeftAccounts.Checked)
             {
-                UpdateData(AccountsPanel, AccountsDGVQuery,
-                new ComboBox[] { AxEditName }, "username");
+                Upd = () => UPD(LeftAccounts.Checked, AccountsPanel, () =>
+                {
+                    UpdateData(AccountsPanel, AccountsDGVQuery,
+                            new ComboBox[] { AxEditName }, "username");
+                });
+                Upd();
             }
         }
 
@@ -58,14 +84,34 @@ namespace CyberClub
         {
             if (MessagesPanel.Visible = LeftMessages.Checked)
             {
-                UpdateTable(DGVMessages, MessagesDGVQuery);
-                foreach (DataGridViewRow i in DGVMessages.Rows)
-                { // Выделить непрочитанные сообщения жирным шрифтом
-                    if (!(i.Cells["isread"].Value is null || (bool)i.Cells["isread"].Value))
-                    {
-                        i.DefaultCellStyle.Font = new Font(DGVMessages.Font, FontStyle.Bold);
+                Upd = () => UPD(LeftMessages.Checked, MessagesPanel, () =>
+                {
+                    UpdateTable(DGVMessages, MessagesDGVQuery);
+                    foreach (DataGridViewRow i in DGVMessages.Rows)
+                    { // Выделить непрочитанные сообщения жирным шрифтом
+                        if (!(i.Cells["isread"].Value is null || (bool)i.Cells["isread"].Value))
+                        {
+                            i.DefaultCellStyle.Font = new Font(DGVMessages.Font, FontStyle.Bold);
+                        }
                     }
+                });
+                Upd();
+            }
+        }
+
+        private CancellationTokenSource CancellationTokenSource =
+            new CancellationTokenSource();
+
+        private static void UPD(bool condition, Panel panel, Action action)
+        {
+            if (condition)
+            {
+                Console.WriteLine("UPDATING " + panel.Name);
+                if (panel.InvokeRequired)
+                {
+                    panel.Invoke((MethodInvoker)(() => action.Invoke()));
                 }
+                else action.Invoke();
             }
         }
 

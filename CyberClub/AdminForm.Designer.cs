@@ -1245,6 +1245,7 @@
             this.MaximizeBox = false;
             this.Name = "AdminForm";
             this.Opacity = 0.95D;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AdminForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdminForm_FormClosed);
             this.Load += new System.EventHandler(this.AdminForm_Load);
             this.GamesPanel.ResumeLayout(false);
