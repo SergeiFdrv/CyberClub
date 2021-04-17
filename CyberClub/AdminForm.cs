@@ -38,6 +38,7 @@ namespace CyberClub
                 }
             }, CancellationTokenSource.Token);
             LeftGames.Checked = true;
+            AxAddAuth.DataSource = AxEditAuth.DataSource = Enum.GetValues(typeof(UserLevel));
         }
 
         private Action Upd;
@@ -61,9 +62,12 @@ namespace CyberClub
         {
             if (GamesPanel.Visible = LeftGames.Checked)
             {
-                Upd = () => UPD(LeftGames.Checked, GamesPanel, () => UpdateData(
-                    GamesPanel, GamesDGVQuery, new ComboBox[] { GEditID }, "id"));
-                Upd();
+                Upd = () => UPD(GamesPanel, () =>
+                {
+                    UpdateTable(DGVGames, GamesDGVQuery);
+                });
+                UpdateData(GamesPanel, GamesDGVQuery,
+                    new ComboBox[] { GEditID }, "id");
             }
         }
 
@@ -71,12 +75,12 @@ namespace CyberClub
         {
             if (AccountsPanel.Visible = LeftAccounts.Checked)
             {
-                Upd = () => UPD(LeftAccounts.Checked, AccountsPanel, () =>
+                Upd = () => UPD(AccountsPanel, () =>
                 {
-                    UpdateData(AccountsPanel, AccountsDGVQuery,
-                            new ComboBox[] { AxEditName }, "username");
+                    UpdateTable(DGVAccounts, AccountsDGVQuery);
                 });
-                Upd();
+                UpdateData(AccountsPanel, AccountsDGVQuery,
+                    new ComboBox[] { AxEditName }, "username");
             }
         }
 
@@ -84,7 +88,7 @@ namespace CyberClub
         {
             if (MessagesPanel.Visible = LeftMessages.Checked)
             {
-                Upd = () => UPD(LeftMessages.Checked, MessagesPanel, () =>
+                Upd = () => UPD(MessagesPanel, () =>
                 {
                     UpdateTable(DGVMessages, MessagesDGVQuery);
                     foreach (DataGridViewRow i in DGVMessages.Rows)
@@ -102,9 +106,9 @@ namespace CyberClub
         private CancellationTokenSource CancellationTokenSource =
             new CancellationTokenSource();
 
-        private static void UPD(bool condition, Panel panel, Action action)
+        private static void UPD(Panel panel, Action action)
         {
-            if (condition)
+            if (panel.Visible)
             {
                 Console.WriteLine("UPDATING " + panel.Name);
                 if (panel.InvokeRequired)
@@ -441,7 +445,7 @@ namespace CyberClub
         private void AxAddSubmit_Click(object sender, EventArgs e)
         { // Добавить в базу новую учетную запись
             if (string.IsNullOrWhiteSpace(AxAddName.Text)) return;
-            byte addResult = DB.AddAccount(AxAddName.Text, (int)AxAddAuth.SelectedItem,
+            byte addResult = DB.AddAccount(AxAddName.Text, (UserLevel)AxAddAuth.SelectedItem,
                 AxAddEMail.Text, AxAddInfo.Text, AxAddPasswd.Text);
             switch (addResult)
             {
@@ -475,7 +479,8 @@ namespace CyberClub
                 AxEditAuth.Enabled = AxEditPasswd.Enabled = false;
                 AxEditID.Text = AxEditSubsN.Text = AxEditRatesN.Text = 
                     AxEditMsgsN.Text = $"{0}";
-                AxEditEMail.Text = AxEditInfo.Text = AxEditAuth.Text = AxEditPasswd.Text = "";
+                AxEditEMail.Text = AxEditInfo.Text = AxEditPasswd.Text = "";
+                AxEditAuth.SelectedItem = null;
                 return;
             }
             var account = DB.GetAccountByName(AxEditName.Text);
@@ -486,7 +491,7 @@ namespace CyberClub
                 AxEditEMail.Enabled = true;
                 AxEditInfo.Text = account["about"].ToString();
                 AxEditInfo.Enabled = true;
-                AxEditAuth.Text = ((UserLevel)account["userlevel"]).ToString();
+                AxEditAuth.SelectedItem = ((UserLevel)account["userlevel"]);
                 AxEditAuth.Enabled = int.Parse(AxEditID.Text,
                     CultureInfo.CurrentCulture) != LoginForm.UserID;
                 AxEditPasswd.Text = account["userpass"].ToString();
@@ -508,7 +513,7 @@ namespace CyberClub
             if (Voice.Ask(Resources.Lang.UpdateAccountPrompt) == DialogResult.No) return;
             if (!int.TryParse(AxEditID.Text, out int id)) return;
             byte editResult = DB.UpdateAccount(id, AxEditName.Text, AxEditEMail.Text,
-                AxEditInfo.Text, (int)AxEditAuth.SelectedItem, AxEditPasswd.Text);
+                AxEditInfo.Text, (UserLevel)AxEditAuth.SelectedItem, AxEditPasswd.Text);
             switch (editResult)
             {
                 case 2:

@@ -381,7 +381,7 @@ namespace CyberClub.Data
         #endregion
         #region - account
         public byte AddAccount(
-            string name, int level, string email, string about, string password)
+            string name, UserLevel level, string email, string about, string password)
         {
             using (SqlConnection conn = new SqlConnection(CS))
             {
@@ -444,14 +444,14 @@ namespace CyberClub.Data
                     "FROM subscriptions WHERE subscriber = @me";
                 res["rates"] = command.ExecuteScalar().ToString();
                 command.CommandText = "SELECT COUNT(messageid) AS msgs " +
-                    "FROM textmessages WHERE subscriber = @me";
+                    "FROM textmessages WHERE sender = @me";
                 res["messages"] = command.ExecuteScalar().ToString();
                 return res;
             }
         }
 
         public byte UpdateAccount(int id,
-            string name, string email, string about, int level, string password)
+            string name, string email, string about, UserLevel level, string password)
         {
             using (SqlConnection conn = new SqlConnection(CS))
             {
