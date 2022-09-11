@@ -29,11 +29,15 @@ namespace CyberClub.Data
                     return false;
                 }
                 conn.Open();
+                using (SqlCommand command = new SqlCommand($"USE CyberClub", conn))
+                {
+                    command.ExecuteNonQuery();
+                }
                 return true;
             }
-            catch (SqlException)
+            catch (SqlException e)
             {
-                Voice.Say(Resources.Lang.DBError);
+                Voice.Say(Resources.Lang.DBError + Environment.NewLine + e.Message);
                 return false;
             }
         }

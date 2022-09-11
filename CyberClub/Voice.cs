@@ -21,6 +21,19 @@ namespace CyberClub
             InitializeComponent();
         }
 
+        protected string Text
+        {
+            get => ErrorText.Text;
+            set => ErrorText.Text = value;
+        }
+
+        protected Button YB => Yes;
+        protected Button NB => No;
+
+        public async static Task<DialogResult> SayAsync(string text, MessageBoxButtons buttons = MessageBoxButtons.OK)
+        {
+            return await Task.Run(() => Say(text, buttons));
+        }
         public static DialogResult Say(
             string text, MessageBoxButtons buttons = MessageBoxButtons.OK)
         {
@@ -69,6 +82,21 @@ namespace CyberClub
         {
             DialogResult = DialogResult.No;
             this.Close();
+        }
+    }
+
+    public class LoadingForm : Voice
+    {
+        public LoadingForm(/*Task task, */string text = null)
+        {
+            if (text == null) text = "Loading";
+            Text = text;
+            YB.Visible = false;
+            //YB.Text = "Cancel";
+            NB.Visible = false;
+            //YB.Click += (sender, e) =>
+            //{
+            //}
         }
     }
 }
